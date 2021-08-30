@@ -1,0 +1,4 @@
+com\Controller\HomeController.class
+com\configs\DispatcherServletInit.class
+com\configs\TilesConfig.class
+com\configs\WebApplicationContextConfigs.class
