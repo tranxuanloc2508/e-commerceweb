@@ -29,11 +29,11 @@
                 <div class="hero__search">
                     <div class="hero__search__form">
                         <form action="#">
-                             <div class="hero__search__categories">
+                            <div class="hero__search__categories">
                                 All Categories
                                 <span class="arrow_carrot-down"></span>
                             </div>
-                            <input type="text" placeholder="What do yo u need?">
+                            <input type="text" name="kw" placeholder="What do yo u need?">
                             <button type="submit" class="site-btn">SEARCH</button>
                         </form>
                     </div>
@@ -62,16 +62,24 @@
 <section class="categories">
     <div class="container">
         <div class="row">
+
             <div class="categories__slider owl-carousel owl-loaded owl-drag">
-                <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-2340px, 0px, 0px); transition: all 1.2s ease 0s; width: 3803px;"><div class="owl-item cloned" style="width: 292.5px;"><div class="col-lg-3">
+                <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-2340px, 0px, 0px); transition: all 1.2s ease 0s; width: 3803px;">
+                        <div class="owl-item cloned" style="width: 292.5px;"><div class="col-lg-3">
                                 <div class="categories__item set-bg" data-setbg="img/categories/cat-2.jpg" style="background-image: url(&quot;img/categories/cat-2.jpg&quot;);">
                                     <h5><a href="#">Dried Fruit</a></h5>
                                 </div>
-                            </div></div><div class="owl-item cloned" style="width: 292.5px;"><div class="col-lg-3">
+                            </div>
+                        </div>
+                        <div class="owl-item cloned" style="width: 292.5px;">
+                            <div class="col-lg-3">
                                 <div class="categories__item set-bg" data-setbg="img/categories/cat-3.jpg" style="background-image: url(&quot;img/categories/cat-3.jpg&quot;);">
                                     <h5><a href="#">Vegetables</a></h5>
                                 </div>
-                            </div></div><div class="owl-item cloned" style="width: 292.5px;"><div class="col-lg-3">
+                            </div>
+                        </div>
+                        <div class="owl-item cloned" style="width: 292.5px;">
+                            <div class="col-lg-3">
                                 <div class="categories__item set-bg" data-setbg="img/categories/cat-4.jpg" style="background-image: url(&quot;img/categories/cat-4.jpg&quot;);">
                                     <h5><a href="#">drink fruits</a></h5>
                                 </div>
@@ -131,6 +139,7 @@
 <section class="featured spad">
     <div class="container">
         <div class="row">
+
             <div class="col-lg-12">
                 <div class="section-title">
                     <h2>Featured Product</h2>
@@ -146,8 +155,35 @@
                 </div>
             </div>
         </div>
-        <div class="row featured__filter" id="MixItUp7E2882" style="">
-            <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat" style="">
+        <div class="row">
+            <c:forEach var="p" items="${products}">
+              <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
+                    <div class="card-body">                                         
+                        <div class="featured__item">
+                            <div class="featured__item__pic set-bg" >
+                                <img class="img-fluid"src="<c:url value="img/featured/feature-1.jpg"/>" alt="${p.name}"/>
+                                <ul class="featured__item__pic__hover">
+                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="featured__item__text">
+                                <h6><a href="#">${p.name}</a></h6>
+                                <h5>${p.price}</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </c:forEach>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!--            <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat" style="">
                 <div class="featured__item">
                     <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-1.jpg" style="background-image: url(&quot;img/featured/feature-1.jpg&quot;);">
                         <ul class="featured__item__pic__hover">
@@ -266,7 +302,4 @@
                         <h5>$30.00</h5>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</section>
+            </div>-->

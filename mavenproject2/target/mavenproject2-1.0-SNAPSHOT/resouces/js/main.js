@@ -6,6 +6,14 @@
     Version: 1.0
     Created: Colorlib
 ---------------------------------------------------------  */
+function addToCart(productId){
+    fetch(`/JSPdemo/api/cart/${productId}`).then(res=>res.json()).then(data=>{
+        var d = document.getElementById("cart-counter");
+        if(d!== null)
+            d.innerText =data;
+    })
+    
+}
 
 'use strict';
 

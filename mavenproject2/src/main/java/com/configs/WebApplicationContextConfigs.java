@@ -7,9 +7,7 @@ package com.configs;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
-//import com.txl.formatter.CategoryFormatter;
-//import com.txl.validator.ProductNameValidator;
-//import com.txl.validator.WebAppValidator;
+import com.formatter.CategoryFormatter;
 import java.util.HashSet;
 import java.util.Set;
 import org.springframework.context.MessageSource;
@@ -39,9 +37,9 @@ import org.springframework.web.servlet.view.JstlView;
 @EnableTransactionManagement
 @ComponentScan(basePackages = {
     "com.Controller",
-//    "com.txl.repository",
-//    "com.txl.service",
-//    "com.txl.validator"
+    "com.repository",
+    "com.service"
+//    "com.validator"
 })
 public class WebApplicationContextConfigs implements WebMvcConfigurer {
 
@@ -64,7 +62,16 @@ public class WebApplicationContextConfigs implements WebMvcConfigurer {
                 .addResourceLocations("/resouces/sass/");
         
     }
+     @Bean
+    public Cloudinary cloudinary() {
+        Cloudinary c = new Cloudinary(ObjectUtils.asMap(
+                "cloud_name", "djtemroku",
+                "api_key", "592841477312947",
+                "api_secret", "66gZEgzOGc-3482-pzn_uoSqtd4",
+                "secure", true));
 
+        return c;
+    }
     @Bean
     public InternalResourceViewResolver
             getInternalResourceViewResolver() {
@@ -80,11 +87,11 @@ public class WebApplicationContextConfigs implements WebMvcConfigurer {
     public Validator getValidator() {
         return validator();
     }
-//    @Override
-//    public void addFormatters(FormatterRegistry registry){
-//        registry.addFormatter(new CategoryFormatter());
-//    }
-//    
+    @Override
+    public void addFormatters(FormatterRegistry registry){
+        registry.addFormatter(new CategoryFormatter());
+    }
+    
 //    @Bean
 //    public WebAppValidator productValidator(){
 //        Set<Validator> springValidators = new HashSet<>();
