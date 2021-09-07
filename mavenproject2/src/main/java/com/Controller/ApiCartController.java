@@ -27,11 +27,11 @@ public class ApiCartController {
     @Autowired
     private ProductService productService;
 
-    @GetMapping("/api/products")
-    public ResponseEntity<List<Product>> listProduct() {
-        List<Product> products = this.productService.getProducts("", 1);
-        return new ResponseEntity<>(products, HttpStatus.OK);
-    }
+//    @GetMapping("/api/products")
+//    public ResponseEntity<List<Product>> listProduct() {
+//        List<Product> products = this.productService.getProducts("", 1);
+//        return new ResponseEntity<>(products, HttpStatus.OK);
+//    }
 
     @GetMapping("/api/cart/{productId}")
     public ResponseEntity<Integer> cart(@PathVariable(value = "productId") Integer productId,

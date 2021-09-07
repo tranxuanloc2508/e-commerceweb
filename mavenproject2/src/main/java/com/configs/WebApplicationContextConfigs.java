@@ -38,7 +38,7 @@ import org.springframework.web.servlet.view.JstlView;
 @ComponentScan(basePackages = {
     "com.Controller",
     "com.repository",
-    "com.service"
+    "com.sale.service"
 //    "com.validator"
 })
 public class WebApplicationContextConfigs implements WebMvcConfigurer {
@@ -62,16 +62,16 @@ public class WebApplicationContextConfigs implements WebMvcConfigurer {
                 .addResourceLocations("/resouces/sass/");
         
     }
-     @Bean
-    public Cloudinary cloudinary() {
-        Cloudinary c = new Cloudinary(ObjectUtils.asMap(
-                "cloud_name", "djtemroku",
-                "api_key", "592841477312947",
-                "api_secret", "66gZEgzOGc-3482-pzn_uoSqtd4",
-                "secure", true));
-
-        return c;
-    }
+//     @Bean
+//    public Cloudinary cloudinary() {
+//        Cloudinary c = new Cloudinary(ObjectUtils.asMap(
+//                "cloud_name", "djtemroku",
+//                "api_key", "592841477312947",
+//                "api_secret", "66gZEgzOGc-3482-pzn_uoSqtd4",
+//                "secure", true));
+//
+//        return c;
+//    }
     @Bean
     public InternalResourceViewResolver
             getInternalResourceViewResolver() {

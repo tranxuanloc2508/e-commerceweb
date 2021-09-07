@@ -26,4 +26,12 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
         <put-attribute name="index" value="Quan lí sản phẩm"/>
         <put-attribute name="content" value="/WEB-INF/jsp/product.jsp"/>
     </definition>
+     <definition name="login" extends="baseLayout">
+        <put-attribute name="title" value="Dang nhap"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/login.jsp"/>
+    </definition>
+    <definition name="register" extends="baseLayout">
+        <put-attribute name="title" value="dang ki"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/register.jsp"/>
+    </definition>
 </tiles-definitions>
