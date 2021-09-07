@@ -102,7 +102,12 @@
                             </ul>
                         </div>
                         <div class="header__top__right__auth">
-                            <a href="#"><i class="fa fa-user"></i> Login</a>
+                            <c:if test="${pageContext.request.userPrincipal.name == null}">                               
+                                    <a  href="<c:url value="/login"/>"><i class="fa fa-user"></i>Login</a>                      
+                               
+                                
+                            </c:if>
+                        
                         </div>
                     </div>
                 </div>
