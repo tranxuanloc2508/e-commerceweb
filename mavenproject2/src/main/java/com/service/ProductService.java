@@ -6,6 +6,7 @@
 package com.service;
 
 import com.pojos.Product;
+import com.pojos.User;
 import java.util.List;
 
 /**
@@ -22,4 +23,5 @@ public interface ProductService {
     boolean addOrUpdate(Product product);
 
     Product getProductByID(int productId);
+    User getUserByID(int userId);
 }

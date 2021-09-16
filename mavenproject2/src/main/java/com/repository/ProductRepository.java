@@ -6,6 +6,7 @@
 package com.repository;
 
 import com.pojos.Product;
+import com.pojos.User;
 import java.util.List;
 
 /**
@@ -18,5 +19,6 @@ public interface ProductRepository {
    Product getProductByID(int productId);
     long countProduct();
     boolean addOrUpdate(Product product);
+    User getUserByID(int userId);
 
 }

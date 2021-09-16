@@ -20,7 +20,9 @@
     <div class="humberger__menu__cart">
         <ul>
             <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+            <li>
+                <a class="nav-link" href="<c:url value="/cart"/>"><i class="fa fa-shopping-bag"></i><span id="cart-counter">${cartCounter}</span></a>
+            </li>
         </ul>
         <div class="header__cart__price">item: <span>$150.00</span></div>
     </div>
@@ -103,11 +105,18 @@
                         </div>
                         <div class="header__top__right__auth">
                             <c:if test="${pageContext.request.userPrincipal.name == null}">                               
-                                    <a  href="<c:url value="/login"/>"><i class="fa fa-user"></i>Login</a>                      
-                               
-                                
+                                <a  href="<c:url value="/login"/>"><i class="fa fa-user"></i>Login</a>       
+
                             </c:if>
-                        
+                            <c:if test="${pageContext.request.userPrincipal.name != null}">
+                                <li class="nav-item">
+                                    <a class="nav-link text-danger" href="<c:url value="/"/>">${pageContext.request.userPrincipal.name}</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-danger" href="<c:url value="/logout"/>">Logout</a>
+                                </li>
+                            </c:if>
+
                         </div>
                     </div>
                 </div>
@@ -124,7 +133,7 @@
             <div class="col-lg-6">
                 <nav class="header__menu">
                     <ul>
-                        <li class="active"><a href="./index.html">Home</a></li>
+                        <li class="active"><a href="<c:url value="/"/>">Home</a></li>
                         <li><a href="<c:url value="/category.jsp"/>">Shop</a></li>
                         <li><a href="#">Pages</a>
                             <ul class="header__menu__dropdown">
@@ -143,7 +152,11 @@
                 <div class="header__cart">
                     <ul>
                         <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                        <li><a class="nav-link" href="<c:url value="/cart"/>"><i class="fa fa-shopping-bag"></i> <span>${cartCounter}</span></a></li>
+
+                        <li>
+                            <a class="nav-link" href="<c:url value="/cart"/>"><i class="fa fa-shopping-bag"></i><span id="cart-counter">${cartCounter}</span></a>
+
+                        </li>
                     </ul>
                     <div class="header__cart__price">item: <span>$150.00</span></div>
                 </div>

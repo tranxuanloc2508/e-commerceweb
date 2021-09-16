@@ -6,16 +6,34 @@
     Version: 1.0
     Created: Colorlib
 ---------------------------------------------------------  */
+
+'use strict';
 function addToCart(productId){
-    fetch(`/JSPdemo/api/cart/${productId}`).then(res=>res.json()).then(data=>{
+    fetch(`/mavenproject2/api/cart/${productId}`).then(res=>res.json()).then(data=>{
         var d = document.getElementById("cart-counter");
         if(d!== null)
             d.innerText =data;
     })
     
 }
-
-'use strict';
+function addCart(productId, productName) {
+    $.ajax({
+        url: "/mavenproject2/api/cart",
+        type: "POST",
+        data: {
+            productId: productId,
+            num: 1
+        },
+        success: function (data) {
+            var a = $(".product-count").text();
+            a = a === "" ? 0:parseInt(a);
+            $(".product-count").text(a + 1);
+        },
+        error: function (jqXHR) {
+            alert(jqXHR);
+        }
+    });
+}
 
 (function ($) {
 

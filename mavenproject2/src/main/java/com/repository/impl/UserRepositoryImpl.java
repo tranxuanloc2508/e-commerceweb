@@ -33,7 +33,7 @@ public class UserRepositoryImpl implements UserRepository{
     private LocalSessionFactoryBean sessionFactory;
     @Override
     public boolean addUser(User user) {
-         Session s = this.sessionFactory.getObject().getCurrentSession();
+            Session s = this.sessionFactory.getObject().getCurrentSession();
         try {
             s.save(user);
             return true;
@@ -60,5 +60,13 @@ public class UserRepositoryImpl implements UserRepository{
         Query q = s.createQuery(query);
         return q.getResultList();
     }
+
+    @Override
+    public User getUserById(int id) {
+        Session s = this.sessionFactory.getObject().getCurrentSession();
+        return s.get(User.class, id);
+    }
+
+ 
     
 }

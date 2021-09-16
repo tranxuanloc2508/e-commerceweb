@@ -6,11 +6,13 @@
 package com.service.impl;
 
 import com.pojos.Category;
+import com.pojos.Product;
 import com.repository.CategoryRepository;
 import com.service.CategoryService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -23,8 +25,15 @@ public class CategoryServiceImpl implements CategoryService {
     private CategoryRepository categoryRepository;
 
     @Override
+    @Transactional(readOnly = true)
     public List<Category> getCategories() {
-        return this.categoryRepository.getCategories();
+        return categoryRepository.getCategories("");
+    }   
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Product> getProductsByCategory(int cateId) {
+        return categoryRepository.getProductsByCategory(cateId);
     }
 
 }

@@ -6,6 +6,7 @@
 package com.repository.impl;
 
 import com.pojos.Product;
+import com.pojos.User;
 import com.repository.ProductRepository;
 import java.util.List;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -44,25 +45,28 @@ public class ProductRepositoryImpl implements ProductRepository {
                     String.format("%%%s%%", kw));
             query = query.where(p);
         }
-
+//        query = query.orderBy(builder.desc(root.get("id")));
         Query q = session.createQuery(query);
-
+//          int max = 6;
+//        q.setMaxResults(max);//moi 1 lan lay 6 phan tu
+//        q.setFirstResult((page - 1) * max);// vi tri bat dau lay vd trang (1-1)*6 tức là lấy từ vị trí 0,còn (2-1)*6 tức là lấy từ vị trí thứ 6
         return q.getResultList();
     }
 
     @Override
     public boolean addOrUpdate(Product product) {
         Session session = this.sessionFactory.getObject().getCurrentSession();
-        try {
+//        try {
             session.save(product);
 
             return true;
-        } catch (Exception ex) {
-            System.err.println("=== ADD PRODUCT ERRER ===" + ex.getMessage());
-            ex.printStackTrace();
-        }
+//        } catch (Exception ex) {
+//            System.err.println("=== ADD PRODUCT ERRER ===" + ex.getMessage());
+//            ex.printStackTrace();
+//        }
+//
+//        return false;
 
-        return false;
     }
 
     @Override
@@ -77,6 +81,12 @@ public class ProductRepositoryImpl implements ProductRepository {
        
         Session session = this.sessionFactory.getObject().getCurrentSession();
         return session.get(Product.class, id);
+    }
+
+    @Override
+    public User getUserByID(int i) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        return session.get(User.class, i);
     }
 
 }

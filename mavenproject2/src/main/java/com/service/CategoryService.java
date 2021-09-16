@@ -6,6 +6,7 @@
 package com.service;
 
 import com.pojos.Category;
+import com.pojos.Product;
 import java.util.List;
 
 /**
@@ -13,5 +14,6 @@ import java.util.List;
  * @author LocNe
  */
 public interface CategoryService {
-    List<Category> getCategories();
+     List<Category> getCategories();
+    List<Product> getProductsByCategory(int cateId);
 }

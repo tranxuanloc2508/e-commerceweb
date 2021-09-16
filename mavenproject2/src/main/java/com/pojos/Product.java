@@ -47,14 +47,14 @@ public class Product {
     @Column(name = "created_date")
     @Temporal(javax.persistence.TemporalType.DATE)// quy dinh ngay thang
     private Date createDate;
-//    private boolean active;
     @ManyToOne
     @JoinColumn(name = "category_id")// khoa ngoai ket 2 bang
     @NotNull(message = "{product.category.nullErr}")
-    @JsonIgnore
+//    @JsonIgnore
     private Category category;
-    @Column(name = "user_id")
-    private int userId;
+    @ManyToOne
+    @JoinColumn(name = "user_id")// khoa ngoai ket 2 bang
+    private User user;
 //    @ManyToMany
 //    @JoinTable(
 //            name = "pro_man",
@@ -67,6 +67,23 @@ public class Product {
 //    private Set<Manufacturer> manufacturers;
     @Transient //xem như là 1 thuộc tính để xử lí ko lk với csld
     private MultipartFile file;
+
+    public Product() {
+    }
+
+    public Product(Integer id) {
+        this.id = id;
+    }
+
+    public Product(Integer id, User user) {
+        this.id = id;
+        this.user = user;
+    }
+
+    public Product(User user) {
+
+        this.user = user;
+    }
 
     /**
      * @return the id
@@ -165,7 +182,6 @@ public class Product {
 //    public void setActive(boolean active) {
 //        this.active = active;
 //    }
-
     /**
      * @return the category
      */
@@ -195,16 +211,20 @@ public class Product {
     }
 
     /**
-     * @return the userId
+     * @return the user
      */
-    public int getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
     /**
-     * @param userId the userId to set
+     * @param user the user to set
      */
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
+
+    /**
+     * @return the user
+     */
 }

@@ -5,6 +5,7 @@
  */
 package com.pojos;
 
+//import com.fasterxml.jackson.annotation.JsonRootName;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;

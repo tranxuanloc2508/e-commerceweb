@@ -8,6 +8,7 @@ package com.configs;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import com.formatter.CategoryFormatter;
+import com.formatter.UserFormatter;
 import java.util.HashSet;
 import java.util.Set;
 import org.springframework.context.MessageSource;
@@ -38,8 +39,8 @@ import org.springframework.web.servlet.view.JstlView;
 @ComponentScan(basePackages = {
     "com.Controller",
     "com.repository",
-    "com.sale.service"
-//    "com.validator"
+    "com.service",
+    "com.validator"
 })
 public class WebApplicationContextConfigs implements WebMvcConfigurer {
 
@@ -90,6 +91,7 @@ public class WebApplicationContextConfigs implements WebMvcConfigurer {
     @Override
     public void addFormatters(FormatterRegistry registry){
         registry.addFormatter(new CategoryFormatter());
+        registry.addFormatter(new UserFormatter());
     }
     
 //    @Bean

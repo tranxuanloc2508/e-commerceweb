@@ -11,17 +11,12 @@
                         <span>All departments</span>
                     </div>
                     <ul style="">
-                        <li><a href="#">Fresh Meat</a></li>
-                        <li><a href="#">Vegetables</a></li>
-                        <li><a href="#">Fruit &amp; Nut Gifts</a></li>
-                        <li><a href="#">Fresh Berries</a></li>
-                        <li><a href="#">Ocean Foods</a></li>
-                        <li><a href="#">Butter &amp; Eggs</a></li>
-                        <li><a href="#">Fastfood</a></li>
-                        <li><a href="#">Fresh Onion</a></li>
-                        <li><a href="#">Papayaya &amp; Crisps</a></li>
-                        <li><a href="#">Oatmeal</a></li>
-                        <li><a href="#">Fresh Bananas</a></li>
+                        <c:forEach var="cat" items="${categories}">
+                            <li class="nav-item">
+                                <a class="nav-link" href="<c:url value="/?cat_id=${cat.id}"/>">${cat.name}</a>
+                            </li>
+                        </c:forEach>
+                        
                     </ul>
                 </div>
             </div>
@@ -157,20 +152,27 @@
         </div>
         <div class="row">
             <c:forEach var="p" items="${products}">
-              <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
+                <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
                     <div class="card-body">                                         
                         <div class="featured__item">
                             <div class="featured__item__pic set-bg" >
-                                <img class="img-fluid"src="<c:url value="img/featured/feature-1.jpg"/>" alt="${p.name}"/>
+
+
+                                <img class="img-fluid"src="<c:url value="${p.image}"/>" alt="${p.name}"/>
+
+
+
+
                                 <ul class="featured__item__pic__hover">
                                     <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                    <li><a href="<c:url value="/products/${p.id}" />"><i class="fa fa-retweet"></i></a></li>
+                                    <li> <a href="javacript:;"class="fa fa-shopping-cart" onclick="addToCart(${p.id})"></a></li>
+
                                 </ul>
                             </div>
                             <div class="featured__item__text">
                                 <h6><a href="#">${p.name}</a></h6>
-                                <h5>${p.price}</h5>
+                                <h5>${p.price} VNĐ</h5>
                             </div>
                         </div>
                     </div>
@@ -181,6 +183,16 @@
 
     </div>
 </section>
+<!--<div>-->
+
+    <!--<ul class="pagination">-->
+        <%--<c:forEach begin="1" end="${Math.ceil(counter/6)}" var="i">--%>
+
+
+            <!--<li class="page-item"><a class="page-link" href="<c:url value="/"/>?page=${i}">${i}</a></li>-->
+            <%--</c:forEach>--%>
+    <!--</ul>-->
+<!--</div>-->
 
 
 <!--            <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat" style="">

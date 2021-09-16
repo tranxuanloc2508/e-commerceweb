@@ -5,8 +5,11 @@
  */
 package com.Controller;
 
+import com.pojos.Cart;
 import com.service.CategoryService;
 import com.service.ProductService;
+import com.service.UserService;
+import com.utils.utils;
 import java.util.Map;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,30 +33,42 @@ public class HomeController {
     private CategoryService categoryService;
     @Autowired
     private ProductService productService;
-
+    @Autowired
+    private UserService userService;
     @ModelAttribute
-    public void commonAttr(Model model) {
+    public void commonAttr(Model model, HttpSession session ,@RequestParam(value = "kw", required = false, defaultValue = "") String kw) {
         model.addAttribute("categories", this.categoryService.getCategories());
-//        model.addAttribute("cartCounter",Utils.countCart((Map<Integer, Cart>) session.getAttribute("cart")));
+        model.addAttribute("cartCounter",utils.countCart((Map<Integer, Cart>)session.getAttribute("cart")));
+        model.addAttribute("users", this.userService.getUser(kw));
     }
 
     @RequestMapping("/")/// HTTP GET
-    public String index(Model model, @RequestParam(value = "kw", required = false, defaultValue = "") String kw) {
+    public String index(Model model,
+            @RequestParam(value = "kw", required = false, defaultValue = "") String kw) {
 //        int page = Integer.parseInt(params.getOrDefault("page", "1"));// getOrdefault neu co lay ko co de mac dinh
 
         model.addAttribute("categories", this.categoryService.getCategories());
         model.addAttribute("products", this.productService.getProducts(kw));
-
+//        model.addAttribute("users", this.userService.getUser(userID));
         return "index";// timf gía trị đầu tiên tên này
+        
+//        String kw = params.getOrDefault("kw", null);
+//        int page = Integer.parseInt(params.getOrDefault("page", "1"));// getOrdefault neu co lay ko co de mac dinh
+//        
+//        model.addAttribute("products", this.productService.getProducts(kw));
+//        model.addAttribute("counter", this.productService.countProduct());
+//
+//        return "index";// timf gía trị đầu tiên tên này
     }
 
-//    @RequestMapping(path = "/")
-//    public String home() {
-//        return "index";
-//    }
-//    @ModelAttribute // đính kèm all các trang trên web
-//    public void addAttribute(Model model) {
-//        model.addAttribute("categories", this.categoryService.getCategories());
-//
-//    }
+    @RequestMapping(path = "/cart")
+    public String testRedirect(Model model) {
+        return "cart";
+    }
+    @ModelAttribute // đính kèm all các trang trên web
+    public void addAttribute(Model model) {
+        model.addAttribute("categories", this.categoryService.getCategories());
+        model.addAttribute("users", this.userService.getUser(""));
+        
+    }
 }

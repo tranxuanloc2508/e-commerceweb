@@ -18,20 +18,26 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
  * @author LocNe
  */
+@RestController
+@RequestMapping(value = "/api/cart")
 public class ApiCartController {
     @Autowired
     private ProductService productService;
 
-//    @GetMapping("/api/products")
-//    public ResponseEntity<List<Product>> listProduct() {
-//        List<Product> products = this.productService.getProducts("", 1);
-//        return new ResponseEntity<>(products, HttpStatus.OK);
-//    }
+    @GetMapping("/api/products")
+    public ResponseEntity<List<Product>> listProduct() {
+        List<Product> products = this.productService.getProducts("");
+        return new ResponseEntity<>(products, HttpStatus.OK);
+    }
 
     @GetMapping("/api/cart/{productId}")
     public ResponseEntity<Integer> cart(@PathVariable(value = "productId") Integer productId,
@@ -62,4 +68,14 @@ public class ApiCartController {
         return new ResponseEntity<>(utils.countCart(cart),HttpStatus.OK);
 //        System.out.println("=== CART ===" + Utils.countCart(cart));
     }
+//    @PostMapping(value = "/pay")
+//    @ResponseStatus(value = HttpStatus.OK)
+//    public void payCart(HttpSession session) {   
+//        Map<Integer, Cart> carts 
+//                = (Map<Integer, Cart>) session.getAttribute("cart");
+//        orderService.addOrder(carts.values());
+//        
+//        session.removeAttribute("cart");
+//    }
 }
+ 

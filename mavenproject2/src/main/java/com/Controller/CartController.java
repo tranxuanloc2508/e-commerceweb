@@ -27,4 +27,23 @@ public class CartController {
 
         return "cart";
     }
+        
+//    @GetMapping(value = "/cart")
+//    public String cart(Model model, HttpSession session) {
+//        if (session.getAttribute("cart") != null) {
+//            Map<Integer, Cart> carts = (Map<Integer, Cart>) session.getAttribute("cart");
+//
+//            BigDecimal sum = new BigDecimal(0);
+//            
+//            for (Cart c: carts.values())
+//                sum = sum.add(c.getProduct()
+//                               .getPrice()
+//                               .multiply(new BigDecimal(c.getNum())));
+//
+//            model.addAttribute("carts", carts.values());
+//            model.addAttribute("sum", sum);
+//        }
+//
+//        return "cart";
+//    }
 }

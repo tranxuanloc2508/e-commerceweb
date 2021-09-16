@@ -19,6 +19,12 @@
 <form:form method="post" action="${action}" modelAttribute="product"
            enctype="multipart/form-data">
     <form:errors path="*" cssClass="alert alert-danger" element="div"/>
+  <c:if test="${pageContext.request.userPrincipal.name != null}">
+                                
+                                    <%--<form:input type="text" id="name" path="name" cssClass="form-control" />--%>
+                                    <a class="nav-link text-danger" href="<c:url value="/"/>">${pageContext.request.userPrincipal.name}</a>
+                               <%--<form:errors path="user" cssClass="text-danger" element="div"/>--%>
+                            </c:if>
     <div class="form-group">
         <label for="name">Ten san pham</label>
         <form:input type="text" id="name" path="name" cssClass="form-control"/>
@@ -46,11 +52,13 @@
         </div>
     <div class="form-group">
         <label>Anh san pham</label>
-        <form:input type="file" id="file" path="file" cssClass="form-control"/>
+        <form:input type="file" id="image" path="file" cssClass="form-control"/>
     </div>
+   
     <div class="form-group">
         <input type="submit" value="Them san pham" class="btn btn-danger"/>
     </div>
+        
 </form:form>
     </div>
 </section>

@@ -6,6 +6,7 @@
 package com.repository;
 
 import com.pojos.Category;
+import com.pojos.Product;
 import java.util.List;
 
 /**
@@ -13,5 +14,7 @@ import java.util.List;
  * @author LocNe
  */
 public interface CategoryRepository {
-     List<Category> getCategories();
+      List<Category> getCategories(String kw);
+    Category getCategoryById(int id);
+    List<Product> getProductsByCategory(int cateId);
 }
