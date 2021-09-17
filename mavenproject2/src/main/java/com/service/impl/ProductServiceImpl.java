@@ -65,7 +65,7 @@ public class ProductServiceImpl implements ProductService {
             product.setImage(image);
             String username = SecurityContextHolder.getContext().getAuthentication().getName();
             User user = userRepository.getUserByUsername(username);
-            product = new Product(user);
+            product.setUser(user);
 //        productRepository.addOrUpdate(product);
             return this.productRepository.addOrUpdate(product);
 

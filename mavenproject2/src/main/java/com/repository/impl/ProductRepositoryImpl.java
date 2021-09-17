@@ -56,16 +56,16 @@ public class ProductRepositoryImpl implements ProductRepository {
     @Override
     public boolean addOrUpdate(Product product) {
         Session session = this.sessionFactory.getObject().getCurrentSession();
-//        try {
+        try {
             session.save(product);
 
             return true;
-//        } catch (Exception ex) {
-//            System.err.println("=== ADD PRODUCT ERRER ===" + ex.getMessage());
-//            ex.printStackTrace();
-//        }
-//
-//        return false;
+        } catch (Exception ex) {
+            System.err.println("=== ADD PRODUCT ERRER ===" + ex.getMessage());
+            ex.printStackTrace();
+        }
+
+        return false;
 
     }
 

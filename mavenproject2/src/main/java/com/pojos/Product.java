@@ -37,7 +37,7 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @NotNull(message = "{product.category.nullErr}")
+//    @NotNull(message = "{product.category.nullErr}")
     private String name;
     private String description;
     @Min(value = 10000, message = "{product.price.minErr}")
