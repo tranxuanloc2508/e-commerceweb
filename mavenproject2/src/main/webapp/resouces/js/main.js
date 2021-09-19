@@ -1,20 +1,14 @@
-/*  ---------------------------------------------------
-    Template Name: Ogani
-    Description:  Ogani eCommerce  HTML Template
-    Author: Colorlib
-    Author URI: https://colorlib.com
-    Version: 1.0
-    Created: Colorlib
----------------------------------------------------------  */
+
 
 'use strict';
-function addToCart(productId){
-    fetch(`/mavenproject2/api/cart/${productId}`).then(res=>res.json()).then(data=>{
+function addToCart(productId) {
+
+    fetch(`/mavenproject2/api/cart/${productId}`).then(res => res.json()).then(data => {
         var d = document.getElementById("cart-counter");
-        if(d!== null)
-            d.innerText =data;
+        if (d !== null)
+            d.innerText = data;
     })
-    
+
 }
 function addCart(productId, productName) {
     $.ajax({
@@ -26,7 +20,7 @@ function addCart(productId, productName) {
         },
         success: function (data) {
             var a = $(".product-count").text();
-            a = a === "" ? 0:parseInt(a);
+            a = a === "" ? 0 : parseInt(a);
             $(".product-count").text(a + 1);
         },
         error: function (jqXHR) {
@@ -38,15 +32,15 @@ function addCart(productId, productName) {
 (function ($) {
 
     /*------------------
-        Preloader
-    --------------------*/
+     Preloader
+     --------------------*/
     $(window).on('load', function () {
         $(".loader").fadeOut();
         $("#preloder").delay(200).fadeOut("slow");
 
         /*------------------
-            Gallery filter
-        --------------------*/
+         Gallery filter
+         --------------------*/
         $('.featured__controls li').on('click', function () {
             $('.featured__controls li').removeClass('active');
             $(this).addClass('active');
@@ -58,8 +52,8 @@ function addCart(productId, productName) {
     });
 
     /*------------------
-        Background Set
-    --------------------*/
+     Background Set
+     --------------------*/
     $('.set-bg').each(function () {
         var bg = $(this).data('setbg');
         $(this).css('background-image', 'url(' + bg + ')');
@@ -79,16 +73,16 @@ function addCart(productId, productName) {
     });
 
     /*------------------
-		Navigation
-	--------------------*/
+     Navigation
+     --------------------*/
     $(".mobile-menu").slicknav({
         prependTo: '#mobile-menu-wrap',
         allowParentLinks: true
     });
 
     /*-----------------------
-        Categories Slider
-    ------------------------*/
+     Categories Slider
+     ------------------------*/
     $(".categories__slider").owlCarousel({
         loop: true,
         margin: 0,
@@ -122,13 +116,13 @@ function addCart(productId, productName) {
     });
 
 
-    $('.hero__categories__all').on('click', function(){
+    $('.hero__categories__all').on('click', function () {
         $('.hero__categories ul').slideToggle(400);
     });
 
     /*--------------------------
-        Latest Product Slider
-    ----------------------------*/
+     Latest Product Slider
+     ----------------------------*/
     $(".latest-product__slider").owlCarousel({
         loop: true,
         margin: 0,
@@ -142,8 +136,8 @@ function addCart(productId, productName) {
     });
 
     /*-----------------------------
-        Product Discount Slider
-    -------------------------------*/
+     Product Discount Slider
+     -------------------------------*/
     $(".product__discount__slider").owlCarousel({
         loop: true,
         margin: 0,
@@ -173,8 +167,8 @@ function addCart(productId, productName) {
     });
 
     /*---------------------------------
-        Product Details Pic Slider
-    ----------------------------------*/
+     Product Details Pic Slider
+     ----------------------------------*/
     $(".product__details__pic__slider").owlCarousel({
         loop: true,
         margin: 20,
@@ -186,13 +180,13 @@ function addCart(productId, productName) {
     });
 
     /*-----------------------
-		Price Range Slider
-	------------------------ */
+     Price Range Slider
+     ------------------------ */
     var rangeSlider = $(".price-range"),
-        minamount = $("#minamount"),
-        maxamount = $("#maxamount"),
-        minPrice = rangeSlider.data('min'),
-        maxPrice = rangeSlider.data('max');
+            minamount = $("#minamount"),
+            maxamount = $("#maxamount"),
+            minPrice = rangeSlider.data('min'),
+            maxPrice = rangeSlider.data('max');
     rangeSlider.slider({
         range: true,
         min: minPrice,
@@ -207,13 +201,13 @@ function addCart(productId, productName) {
     maxamount.val('$' + rangeSlider.slider("values", 1));
 
     /*--------------------------
-        Select
-    ----------------------------*/
+     Select
+     ----------------------------*/
     $("select").niceSelect();
 
     /*------------------
-		Single Product
-	--------------------*/
+     Single Product
+     --------------------*/
     $('.product__details__pic__slider img').on('click', function () {
 
         var imgurl = $(this).data('imgbigurl');
@@ -226,8 +220,8 @@ function addCart(productId, productName) {
     });
 
     /*-------------------
-		Quantity change
-	--------------------- */
+     Quantity change
+     --------------------- */
     var proQty = $('.pro-qty');
     proQty.prepend('<span class="dec qtybtn">-</span>');
     proQty.append('<span class="inc qtybtn">+</span>');

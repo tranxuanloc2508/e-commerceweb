@@ -27,6 +27,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @author LocNe
  */
 @Service
+@Transactional
 public class ProductServiceImpl implements ProductService {
 
     @Autowired
@@ -37,26 +38,13 @@ public class ProductServiceImpl implements ProductService {
     private UserService userRepository;
 
     @Override
-    public List<Product> getProducts(String kw) {
-        return this.productRepository.getProducts(kw);
-    }
-
-    @Override
-    @Transactional(readOnly = true)
-    public Product getProductByID(int i) {
-        return this.productRepository.getProductByID(i);
-
-    }
-
-    @Override
-    @Transactional(readOnly = true)
-    public User getUserByID(int userId) {
-        return this.userRepository.getUserById(userId);
+    public List<Product> getProducts(String kw, int page) {
+        return this.productRepository.getProducts(kw, page);
     }
 
     @Override
     public boolean addOrUpdate(Product product) {
-        
+
         try {
             Map r = this.cloudinary.uploader().upload(product.getFile().getBytes(),
                     ObjectUtils.asMap("resource_type", "auto"));
@@ -80,4 +68,14 @@ public class ProductServiceImpl implements ProductService {
         return this.productRepository.countProduct();
     }
 
+    @Override
+    public Product getProductByID(int i) {
+        return this.productRepository.getProductByID(i);
+
+    }
+
+    @Override
+    public User getUserByID(int userId) {
+        return this.userRepository.getUserById(userId);
+    }
 }

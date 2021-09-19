@@ -14,7 +14,7 @@ import java.util.List;
  * @author LocNe
  */
 public interface ProductService {
-    List<Product> getProducts(String kw);
+    List<Product> getProducts(String kw,int page);
 
 //    public boolean addOrUpdate(Product product);
 

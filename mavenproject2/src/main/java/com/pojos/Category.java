@@ -6,7 +6,9 @@
 package com.pojos;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,6 +17,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -37,6 +40,19 @@ public class Category implements Serializable {
     private String description;
 //    @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
 //    private Set<Product> products;
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER, mappedBy = "category")
+    private Collection<Product> productCollection;
+     public Category() {
+    }
+
+    public Category(Integer id) {
+        this.id = id;
+    }
+
+//    public Category(Integer id, String nameCategory) {
+//        this.id = id;
+//        this.nameCategory = nameCategory;
+//    }
 
     /**
      * @return the id
@@ -78,5 +94,13 @@ public class Category implements Serializable {
      */
     public void setDescription(String description) {
         this.description = description;
+    }
+      @XmlTransient
+    public Collection<Product> getProductCollection() {
+        return productCollection;
+    }
+
+    public void setProductCollection(Collection<Product> productCollection) {
+        this.productCollection = productCollection;
     }
 }

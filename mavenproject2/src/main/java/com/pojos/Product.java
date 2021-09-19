@@ -15,6 +15,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -52,6 +53,12 @@ public class Product {
     @NotNull(message = "{product.category.nullErr}")
 //    @JsonIgnore
     private Category category;
+//     @JoinColumns({
+//        @JoinColumn(name = "category_id", referencedColumnName = "id"),
+//        @JoinColumn(name = "category_id", referencedColumnName = "id"),
+//        @JoinColumn(name = "category_id", referencedColumnName = "id")})
+//    @ManyToOne(optional = false)
+//    private Category category;
     @ManyToOne
     @JoinColumn(name = "user_id")// khoa ngoai ket 2 bang
     private User user;

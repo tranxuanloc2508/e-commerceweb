@@ -6,6 +6,7 @@
 package com.Controller;
 
 import com.pojos.Cart;
+import com.pojos.Category;
 import com.service.CategoryService;
 import com.service.ProductService;
 import com.service.UserService;
@@ -35,40 +36,48 @@ public class HomeController {
     private ProductService productService;
     @Autowired
     private UserService userService;
+
     @ModelAttribute
-    public void commonAttr(Model model, HttpSession session ,@RequestParam(value = "kw", required = false, defaultValue = "") String kw) {
+    public void commonAttr(Model model, HttpSession session, @RequestParam(value = "kw", required = false, defaultValue = "") String kw) {
         model.addAttribute("categories", this.categoryService.getCategories());
-        model.addAttribute("cartCounter",utils.countCart((Map<Integer, Cart>)session.getAttribute("cart")));
+        model.addAttribute("cartCounter", utils.countCart((Map<Integer, Cart>) session.getAttribute("cart")));
         model.addAttribute("users", this.userService.getUser(kw));
     }
 
     @RequestMapping("/")/// HTTP GET
     public String index(Model model,
-            @RequestParam(value = "kw", required = false, defaultValue = "") String kw) {
-//        int page = Integer.parseInt(params.getOrDefault("page", "1"));// getOrdefault neu co lay ko co de mac dinh
+            @RequestParam(required = false) Map<String, String> params) {
+        String kw = params.getOrDefault("kw", null);
+        int page = Integer.parseInt(params.getOrDefault("page", "1"));// getOrdefault neu co lay ko co de mac dinh
+        String cateId = params.get("CateId");
+        if (cateId == null) {
+            model.addAttribute("products", this.productService.getProducts(kw, page));
+            model.addAttribute("counter", this.productService.countProduct());
 
-        model.addAttribute("categories", this.categoryService.getCategories());
-        model.addAttribute("products", this.productService.getProducts(kw));
-//        model.addAttribute("users", this.userService.getUser(userID));
+        } else {
+            Category c =this.categoryService.getCategoryById(Integer.parseInt(cateId));
+            model.addAttribute("products", c.getProductCollection());
+        }
+
+        //        model.addAttribute("users", this.userService.getUser(userID));
         return "index";// timf gía trị đầu tiên tên này
-        
-//        String kw = params.getOrDefault("kw", null);
-//        int page = Integer.parseInt(params.getOrDefault("page", "1"));// getOrdefault neu co lay ko co de mac dinh
+
 //        
-//        model.addAttribute("products", this.productService.getProducts(kw));
-//        model.addAttribute("counter", this.productService.countProduct());
-//
-//        return "index";// timf gía trị đầu tiên tên này
     }
 
     @RequestMapping(path = "/cart")
     public String testRedirect(Model model) {
         return "cart";
     }
+     @RequestMapping(path = "/category")
+    public String Category(Model model) {
+        return "category";
+    }
+
     @ModelAttribute // đính kèm all các trang trên web
     public void addAttribute(Model model) {
         model.addAttribute("categories", this.categoryService.getCategories());
         model.addAttribute("users", this.userService.getUser(""));
-        
+
     }
 }

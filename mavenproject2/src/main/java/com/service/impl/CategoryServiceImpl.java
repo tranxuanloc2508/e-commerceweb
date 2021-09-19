@@ -36,4 +36,9 @@ public class CategoryServiceImpl implements CategoryService {
         return categoryRepository.getProductsByCategory(cateId);
     }
 
+    @Override
+    public Category getCategoryById(int id) {
+         return categoryRepository.getCategoryById(id);
+    }
+
 }

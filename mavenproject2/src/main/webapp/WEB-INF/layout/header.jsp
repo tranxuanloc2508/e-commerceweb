@@ -43,7 +43,7 @@
     <nav class="humberger__menu__nav mobile-menu">
         <ul>
             <li class="active"><a href="./index.html">Home</a></li>
-            <li><a href="./shop-grid.html">Shop</a></li>
+            <li><a href="<c:url value="/category"/>">Shop</a></li>
             <li><a href="#">Pages</a>
                 <ul class="header__menu__dropdown">
                     <li><a href="./shop-details.html">Shop Details</a></li>
@@ -134,7 +134,7 @@
                 <nav class="header__menu">
                     <ul>
                         <li class="active"><a href="<c:url value="/"/>">Home</a></li>
-                        <li><a href="<c:url value="/category.jsp"/>">Shop</a></li>
+                        <li><a href="<c:url value="/category"/>">Shop</a></li>
                         <li><a href="#">Pages</a>
                             <ul class="header__menu__dropdown">
                                 <li><a href="./shop-details.html">Shop Details</a></li>
@@ -154,8 +154,7 @@
                         <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
 
                         <li>
-                            <a class="nav-link" href="<c:url value="/cart"/>"><i class="fa fa-shopping-bag"></i><span id="cart-counter">${cartCounter}</span></a>
-
+                            <a class="nav-link" href="<c:url value="/cart"/>"><i class="fa fa-shopping-bag"></i><span  id="cart-counter">${cartCounter}</span></a>
                         </li>
                     </ul>
                     <div class="header__cart__price">item: <span>$150.00</span></div>

@@ -19,12 +19,6 @@
 <form:form method="post" action="${action}" modelAttribute="product"
            enctype="multipart/form-data">
     <form:errors path="*" cssClass="alert alert-danger" element="div"/>
-  <c:if test="${pageContext.request.userPrincipal.name != null}">
-                                
-                                    <%--<form:input type="text" id="name" path="name" cssClass="form-control" />--%>
-                                    <a class="nav-link text-danger" href="<c:url value="/"/>">${pageContext.request.userPrincipal.name}</a>
-                               <%--<form:errors path="user" cssClass="text-danger" element="div"/>--%>
-                            </c:if>
     <div class="form-group">
         <label for="name">Ten san pham</label>
         <form:input type="text" id="name" path="name" cssClass="form-control"/>

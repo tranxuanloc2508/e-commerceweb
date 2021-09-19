@@ -28,14 +28,13 @@ import org.springframework.web.bind.annotation.RestController;
  * @author LocNe
  */
 @RestController
-@RequestMapping(value = "/api/cart")
 public class ApiCartController {
     @Autowired
     private ProductService productService;
 
     @GetMapping("/api/products")
     public ResponseEntity<List<Product>> listProduct() {
-        List<Product> products = this.productService.getProducts("");
+        List<Product> products = this.productService.getProducts("",1);
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
 
@@ -57,9 +56,11 @@ public class ApiCartController {
 
             Cart c = new Cart();
             c.setProductId(p.getId());
+            c.setImage(p.getImage());
             c.setName(p.getName());
             c.setPrice(p.getPrice());
             c.setCount(1);
+            
             cart.put(productId, c); // sau khi tnag reset
         }
         

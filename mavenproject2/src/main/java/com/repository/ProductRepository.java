@@ -15,10 +15,14 @@ import java.util.List;
  */
 public interface ProductRepository {
 
-    List<Product> getProducts(String kw);
-   Product getProductByID(int productId);
+    List<Product> getProducts(String kw,int page);
+
+    Product getProductByID(int productId);
+
     long countProduct();
+
     boolean addOrUpdate(Product product);
+
     User getUserByID(int userId);
 
 }

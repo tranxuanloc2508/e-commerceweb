@@ -12,10 +12,11 @@ import java.math.BigDecimal;
  * @author LocNe
  */
 public class Cart {
-     private int productId;
+    private int productId;
     private String name;
     private BigDecimal price;
     private int count;
+    private String image;
 
     /**
      * @return the productId
@@ -71,5 +72,19 @@ public class Cart {
      */
     public void setCount(int count) {
         this.count = count;
+    }
+
+    /**
+     * @return the image
+     */
+    public String getImage() {
+        return image;
+    }
+
+    /**
+     * @param image the image to set
+     */
+    public void setImage(String image) {
+        this.image = image;
     }
 }
