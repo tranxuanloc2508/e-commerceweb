@@ -11,10 +11,14 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <!DOCTYPE html>
-<html>
+<html lang="zxx">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Ogani Template">
+        <meta name="keywords" content="Ogani, unica, creative, html">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>
             <tiles:insertAttribute name="title"/>
         </title>
@@ -36,7 +40,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
     </head>
     <body>
-        <div class="container">
+        <div class="container-fluid">
             <!-- HEADER -->
             <tiles:insertAttribute name="header"/>
             <!-- CONTENT -->
