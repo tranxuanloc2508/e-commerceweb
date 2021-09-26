@@ -29,6 +29,59 @@ function addCart(productId, productName) {
     });
 }
 
+function updateCart(obj,productId){
+   fetch("/mavenproject2/api/cart",{
+       method: "put",
+       body:JSON.stringify({
+           "productId":productId,
+           "name":"",
+           "price":0,
+           "count":obj.value,
+           "image":""
+       }),
+       headers:{
+           "Content-type":"application/json"
+       }
+   }).then(function(res){
+       return res.json()
+   }).then(function (data){
+      let counter = document.getElementById("cart-counter")
+      counter.innerText = data.count
+//        let counter = document.getElementById("amountCart")
+//      counter.innerText = data
+   })
+}
+function deleteCart(productId){
+   if(confirm("Bạn có chắc chắn muốn xóa?") == true){
+        fetch(`/mavenproject2/api/cart/${productId}`,{
+        method: "delete"
+    }).then (function(res){
+        return res.json()
+    }).then(function(data){
+         let counter = document.getElementById("cart-counter")
+      counter.innerText = data.count
+//        let counter = document.getElementById("amountCart")
+//      counter.innerText = data
+      location.reload()
+//       let row = document.getElementById(`product${c.productId}`)
+//      row.style.display = "none"
+    })
+   }
+}
+
+function pay(){
+    if(confirm("Bạn chắc chắn muốn mua hàng?")== true){
+        fetch("/mavenproject2/api/pay",{
+            method: "post"
+        }).then(function (res){
+            return res.json();
+        }).then(function(code){
+            console.info(code);
+            location.reload();
+        })
+    
+    }
+}
 (function ($) {
 
     /*------------------
@@ -208,20 +261,7 @@ function addCart(productId, productName) {
     /*------------------
      Single Product
      --------------------*/
-    $('.product__details__pic__slider img').on('click', function () {
-
-        var imgurl = $(this).data('imgbigurl');
-        var bigImg = $('.product__details__pic__item--large').attr('src');
-        if (imgurl != bigImg) {
-            $('.product__details__pic__item--large').attr({
-                src: imgurl
-            });
-        }
-    });
-
-    /*-------------------
-     Quantity change
-     --------------------- */
+    
     var proQty = $('.pro-qty');
     proQty.prepend('<span class="dec qtybtn">-</span>');
     proQty.append('<span class="inc qtybtn">+</span>');

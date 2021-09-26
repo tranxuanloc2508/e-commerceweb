@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService{
     public boolean addUser(User user) {
         String pass = user.getPassword();
         user.setPassword(this.passwordEncoder.encode(pass));
-        user.setUserRole(User.USER);
+        user.setUserRole(User.USER );
         return this.userRepository.addUser(user); //To change body of generated methods, choose Tools | Templates.
     }
 

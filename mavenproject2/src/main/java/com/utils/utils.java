@@ -6,6 +6,8 @@
 package com.utils;
 
 import com.pojos.Cart;
+import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -21,5 +23,20 @@ public class utils {
                 count += c.getCount();
         }
         return count;
+        }
+        public  static Map<String, String> cartStats(Map<Integer,Cart> cart){
+           Long sum = 0l;
+           int count = 0;
+            if(cart != null){           
+                for(Cart c: cart.values()){  
+                     count += c.getCount();
+                     sum +=  c.getCount()* c.getPrice();
+                } 
+            }
+
+            Map<String, String> kq = new HashMap<>();
+            kq.put("count", String.valueOf(count));
+            kq.put("amount", String.valueOf(sum));
+            return kq;
     }
 }

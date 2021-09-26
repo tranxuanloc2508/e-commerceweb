@@ -33,7 +33,7 @@
                 <div class="shoping__cart__table">
                     <table>
                         <thead>
-                            <tr>
+                            <tr >
                                 <th class="shoping__product">Products</th>
                                 <th>Price</th>
                                 <th>Quantity</th>
@@ -43,34 +43,49 @@
 
                         </thead>
                         <tbody>
-                            <c:forEach var="c" items="${carts}" >
+                            <c:forEach var="c" items="${carts}">                             
                                 <tr>
                                     <td class="shoping__cart__item">
-                                        <img class="img-fluid"src="<c:url value="${p.image}"/>" alt="${p.name}"/>
+                                        <img class="img-fluid"src="<c:url value="${c.image}"/>" alt="${c.name}" style="width: 200px; height: 200px"/>
                                         <h5>${c.name}</h5>
                                     </td>
                                     <td class="shoping__cart__price">
-                                        ${c.price}
+                                        ${c.price} VNĐ
                                     </td>
-                                    <td class="shoping__cart__quantity">
-                                        <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input type="text" value="1">
-                                            </div>
+                                    <td class="shoping__cart__quantity">     
+                                        <div class="form-group">
+                                        <input onblur="updateCart(this,${c.productId})" type="number" value="${c.count}"/> 
                                         </div>
                                     </td>
                                     <td class="shoping__cart__total">
-                                        ${c.price}
+                                        ${c.price * c.count}
                                     </td>
-                                    <td class="shoping__cart__item__close">
-                                        <span class="icon_close"></span>
+                                    <td >
+                                        <input type="button"  value="Xóa" onclick="deleteCart(${c.productId})" class="btn btn-danger"/>
                                     </td>
-                                </tr>
-                                
-                            </c:forEach>
-
-                            
+                                </tr> 
                         </tbody>
+                          </c:forEach>
+                        <tr  >                           
+                                <th></th>
+                                <th></th>
+                                <th >Sum</th>                                                                 
+                                <th> 
+                                    <%-- <c:set var="sum" value="${0}"/>
+                                    <c:forEach var="c" items="${carts}">
+                                    <c:set var="sum" value="${sum +  c.price * c.count}"/>
+                                    </c:forEach>
+                                        ${sum} --%>
+                                    <div><span id ="amountCart">${cartStats.amount}</span> VNĐ</div>
+                                    
+                                </th>                                    
+                                                               
+                                <th>
+                                    <input type="button"  value="Order" onclick="pay()" class="btn btn-info"/>
+                                    
+                                </th>
+                            </tr>
+
                     </table>
                 </div>
             </div>

@@ -6,6 +6,7 @@
 package com.Controller;
 
 import com.pojos.Cart;
+import com.utils.utils;
 import java.util.Map;
 import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
@@ -26,7 +27,8 @@ public class CartController {
         } else {
             model.addAttribute("carts", null);
         }
-
+        
+         model.addAttribute("cartStats", utils.cartStats(cart));
         return "cart";  
     }
         

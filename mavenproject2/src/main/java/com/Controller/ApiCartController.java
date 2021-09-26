@@ -7,18 +7,23 @@ package com.Controller;
 
 import com.pojos.Cart;
 import com.pojos.Product;
+import com.service.OrderService;
 import com.service.ProductService;
 import com.utils.utils;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpSession;
+import javax.ws.rs.PUT;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,6 +36,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class ApiCartController {
     @Autowired
     private ProductService productService;
+    @Autowired 
+    private OrderService orderService;
 
     @GetMapping("/api/products")
     public ResponseEntity<List<Product>> listProduct() {
@@ -69,14 +76,46 @@ public class ApiCartController {
         return new ResponseEntity<>(utils.countCart(cart),HttpStatus.OK);
 //        System.out.println("=== CART ===" + Utils.countCart(cart));
     }
-//    @PostMapping(value = "/pay")
+    @PutMapping("/api/cart")
+    
+    public ResponseEntity< Map<String, String>> updateCart(@RequestBody Cart carts, HttpSession session){
+        Map<Integer, Cart> cart = (Map<Integer, Cart>) session.getAttribute("cart");
+        if(cart == null)
+            cart = new HashMap<>();
+        
+        int productId = carts.getProductId();
+        if(cart.containsKey(productId) == true){
+            Cart c = cart.get(productId);
+            c.setCount(carts.getCount());
+            
+            session.setAttribute("cart", cart);
+            
+        }
+          return new ResponseEntity<>(utils.cartStats(cart),HttpStatus.OK);
+        
+    }
+    @DeleteMapping("/api/cart/{productId}")
+    public ResponseEntity< Map<String, String>> deleteCartItem(@PathVariable(value = "productId") int productId, HttpSession session){
+        Map<Integer, Cart> cart = (Map<Integer, Cart>) session.getAttribute("cart");
+        if(cart != null && cart.containsKey(productId)){
+            cart.remove(productId);
+            
+            session.setAttribute("cart", cart);
+                      
+        }
+         return new ResponseEntity<>(utils.cartStats(cart),HttpStatus.OK);
+    }
+    @PostMapping(value = "/api/pay")
 //    @ResponseStatus(value = HttpStatus.OK)
-//    public void payCart(HttpSession session) {   
+    public HttpStatus payCart(HttpSession session) {   
 //        Map<Integer, Cart> carts 
 //                = (Map<Integer, Cart>) session.getAttribute("cart");
-//        orderService.addOrder(carts.values());
-//        
-//        session.removeAttribute("cart");
-//    }
+        if(orderService.addReceipt((Map<Integer, Cart>) session.getAttribute("cart"))){
+            session.removeAttribute("cart");
+            return HttpStatus.OK;}
+        else{return HttpStatus.BAD_REQUEST;}
+        
+       
+    }
 }
  
