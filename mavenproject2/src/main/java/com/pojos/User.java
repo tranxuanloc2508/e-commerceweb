@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -24,6 +25,7 @@ import javax.persistence.Transient;
 public class User implements Serializable{
     public static final String ADMIN ="ROLE_ADMIN";
     public static final String USER ="ROLE_USER";
+    public static final String SALER ="ROLE_SALER";
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

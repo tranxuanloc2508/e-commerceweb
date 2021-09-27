@@ -24,5 +24,6 @@ public interface ProductRepository {
     boolean addOrUpdate(Product product);
 
     User getUserByID(int userId);
+    
 
 }

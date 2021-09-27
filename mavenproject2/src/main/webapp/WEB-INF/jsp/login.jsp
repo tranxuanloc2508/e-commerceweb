@@ -8,16 +8,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<c:if test="${param.error != null}">
-    <div class="alert alert-danger">
-        Username or passwword incorrect!
-    </div>
-</c:if>
-<c:if test="${param.accessDenied != null}">
-    <div class="alert alert-danger">
-       Bạn không có quyền truy cập!
-    </div>
-</c:if>
 <c:url value="/login" var="action"/>
 
 <div class="login-page">
@@ -28,6 +18,16 @@
               
             <label for="password"></label>
             <input type="text" id="password" name="password" placeholder="Password"/>
+            <c:if test="${param.error != null}">
+                <div class="alert alert-danger">
+                    Username or passwword incorrect!
+                </div>
+            </c:if>
+            <c:if test="${param.accessDenied != null}">
+                <div class="alert alert-danger">
+                   Bạn không có quyền truy cập!
+                </div>
+            </c:if>
             <button type="submit">login</button>
        <p class="message">Not registered? <a href="<c:url value="/register"/>">Create an account</a></p>
       </form>

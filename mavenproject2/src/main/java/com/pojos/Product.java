@@ -43,7 +43,7 @@ public class Product {
     private String description;
     @Min(value = 10000, message = "{product.price.minErr}")
     @Max(value = 10000000, message = "{product.price.maxErr}")
-    private BigDecimal price;
+    private Long price;
     private String image;
     @Column(name = "created_date")
     @Temporal(javax.persistence.TemporalType.DATE)// quy dinh ngay thang
@@ -137,14 +137,14 @@ public class Product {
     /**
      * @return the price
      */
-    public BigDecimal getPrice() {
+    public Long getPrice() {
         return price;
     }
 
     /**
      * @param price the price to set
      */
-    public void setPrice(BigDecimal price) {
+    public void setPrice(Long price) {
         this.price = price;
     }
 
