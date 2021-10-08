@@ -12,6 +12,7 @@ import com.pojos.User;
 import com.repository.OrderRepository;
 import com.repository.ProductRepository;
 import com.repository.UserRepository;
+import com.service.UserService;
 import com.utils.utils;
 import java.util.Date;
 import java.util.Map;
@@ -19,6 +20,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,7 +34,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class OrderRepositoryImpl implements OrderRepository{
 
     @Autowired
-    private UserRepository userRepository;
+    private UserService userService;
      @Autowired
     private ProductRepository productRepository;
     
@@ -44,14 +46,16 @@ public class OrderRepositoryImpl implements OrderRepository{
         Session  s = this.sessionFactory.getObject().getCurrentSession();
         try {
             Order d = new Order();
-            User u  = this.userRepository.getUserById(6);
-           String id = String.valueOf(u.getId());     
+//            User u  = this.userRepository.getUserById(6);
+//           String id = String.valueOf(u.getId());   
         d.setCreatedDate(new Date());
         
         Map<String ,String> stats = utils.cartStats(cart);
         d.setAmount(Long.parseLong( stats.get("amount")));    
           // thiiet lap usder id nguoi mua
-        d.setUser(this.userRepository.getUserById(6));
+           String username = SecurityContextHolder.getContext().getAuthentication().getName();
+            User user = userService.getUserByUsername(username);
+        d.setUser(user);
         
         s.save(d);
         

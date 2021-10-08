@@ -32,7 +32,7 @@
         <link href="<c:url value="/css/owl.carousel.min.css"/>" rel="stylesheet"/> 
         <link href="<c:url value="/css/slicknav.min.css"/>" rel="stylesheet"/> 
         <link href="<c:url value="/css/style.css"/>" rel="stylesheet"/> 
-        <link rel="https://cdnjs.cloudflare.com/ajax/libs/SlickNav/1.0.10/slicknav.min.css" />
+        <link rel="https://cdnjs.cloudflare.com/ajax/libs/SlickNav/1.0.10/slicknav.min.css" />      
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/SlickNav/1.0.10/jquery.slicknav.min.js"></script>
         <link rel="icon" type="image/png" href="<c:url value="img/icon.png"/>"/>

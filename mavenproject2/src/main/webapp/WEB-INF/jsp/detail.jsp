@@ -84,7 +84,7 @@
     <div class="row">
         <div class="col-md-5">
             <div class="product-f-image">
-                <img src="<spring:url value="${product.image}" />" alt="">
+                <img src="<spring:url value="${product.image}" />" alt="" style="width: 500px; height: 500px">
                
             </div>
         </div>
@@ -101,30 +101,17 @@
                             <i class="fa fa-star-half-o"></i>
                             <span>(18 reviews)</span>
                         </div>
-                        <div class="product__details__price">Giá: ${product.price} VNĐ</div>
-                        <p>Thông tin khác: ${product.description}</p>
-                        <div class="product__details__quantity">
-                            <div class="quantity">
-                                <div class="pro-qty"><span class="dec qtybtn">-</span>
-                                    <input type="text" value="1">
-                                <span class="inc qtybtn">+</span></div>
-                            </div>
-                        </div>
+                        <div class="product__details__price">Giá: ${product.price} VNĐ</div>                        
+                        
                         <a href="javacript:;"  class="primary-btn" onclick="addToCart(${product.id})">ADD TO CARD</a>
                         
                        
                         <ul>
-                            <li><b>Availability</b> <span>Nhà sản xuất: ${product.name}</span></li>
-                            <li><b>Shipping</b> <span>Nhà sản xuất: ${product.name} <samp>Free pickup today</samp></span></li>
-                            <li><b>Weight</b> <span>Nhà sản xuất: ${product.name}</span></li>
-                            <li><b>Share on</b>
-                                <div class="share">
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                    <a href="#"><i class="fa fa-instagram"></i></a>
-                                    <a href="#"><i class="fa fa-pinterest"></i></a>
-                                </div>
-                            </li>
+                            <li><b>Tên sản phẩm</b> <span> ${product.name}</span></li>
+                             <li><b>Loại sản phẩm</b> <span> ${product.category.getName()}</span></li>
+                            <li><b>Người bán</b> <span> ${product.user.getUsername()}</span></li>
+                            <li><b>Mô tả</b> <span> ${product.description}</span></li>
+                            
                         </ul>
                     </div>
                 </div>

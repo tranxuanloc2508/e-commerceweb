@@ -46,17 +46,13 @@ public class OrderDetail implements Serializable {
     @Size(max = 45)
     @Column(name = "num")
     private String num;
-//    @JoinColumns({
-//        @JoinColumn(name = "product_id", referencedColumnName = "id"),
-//        @JoinColumn(name = "product_id", referencedColumnName = "id")})
-    @JoinColumn(name ="product_id")
+      
+    @JoinColumn(name = "product_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Product product;
-//    @JoinColumns({
-//        @JoinColumn(name = "order_id", referencedColumnName = "id"),
-//        @JoinColumn(name = "order_id", referencedColumnName = "id")})
-    
-     @JoinColumn(name ="order_id")
+   
+    @JoinColumn(name = "order_id", referencedColumnName = "id")
+      
     @ManyToOne(optional = false)
     private Order order;
 
@@ -107,5 +103,29 @@ public class OrderDetail implements Serializable {
         this.order = saleOrder;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (id != null ? id.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof OrderDetail)) {
+            return false;
+        }
+        OrderDetail other = (OrderDetail) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "com.sale.pojo.OrderDetail[ id=" + id + " ]";
+    }
     
 }

@@ -7,14 +7,19 @@ package com.pojos;
 
 //import com.fasterxml.jackson.annotation.JsonRootName;
 import java.io.Serializable;
+import java.util.Collection;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -25,7 +30,6 @@ import javax.persistence.Transient;
 public class User implements Serializable{
     public static final String ADMIN ="ROLE_ADMIN";
     public static final String USER ="ROLE_USER";
-    public static final String SALER ="ROLE_SALER";
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,7 +45,12 @@ public class User implements Serializable{
     private boolean active;
      @Column(name="user_role")
     private String userRole;
-
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private Collection<Product> productCollection;
+    @OneToMany(mappedBy = "user")
+    private Collection<Order> orderCollection;
+    
      @Transient
      private String confirmPassword;
     /**
@@ -179,5 +188,34 @@ public class User implements Serializable{
     public void setLastname(String lastname) {
         this.lastname = lastname;
     }
-    
+
+    /**
+     * @return the productCollection
+     */
+    public Collection<Product> getProductCollection() {
+        return productCollection;
+    }
+
+    /**
+     * @param productCollection the productCollection to set
+     */
+    public void setProductCollection(Collection<Product> productCollection) {
+        this.productCollection = productCollection;
+    }
+
+    /**
+     * @return the orderCollection
+     */
+    public Collection<Order> getOrderCollection() {
+        return orderCollection;
+    }
+
+    /**
+     * @param orderCollection the orderCollection to set
+     */
+    public void setOrderCollection(Collection<Order> orderCollection) {
+        this.orderCollection = orderCollection;
+    }
+
+   
 }

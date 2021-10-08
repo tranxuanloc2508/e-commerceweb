@@ -26,8 +26,7 @@
     </div>
     <div class="humberger__menu__widget">
         <div class="header__top__right__language">
-            <img src="<c:url value="img/language.png"/>" alt="">
-            <div>English</div>            
+            <a href="#"><i class="fa fa-user"></i> Login</a>                 
         </div>
         <div class="header__top__right__auth">
             <a href="#"><i class="fa fa-user"></i> Login</a>
@@ -77,6 +76,7 @@
                         </ul>
                     </div>
                 </div>
+               
                 <div class="col-lg-6 col-md-6">
                     <div class="header__top__right">
                         <div class="header__top__right__social">
@@ -89,14 +89,19 @@
                         </div>
                         <div class="header__top__right__auth"> 
                             <c:if test="${pageContext.request.userPrincipal.name == null}">                               
-                            <div><a  href="<c:url value="/login"/>"><i class="fa fa-user"></i>Login</a></div>       
+                                <div><a  href="<c:url value="/login"/>"><i class="fa fa-user"></i>Login</a></div>       
 
-                        </c:if>
+                            </c:if>
                             <c:if test="${pageContext.request.userPrincipal.name != null}">
-                               
+
                                 <div><a  href="<c:url value="/"/>">${pageContext.request.userPrincipal.name}</a></div>
-                                <div><a  href="<c:url value="/logout"/>">Logout</a></div>
-                               
+<!--                                <div><a  href="<c:url value="/logout"/>">Logout</a></div>-->
+
+
+
+                            </div>
+                            <div><a  href="<c:url value="/logout"/>">Logout</a></div>
+                            <div>
                             </c:if>
 
                         </div>

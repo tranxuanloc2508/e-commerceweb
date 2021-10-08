@@ -6,9 +6,12 @@
 package com.pojos;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Collection;
 import java.util.Date;
 import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,12 +22,14 @@ import javax.persistence.JoinColumns;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.Transient;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlTransient;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -33,7 +38,7 @@ import org.springframework.web.multipart.MultipartFile;
  */
 @Entity
 @Table(name = "product")
-public class Product {
+public class Product implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -53,15 +58,11 @@ public class Product {
     @NotNull(message = "{product.category.nullErr}")
 //    @JsonIgnore
     private Category category;
-//     @JoinColumns({
-//        @JoinColumn(name = "category_id", referencedColumnName = "id"),
-//        @JoinColumn(name = "category_id", referencedColumnName = "id"),
-//        @JoinColumn(name = "category_id", referencedColumnName = "id")})
-//    @ManyToOne(optional = false)
-//    private Category category;
-    @ManyToOne
-    @JoinColumn(name = "user_id")// khoa ngoai ket 2 bang
+   @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @ManyToOne(optional = false)
     private User user;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
+    private Collection<OrderDetail> orderDetailCollection;
 //    @ManyToMany
 //    @JoinTable(
 //            name = "pro_man",
@@ -234,4 +235,12 @@ public class Product {
     /**
      * @return the user
      */
+       @XmlTransient
+    public Collection<OrderDetail> getOrderDetailCollection() {
+        return orderDetailCollection;
+    }
+
+    public void setOrderDetailCollection(Collection<OrderDetail> orderDetailCollection) {
+        this.orderDetailCollection = orderDetailCollection;
+    }
 }

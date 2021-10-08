@@ -59,7 +59,7 @@ public class ApiCartController {
         }
         else{
             // san pham chua co trong gio
-                    Product p = this.productService.getProductByID(productId);
+            Product p = this.productService.getProductByID(productId);
 
             Cart c = new Cart();
             c.setProductId(p.getId());
@@ -76,6 +76,26 @@ public class ApiCartController {
         return new ResponseEntity<>(utils.countCart(cart),HttpStatus.OK);
 //        System.out.println("=== CART ===" + Utils.countCart(cart));
     }
+    @PostMapping("/api/cart")
+    public int addCart(@RequestBody Cart params, HttpSession session){
+        Map<Integer, Cart> cart = (Map<Integer, Cart>) session.getAttribute("cart");
+        if(cart == null){
+            cart = new HashMap<>();
+        }
+        int productId = params.getProductId();
+        if(cart.containsKey(productId)== true){
+            Cart c = cart.get(productId);
+            c.setCount(c.getCount() +1);
+            
+        }
+        else{
+            cart.put(productId, params);
+        }
+        session.setAttribute("cart", cart);
+        
+        return utils.countCart(cart);
+    }
+    
     @PutMapping("/api/cart")
     
     public ResponseEntity< Map<String, String>> updateCart(@RequestBody Cart carts, HttpSession session){
@@ -110,7 +130,7 @@ public class ApiCartController {
     public HttpStatus payCart(HttpSession session) {   
 //        Map<Integer, Cart> carts 
 //                = (Map<Integer, Cart>) session.getAttribute("cart");
-        if(orderService.addReceipt((Map<Integer, Cart>) session.getAttribute("cart"))){
+        if(this.orderService.addReceipt((Map<Integer, Cart>) session.getAttribute("cart"))){
             session.removeAttribute("cart");
             return HttpStatus.OK;}
         else{return HttpStatus.BAD_REQUEST;}

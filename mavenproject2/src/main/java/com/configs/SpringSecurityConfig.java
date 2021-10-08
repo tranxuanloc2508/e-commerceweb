@@ -43,9 +43,9 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
      @Bean
     public Cloudinary cloudinary() {
         Cloudinary c = new Cloudinary(ObjectUtils.asMap(
-                "cloud_name", "djtemroku",
-                "api_key", "592841477312947",
-                "api_secret", "66gZEgzOGc-3482-pzn_uoSqtd4",
+                "cloud_name", "dhj3qxlyh",
+                "api_key", "173413849841721",
+                "api_secret", "qgFFyzYS2Tq16G8ry2l-NCzW4dg",
                 "secure", true));
 
         return c;
@@ -75,12 +75,12 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
 //            .exceptionHandling().accessDeniedPage("/403")
        http.formLogin().defaultSuccessUrl("/").failureUrl("/login?error");
        
-       http.logout().logoutSuccessUrl("/login");
+       http.logout().logoutSuccessUrl("/login/");
        
        http.exceptionHandling().accessDeniedPage("/login?accessDenied");
        
        http.authorizeRequests().antMatchers("/").permitAll()
-               .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')");
+               .antMatchers("/admin/products").access("hasAnyRole('ROLE_ADMIN','ROLE_SALER')");
 //               .antMatchers("/cart/**").access("hasRole('ROLE_USER')");
        
        http.csrf().disable();

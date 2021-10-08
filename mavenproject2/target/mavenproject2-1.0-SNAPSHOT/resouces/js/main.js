@@ -28,6 +28,29 @@ function addCart(productId, productName) {
         }
     });
 }
+//function addToCart(id, name,price){
+//    event.preventDefault()
+//    
+//     fetch("/mavenproject2/api/cart",{
+//       method: "post",
+//       body:JSON.stringify({
+//           "productId":id,
+//           "name":name,
+//           "price":price,
+//           "count":obj.value,
+//           "image":""
+//       }),
+//       headers:{
+//           "Content-type":"application/json"
+//       }
+//   }).then(function(res){
+//       return res.json()
+//       
+//   }).then(function(data){
+//       let counter = document.getElementById("cart-counter")
+//      counter.innerText = data
+//   })
+//}
 
 function updateCart(obj,productId){
    fetch("/mavenproject2/api/cart",{
@@ -48,7 +71,8 @@ function updateCart(obj,productId){
       let counter = document.getElementById("cart-counter")
       counter.innerText = data.count
 //        let counter = document.getElementById("amountCart")
-//      counter.innerText = data
+//      counter.innerText = data.amount
+       location.reload()
    })
 }
 function deleteCart(productId){
@@ -61,7 +85,7 @@ function deleteCart(productId){
          let counter = document.getElementById("cart-counter")
       counter.innerText = data.count
 //        let counter = document.getElementById("amountCart")
-//      counter.innerText = data
+//      counter.innerText = data.amount
       location.reload()
 //       let row = document.getElementById(`product${c.productId}`)
 //      row.style.display = "none"

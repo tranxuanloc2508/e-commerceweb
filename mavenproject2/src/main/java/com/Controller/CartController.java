@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 public class CartController {
+    
      @GetMapping("/cart")
     public String cart(Model model, HttpSession session) {
         Map<Integer, Cart> cart = (Map<Integer, Cart>) session.getAttribute("cart");
