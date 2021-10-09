@@ -8,10 +8,6 @@ com\utils\utils.class
 com\configs\TilesConfig.class
 com\repository\ProductRepository.class
 com\pojos\OrderDetail_.class
-<<<<<<< HEAD
-=======
-com\pojos\Saler_.class
->>>>>>> 711fa24087c377ff428056fc17c0fa17e0a40a3b
 com\service\UserService.class
 com\repository\UserRepository.class
 com\pojos\Order.class
@@ -29,17 +25,13 @@ com\repository\OrderRepository.class
 com\Controller\CartController.class
 com\formatter\CategoryFormatter.class
 com\pojos\Product.class
-com\pojos\Saler.class
 com\pojos\Cart.class
 com\pojos\Product_.class
 com\configs\SpringSecurityConfig.class
 com\repository\StatsRepository.class
 com\validator\UserValidator.class
 com\service\impl\OrderServiceImpl.class
-<<<<<<< HEAD
-=======
 com\Controller\AdminController.class
->>>>>>> 711fa24087c377ff428056fc17c0fa17e0a40a3b
 com\repository\impl\CategoryRepositoryImpl.class
 com\service\impl\ProductServiceImpl.class
 com\service\StatsService.class

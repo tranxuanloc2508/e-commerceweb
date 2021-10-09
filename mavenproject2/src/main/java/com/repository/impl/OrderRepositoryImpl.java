@@ -8,6 +8,7 @@ package com.repository.impl;
 import com.pojos.Cart;
 import com.pojos.Order;
 import com.pojos.OrderDetail;
+import static com.pojos.Order_.id;
 import com.pojos.User;
 import com.repository.OrderRepository;
 import com.repository.ProductRepository;
@@ -34,11 +35,8 @@ import org.springframework.transaction.annotation.Transactional;
 public class OrderRepositoryImpl implements OrderRepository{
 
     @Autowired
-<<<<<<< HEAD
     private UserService userService;
-=======
-    private UserService userRepository;
->>>>>>> 711fa24087c377ff428056fc17c0fa17e0a40a3b
+
      @Autowired
     private ProductRepository productRepository;
     
@@ -49,11 +47,8 @@ public class OrderRepositoryImpl implements OrderRepository{
     @Transactional(propagation = Propagation.REQUIRED)
     public boolean addReceipt(Map<Integer, Cart> cart) {
         Session  s = this.sessionFactory.getObject().getCurrentSession();
-<<<<<<< HEAD
         try {
             Order d = new Order();
-//            User u  = this.userRepository.getUserById(6);
-//           String id = String.valueOf(u.getId());   
         d.setCreatedDate(new Date());
         
         Map<String ,String> stats = utils.cartStats(cart);
@@ -61,23 +56,6 @@ public class OrderRepositoryImpl implements OrderRepository{
           // thiiet lap usder id nguoi mua
            String username = SecurityContextHolder.getContext().getAuthentication().getName();
             User user = userService.getUserByUsername(username);
-        d.setUser(user);
-=======
-        Map<String ,String> stats = utils.cartStats(cart);
-        int id = this.userRepository.getUserById(2).getId();
-//         String username = SecurityContextHolder.getContext().getAuthentication().getName();
-//         User user = userRepository.getUserByUsername(username);
->>>>>>> 711fa24087c377ff428056fc17c0fa17e0a40a3b
-        
-        try {
-            Order d = new Order();
-            String username = SecurityContextHolder.getContext().getAuthentication().getName();
-         User user = userRepository.getUserByUsername(username);
-            User u  = this.userRepository.getUserById(2);
-            //System.out.println(u.getId());
-            //System.out.println(u.getUsername());
-            d.setAmount(Long.parseLong( stats.get("amount")));    
-            // thiiet lap usder id nguoi mua
             d.setUser(user);
             s.save(d);
             //System.out.println(d.getUser().getId());

@@ -15,11 +15,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-<<<<<<< HEAD
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-=======
->>>>>>> 711fa24087c377ff428056fc17c0fa17e0a40a3b
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlTransient;
@@ -48,8 +45,6 @@ public class User implements Serializable{
     private boolean active;
     @Column(name="`user_role`")
     private String userRole;
-<<<<<<< HEAD
-    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private Collection<Product> productCollection;
     @OneToMany(mappedBy = "user")
@@ -57,11 +52,6 @@ public class User implements Serializable{
     
      @Transient
      private String confirmPassword;
-=======
-
-    @Transient
-    private String confirmPassword;
->>>>>>> 711fa24087c377ff428056fc17c0fa17e0a40a3b
     /**
      * @return the id
      */
