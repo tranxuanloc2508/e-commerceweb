@@ -5,6 +5,8 @@
  */
 package com.service.impl;
 
+import com.pojos.Product;
+import com.pojos.User;
 import com.repository.StatsRepository;
 import com.service.StatsService;
 import java.util.Date;
@@ -31,8 +33,8 @@ public class StatsServiceImpl implements StatsService{
     }
 
     @Override
-    public List<Object[]> listProduct(int id) {
-    return this.statsRepository.listProduct(id);
+    public List<Object[]> listProduct() {
+    return this.statsRepository.listProduct();
     }
     
 }

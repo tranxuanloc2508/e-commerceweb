@@ -9,7 +9,10 @@ import com.pojos.Category;
 import com.pojos.Order;
 import com.pojos.OrderDetail;
 import com.pojos.Product;
+import com.pojos.User;
 import com.repository.StatsRepository;
+import com.repository.UserRepository;
+import com.service.UserService;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -21,6 +24,7 @@ import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,7 +38,10 @@ public class StatsRepositoryImpl implements StatsRepository{
 
     @Autowired
     private LocalSessionFactoryBean sessionFactory;
-
+     @Autowired
+    private UserService userService;
+      @Autowired
+    private UserRepository userRepository;
     @Override
     public List<Object[]> cateStats() {
         Session session = this.sessionFactory.getObject().getCurrentSession();
@@ -86,8 +93,27 @@ public class StatsRepositoryImpl implements StatsRepository{
     }
 
     @Override
-    public List<Object[]> listProduct(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public List<Object[]> listProduct() {
+         Session session = this.sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Object[]> query = builder.createQuery(Object[].class);
+        Root rootP = query.from(Product.class); 
+        Root rootU = query.from(User.class); 
+      
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        
+            User user = userService.getUserById(2);
+            
+            
+        List<Predicate> predicates = new ArrayList<>();
+        predicates.add(builder.equal(rootP.get("user"), userRepository.getUserById(2)));
+//        predicates.add(builder.equal(rootP.get("user"), user ));  
+         query.multiselect(rootP.get("id"),rootP.get("name"),rootP.get("price")); 
+         query.where(predicates.toArray(new Predicate[]{}));
+       
+        Query q = session.createQuery(query);
+
+        return q.getResultList();       
+       }
     
 }

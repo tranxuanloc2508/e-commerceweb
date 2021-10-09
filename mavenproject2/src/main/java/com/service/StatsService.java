@@ -5,6 +5,8 @@
  */
 package com.service;
 
+import com.pojos.Product;
+import com.pojos.User;
 import java.util.Date;
 import java.util.List;
 
@@ -15,5 +17,5 @@ import java.util.List;
 public interface StatsService {
      List<Object[]> cateStats();
       List<Object[]> productStats(String kw, Date begin, Date end);
-      List<Object[]> listProduct(int id);
+      List<Object[]> listProduct();
 }
