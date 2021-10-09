@@ -6,11 +6,13 @@
 package com.pojos;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
+<<<<<<< HEAD
 //import java.sql.Date;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
+=======
+>>>>>>> 711fa24087c377ff428056fc17c0fa17e0a40a3b
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,15 +20,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+<<<<<<< HEAD
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import org.springframework.format.annotation.DateTimeFormat;
+=======
+
+>>>>>>> 711fa24087c377ff428056fc17c0fa17e0a40a3b
 
 /**
  *
@@ -34,11 +37,15 @@ import org.springframework.format.annotation.DateTimeFormat;
  */
 @Entity
 @Table(name = "`order`")
+<<<<<<< HEAD
 
+=======
+>>>>>>> 711fa24087c377ff428056fc17c0fa17e0a40a3b
 public class Order implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+<<<<<<< HEAD
     @Basic(optional = false)
     @Column(name = "`id`")
     private Integer id;
@@ -70,6 +77,48 @@ public class Order implements Serializable {
     }
 
     public void setId(Integer id) {
+=======
+    private int id;
+    @Column(name = "`amount`")
+    private Long amount;
+    @Column(name = "`created_date`")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdDate;
+    @ManyToOne
+    @JoinColumn(name = "`user_id`", referencedColumnName = "id")// khoa ngoai ket 2 bang
+    private User user;
+   
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "Order")
+//    private Collection<OrderDetail> orderDetailCollection;
+    {
+        createdDate = new Date();
+    }
+
+   
+    public Order(){
+        createdDate = new Date();
+    }
+//    @XmlTransient
+//    public Collection<OrderDetail> getOrderDetailCollection() {
+//        return orderDetailCollection;
+//    }
+//
+//    public void setOrderDetailCollection(Collection<OrderDetail> orderDetailCollection) {
+//        this.orderDetailCollection = orderDetailCollection;
+//    }
+
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id) {
+>>>>>>> 711fa24087c377ff428056fc17c0fa17e0a40a3b
         this.id = id;
     }
 

@@ -30,11 +30,15 @@ import org.springframework.transaction.annotation.Transactional;
  * @author QUYENNGUYEN
  */
 @Repository
-@Transactional(propagation = Propagation.REQUIRED)
+
 public class OrderRepositoryImpl implements OrderRepository{
 
     @Autowired
+<<<<<<< HEAD
     private UserService userService;
+=======
+    private UserService userRepository;
+>>>>>>> 711fa24087c377ff428056fc17c0fa17e0a40a3b
      @Autowired
     private ProductRepository productRepository;
     
@@ -42,8 +46,10 @@ public class OrderRepositoryImpl implements OrderRepository{
     private LocalSessionFactoryBean sessionFactory;
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRED)
     public boolean addReceipt(Map<Integer, Cart> cart) {
         Session  s = this.sessionFactory.getObject().getCurrentSession();
+<<<<<<< HEAD
         try {
             Order d = new Order();
 //            User u  = this.userRepository.getUserById(6);
@@ -56,8 +62,25 @@ public class OrderRepositoryImpl implements OrderRepository{
            String username = SecurityContextHolder.getContext().getAuthentication().getName();
             User user = userService.getUserByUsername(username);
         d.setUser(user);
+=======
+        Map<String ,String> stats = utils.cartStats(cart);
+        int id = this.userRepository.getUserById(2).getId();
+//         String username = SecurityContextHolder.getContext().getAuthentication().getName();
+//         User user = userRepository.getUserByUsername(username);
+>>>>>>> 711fa24087c377ff428056fc17c0fa17e0a40a3b
         
-        s.save(d);
+        try {
+            Order d = new Order();
+            String username = SecurityContextHolder.getContext().getAuthentication().getName();
+         User user = userRepository.getUserByUsername(username);
+            User u  = this.userRepository.getUserById(2);
+            //System.out.println(u.getId());
+            //System.out.println(u.getUsername());
+            d.setAmount(Long.parseLong( stats.get("amount")));    
+            // thiiet lap usder id nguoi mua
+            d.setUser(user);
+            s.save(d);
+            //System.out.println(d.getUser().getId());
         
         for(Cart c: cart.values()){
             OrderDetail od = new OrderDetail();
@@ -70,9 +93,9 @@ public class OrderRepositoryImpl implements OrderRepository{
         }
         return true;
         } catch (HibernateException e) {
-            e.printStackTrace();
+            System.out.print("findUserId->id: " + id);
+            throw e;
         }
-        return false;
     }
     
 }
