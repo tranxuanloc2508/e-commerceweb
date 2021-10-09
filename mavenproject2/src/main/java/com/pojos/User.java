@@ -12,7 +12,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -30,20 +29,20 @@ public class User implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(name="first_name")
+    @Column(name="`first_name`")
     private String firstname;
-     @Column(name="last_name")
+    @Column(name="`last_name`")
     private String lastname;
     private String email;
     private String phone;
     private String username;
     private String password;
     private boolean active;
-     @Column(name="user_role")
+    @Column(name="`user_role`")
     private String userRole;
 
-     @Transient
-     private String confirmPassword;
+    @Transient
+    private String confirmPassword;
     /**
      * @return the id
      */

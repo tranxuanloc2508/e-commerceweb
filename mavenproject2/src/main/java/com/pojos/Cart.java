@@ -5,13 +5,15 @@
  */
 package com.pojos;
 
-import java.math.BigDecimal;
+import java.io.Serializable;
+
 
 /**
  *
  * @author LocNe
  */
-public class Cart {
+
+public class Cart implements Serializable{
     private int productId;
     private String name;
     private Long price;

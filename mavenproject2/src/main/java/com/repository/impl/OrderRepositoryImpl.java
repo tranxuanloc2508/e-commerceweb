@@ -12,6 +12,7 @@ import com.pojos.User;
 import com.repository.OrderRepository;
 import com.repository.ProductRepository;
 import com.repository.UserRepository;
+import com.service.UserService;
 import com.utils.utils;
 import java.util.Date;
 import java.util.Map;
@@ -19,6 +20,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,11 +30,11 @@ import org.springframework.transaction.annotation.Transactional;
  * @author QUYENNGUYEN
  */
 @Repository
-@Transactional(propagation = Propagation.REQUIRED)
+
 public class OrderRepositoryImpl implements OrderRepository{
 
     @Autowired
-    private UserRepository userRepository;
+    private UserService userRepository;
      @Autowired
     private ProductRepository productRepository;
     
@@ -40,20 +42,26 @@ public class OrderRepositoryImpl implements OrderRepository{
     private LocalSessionFactoryBean sessionFactory;
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRED)
     public boolean addReceipt(Map<Integer, Cart> cart) {
         Session  s = this.sessionFactory.getObject().getCurrentSession();
+        Map<String ,String> stats = utils.cartStats(cart);
+        int id = this.userRepository.getUserById(2).getId();
+//         String username = SecurityContextHolder.getContext().getAuthentication().getName();
+//         User user = userRepository.getUserByUsername(username);
+        
         try {
             Order d = new Order();
-            User u  = this.userRepository.getUserById(6);
-           String id = String.valueOf(u.getId());     
-        d.setCreatedDate(new Date());
-        
-        Map<String ,String> stats = utils.cartStats(cart);
-        d.setAmount(Long.parseLong( stats.get("amount")));    
-          // thiiet lap usder id nguoi mua
-        d.setUser(this.userRepository.getUserById(6));
-        
-        s.save(d);
+            String username = SecurityContextHolder.getContext().getAuthentication().getName();
+         User user = userRepository.getUserByUsername(username);
+            User u  = this.userRepository.getUserById(2);
+            //System.out.println(u.getId());
+            //System.out.println(u.getUsername());
+            d.setAmount(Long.parseLong( stats.get("amount")));    
+            // thiiet lap usder id nguoi mua
+            d.setUser(user);
+            s.save(d);
+            //System.out.println(d.getUser().getId());
         
         for(Cart c: cart.values()){
             OrderDetail od = new OrderDetail();
@@ -66,9 +74,9 @@ public class OrderRepositoryImpl implements OrderRepository{
         }
         return true;
         } catch (HibernateException e) {
-            e.printStackTrace();
+            System.out.print("findUserId->id: " + id);
+            throw e;
         }
-        return false;
     }
     
 }
