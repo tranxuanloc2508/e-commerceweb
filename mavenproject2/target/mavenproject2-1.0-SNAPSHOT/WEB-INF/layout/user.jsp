@@ -30,9 +30,9 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>   
        
     </head>
-    <body>
+    <body style="height: 100%">
          <tiles:insertAttribute name="section"/>   
-        <div class="container" >
+         <div class="container" id="page-content" style="#page-content {flex: 1 0 auto;}" >
             <div class="row">
                 <div class="col-lg-3 col-xs-12 bg-light ">
                     <!-- LEFT -->

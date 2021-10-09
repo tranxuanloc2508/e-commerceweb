@@ -76,14 +76,13 @@ public class UserController {
         model.addAttribute("errMsg",errMsg);
         return "register";
     }
-    @GetMapping("/user/user-stats")
+    @GetMapping("/user")
     public String loadState(Model model){
         model.addAttribute("statsList", this.statsService.cateStats());
-        return "userdash";
+        return "userLayout";
     }
-    @GetMapping("/user/product-stats")
-    public String productState(Model model,@RequestParam(required = false)Map<String, String> param,
-    @AuthenticationPrincipal UserDetails currentUser) throws ParseException{
+    @GetMapping("/user/producttt-stats")
+    public String productState(Model model,@RequestParam(required = false)Map<String, String> param) throws ParseException{
         String kw = param.getOrDefault("kw", null);
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Date begin = null;
@@ -96,13 +95,17 @@ public class UserController {
         if(to != null){
            end = format.parse(to);
         }
-//         model.addAttribute("list-productStats", this.statsService.listProduct());
-
         model.addAttribute("productStats", this.statsService.productStats(kw, begin, end));       
        
               
         return "product-stats";
         
     }
+    @GetMapping("/user/product-stats")
+    public String listState(Model model,@PathVariable Map<String, String> path){   
+        model.addAttribute("listproductStats", this.statsService.listProduct());
+        return "product-user-stats";
+    }
+    
     
 }

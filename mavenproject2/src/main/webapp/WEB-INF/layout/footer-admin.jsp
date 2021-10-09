@@ -5,11 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
- <footer class="footer">    
-     <span >
-            &copy;
-            <script>
-              document.write(new Date().getFullYear())
-            </script>,Quan tri người dùng          
-          </span>
- </footer>
+ <footer id="sticky-footer" class="flex-shrink-0 py-4 bg-dark text-white-50">
+    <div class="container text-center">
+      <small>Copyright &copy; Your Website</small>
+    </div>
+  </footer>

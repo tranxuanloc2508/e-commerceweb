@@ -3221,7 +3221,7 @@ ol {
     visibility: visible;
   }
   .header__top {
-    display: none;
+    display: inline;
   }
   .header__menu {
     display: none;

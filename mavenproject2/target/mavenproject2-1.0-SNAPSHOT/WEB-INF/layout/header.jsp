@@ -80,32 +80,30 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="header__top__right">
                         <div class="header__top__right__social">
-                           <a  href="<c:url value="/"/>"><i></i>Saler</a> 
-                        </div>
-                        <div class="header__top__right__auth">
-                           
+                                    <a  href="<c:url value="/user"/>"><i class="fa fa-user"></i>Saler</a> 
                         
                            
                         </div>
-                        <div class="header__top__right__auth"> 
-                            <c:if test="${pageContext.request.userPrincipal.name == null}">                               
-                                <div><a  href="<c:url value="/login"/>"><i class="fa fa-user"></i>Login</a></div>       
+                        <div class="header__top__right__language">   
+                            <c:if test="${pageContext.request.userPrincipal.name == null}"> 
+                            <div ><i class="fa fa-user"></i>Login</div>
+                             </c:if>
+                              <c:if test="${pageContext.request.userPrincipal.name != null}">
+                                  <div class="username">${pageContext.request.userPrincipal.name}</div>
+                              </c:if>
+                            <span class="dropdown-toggle"></span>
+                            <ul style="background: white">
+                                <li><a href="#">Spanis</a></li>
+                                <li><a href="#">English</a></li>
+                                <li>
+                                    <a href="#"><i class="fa fa-cog"></i> My Inbox</a>
+                                </li>
+                                <c:if test="${pageContext.request.userPrincipal.name != null}">
 
-                            </c:if>
-                            <c:if test="${pageContext.request.userPrincipal.name != null}">
-
-                                <div><a  href="<c:url value="/"/>">${pageContext.request.userPrincipal.name}</a></div>
-<!--                                <div><a  href="<c:url value="/logout"/>">Logout</a></div>-->
-
-
-
-                            </div>
-                            <div><a  href="<c:url value="/logout"/>">Logout</a></div>
-                            <div>
-                            </c:if>
-
+                                    <li><a href="<c:url value="/logout"/>"><span  class="fa fa-sign-out"></span> Logout</a></li>    
+                                </c:if>
+                            </ul>
                         </div>
-                    </div>
                 </div>
             </div>
         </div>

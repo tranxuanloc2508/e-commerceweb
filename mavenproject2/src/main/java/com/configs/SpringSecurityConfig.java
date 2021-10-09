@@ -80,8 +80,9 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
        http.exceptionHandling().accessDeniedPage("/login?accessDenied");
        
        http.authorizeRequests().antMatchers("/").permitAll()
-               .antMatchers("/admin/products").access("hasAnyRole('ROLE_ADMIN','ROLE_SALER')");
-//               .antMatchers("/cart/**").access("hasRole('ROLE_USER')");
+               .antMatchers("/admin/products").access("hasRole('ROLE_ADMIN')");
+//               .antMatchers("/cart/**").access("hasRole('ROLE_USER')")
+//               .antMatchers("/user/**").access("hasRole('ROLE_USER')");
        
        http.csrf().disable();
     }

@@ -50,13 +50,14 @@ public class StatsReponsitoryImpl implements StatsReponsitory{
         
         q.where(b.equal(rootP.get("category"), rootC.get("id")));
         
-        q.multiselect(rootC.get("id"),rootC.get("name"),(rootP.get("id")));
+        q.multiselect(rootC.get("id"),rootC.get("name"),b.count(rootP.get("id")));
         
         q.groupBy(rootC.get("id"));
         
         Query query = session.createQuery(q);
         
-        return query.getResultList();
+        return query.getResultList();       
+        
     }
 
     @Override
@@ -140,11 +141,11 @@ public class StatsReponsitoryImpl implements StatsReponsitory{
         
 //        q.where(b.equal(rootU.get("category"), rootC.get("id")));
         List<Predicate> predicates = new ArrayList<>();
-          predicates.add(b.equal(rootP.get("user"), rootU.get("id")));
-          predicates.add(b.equal(rootO.get("user"), rootU.get("id")));
-        q.multiselect(rootU.get("firstname"),rootU.get("lastname"),rootU.get("email"),rootU.get("phone"),rootU.get("userRole"));
+          predicates.add(b.equal(rootU.get("userRole"),  "ROLE_USER"));
+//          predicates.add(b.equal(rootO.get("user"), rootU.get("id")));
+        q.multiselect(rootU.get("id"),rootU.get("firstname"),rootU.get("lastname"),rootU.get("email"),rootU.get("phone"),rootU.get("userRole"));
         q.where(predicates.toArray(new Predicate[]{}));
-//        q.groupBy(rootC.get("id"));
+        q.groupBy(rootU.get("id"));
         
         Query query = session.createQuery(q);
         
@@ -164,7 +165,7 @@ public class StatsReponsitoryImpl implements StatsReponsitory{
         List<Predicate> predicates = new ArrayList<>();
         predicates.add(builder.equal(rootP.get("user"), rootU.get("id")));
         predicates.add(builder.equal(rootP.get("user"), user ));  
-         query.multiselect(rootP.get("name"),rootP.get("description"),rootP.get("price")); 
+         query.multiselect(rootP.get("id"),rootP.get("name"),rootP.get("description"),rootP.get("price"),rootP.get("category")); 
          query.where(predicates.toArray(new Predicate[]{}));
        
         Query q = session.createQuery(query);
