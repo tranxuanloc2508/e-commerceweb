@@ -8,7 +8,6 @@ com\utils\utils.class
 com\configs\TilesConfig.class
 com\repository\ProductRepository.class
 com\pojos\OrderDetail_.class
-com\pojos\Saler_.class
 com\service\UserService.class
 com\repository\UserRepository.class
 com\pojos\Order.class
@@ -16,6 +15,7 @@ com\pojos\Category_.class
 com\validator\WebAppValidator.class
 com\service\CategoryService.class
 com\service\impl\CategoryServiceImpl.class
+com\repository\impl\StatsRepositoryImpl.class
 com\Controller\HomeController.class
 com\pojos\Category.class
 com\repository\impl\StatsReponsitoryImpl.class
@@ -25,10 +25,10 @@ com\repository\OrderRepository.class
 com\Controller\CartController.class
 com\formatter\CategoryFormatter.class
 com\pojos\Product.class
-com\pojos\Saler.class
 com\pojos\Cart.class
 com\pojos\Product_.class
 com\configs\SpringSecurityConfig.class
+com\repository\StatsRepository.class
 com\validator\UserValidator.class
 com\service\impl\OrderServiceImpl.class
 com\Controller\AdminController.class

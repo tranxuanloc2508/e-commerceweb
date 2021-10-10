@@ -8,6 +8,7 @@ package com.repository.impl;
 import com.pojos.Cart;
 import com.pojos.Order;
 import com.pojos.OrderDetail;
+import static com.pojos.Order_.id;
 import com.pojos.User;
 import com.repository.OrderRepository;
 import com.repository.ProductRepository;
@@ -34,7 +35,8 @@ import org.springframework.transaction.annotation.Transactional;
 public class OrderRepositoryImpl implements OrderRepository{
 
     @Autowired
-    private UserService userRepository;
+    private UserService userService;
+
      @Autowired
     private ProductRepository productRepository;
     
@@ -45,20 +47,15 @@ public class OrderRepositoryImpl implements OrderRepository{
     @Transactional(propagation = Propagation.REQUIRED)
     public boolean addReceipt(Map<Integer, Cart> cart) {
         Session  s = this.sessionFactory.getObject().getCurrentSession();
-        Map<String ,String> stats = utils.cartStats(cart);
-        int id = this.userRepository.getUserById(2).getId();
-//         String username = SecurityContextHolder.getContext().getAuthentication().getName();
-//         User user = userRepository.getUserByUsername(username);
-        
         try {
             Order d = new Order();
-            String username = SecurityContextHolder.getContext().getAuthentication().getName();
-         User user = userRepository.getUserByUsername(username);
-            User u  = this.userRepository.getUserById(2);
-            //System.out.println(u.getId());
-            //System.out.println(u.getUsername());
-            d.setAmount(Long.parseLong( stats.get("amount")));    
-            // thiiet lap usder id nguoi mua
+        d.setCreatedDate(new Date());
+        
+        Map<String ,String> stats = utils.cartStats(cart);
+        d.setAmount(Long.parseLong( stats.get("amount")));    
+          // thiiet lap usder id nguoi mua
+           String username = SecurityContextHolder.getContext().getAuthentication().getName();
+            User user = userService.getUserByUsername(username);
             d.setUser(user);
             s.save(d);
             //System.out.println(d.getUser().getId());

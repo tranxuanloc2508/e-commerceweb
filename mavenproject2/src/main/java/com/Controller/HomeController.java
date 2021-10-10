@@ -79,5 +79,5 @@ public class HomeController {
         model.addAttribute("categories", this.categoryService.getCategories());
         model.addAttribute("users", this.userService.getUser(""));
 
-    }
+    }    
 }

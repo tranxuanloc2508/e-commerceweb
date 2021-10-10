@@ -1,8 +1,6 @@
-<%-- 
-    Document   : product-stats
+<!--
     Created on : Oct 6, 2021, 11:40:03 PM
-    Author     : LocNe
---%>
+    Author     : LocNe-->
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -28,8 +26,6 @@
 <div>
   <canvas id="myProductStatsChart"></canvas>
 </div>
- 
- 
 <table class="table">
     <tr>
         <th>Ma san pham</th>
@@ -45,8 +41,6 @@
     </c:forEach>
 </table>
  
-
-
 <script>
     
     let productLables =[],productInfo=[];

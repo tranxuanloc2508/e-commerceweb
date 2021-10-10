@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.pojos;
 
+import static com.pojos.Product_.orderDetailCollection;
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
+//import java.sql.Date;
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,20 +19,21 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+import org.springframework.format.annotation.DateTimeFormat;
 /**
  *
- * @author NGUYEN_NGUYEN
+ * @author QUYENNGUYEN
  */
 @Entity
 @Table(name = "`order`")
 public class Order implements Serializable {
 
-    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -43,10 +44,9 @@ public class Order implements Serializable {
     private Date createdDate;
     @ManyToOne
     @JoinColumn(name = "`user_id`", referencedColumnName = "id")// khoa ngoai ket 2 bang
-    private User user;
-   
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "Order")
-//    private Collection<OrderDetail> orderDetailCollection;
+    private User user;  
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "order")
+    private Collection<OrderDetail> orderDetailCollection;
     {
         createdDate = new Date();
     }
@@ -78,46 +78,46 @@ public class Order implements Serializable {
         this.id = id;
     }
 
-    /**
-     * @return the amount
-     */
     public Long getAmount() {
         return amount;
     }
 
-    /**
-     * @param amount the amount to set
-     */
     public void setAmount(Long amount) {
         this.amount = amount;
     }
 
-    /**
-     * @return the createdDate
-     */
     public Date getCreatedDate() {
         return createdDate;
     }
 
-    /**
-     * @param createdDate the createdDate to set
-     */
     public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
     }
 
-    /**
-     * @return the user
-     */
+    @XmlTransient
+    public Collection<OrderDetail> getOrderDetailCollection() {
+        return orderDetailCollection;
+    }
+
+    public void setOrderDetailCollection(Collection<OrderDetail> orderDetailCollection) {
+        this.orderDetailCollection = orderDetailCollection;
+    }
+
     public User getUser() {
         return user;
     }
 
-    /**
-     * @param user the user to set
-     */
-    public void setUser(User user) {
-        this.user = user;
+    public void setUser(User userId) {
+        this.user = userId;
     }
 
+    @Override
+    public String toString() {
+        return "com.pojos.Order[ id=" + id + " ]";
+    }
+
+    public void setAmount(int i) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
 }

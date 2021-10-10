@@ -5,11 +5,14 @@
  */
 package com.service;
 
+import com.pojos.Product;
+import com.pojos.User;
 import java.util.Date;
 import java.util.List;
 
 /**
  *
+
  * @author LocNe
  */
 public interface StatsService {

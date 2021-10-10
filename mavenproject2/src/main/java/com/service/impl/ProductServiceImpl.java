@@ -8,7 +8,6 @@ package com.service.impl;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import com.pojos.Product;
-//import static com.pojos.Product_.user;
 import com.pojos.User;
 import com.repository.ProductRepository;
 import com.repository.UserRepository;
@@ -51,10 +50,11 @@ public class ProductServiceImpl implements ProductService {
 
             String image = (String) r.get("secure_url");
             product.setImage(image);
-            String username = SecurityContextHolder.getContext().getAuthentication().getName();
+             String username = SecurityContextHolder.getContext().getAuthentication().getName();
             User user = userRepository.getUserByUsername(username);
             product.setUser(user);
 //        productRepository.addOrUpdate(product);
+        productRepository.addOrUpdate(product);
             return this.productRepository.addOrUpdate(product);
 
         } catch (IOException ex) {

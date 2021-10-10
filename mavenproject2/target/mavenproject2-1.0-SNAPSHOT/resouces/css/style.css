@@ -435,7 +435,7 @@ ol {
 
 .header__top__right__language ul li a {
   font-size: 14px;
-  color: #ffffff;
+  color: #1c1c1c;
   padding: 5px 10px;
 }
 
@@ -3221,7 +3221,7 @@ ol {
     visibility: visible;
   }
   .header__top {
-    display: none;
+    display: inline;
   }
   .header__menu {
     display: none;
