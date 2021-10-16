@@ -47,16 +47,29 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
         <put-attribute name="title" value="Người bán hàng" />
         <put-attribute name="section" value="/WEB-INF/layout/section.jsp" />
         <put-attribute name="left" value="/WEB-INF/layout/left.jsp" />
-        <put-attribute name="content" value=""/>
-        <put-attribute name="footer" value="/WEB-INF/layout/footer-admin.jsp" />
+        <put-attribute name="content" value="/WEB-INF/jsp/stats.jsp" />
+         <put-attribute name="footer" value="/WEB-INF/layout/footer-admin.jsp" />
+       
     </definition>
      <definition name="userdash" extends="userLayout">
         <put-attribute name="title" value="Quản lý đơn hàng" />
         <put-attribute name="content" value="/WEB-INF/jsp/stats.jsp" />
     </definition>
+    <definition name="sale" extends="userLayout">
+        <put-attribute name="title" value="Quản lý đơn hàng" />
+        <put-attribute name="content" value="/WEB-INF/jsp/order-user-stats.jsp" />
+    </definition>
      <definition name="product-user-stats" extends="userLayout">
         <put-attribute name="title" value="Quản lý sản phẩm" />
         <put-attribute name="content" value="/WEB-INF/jsp/product-user-stats.jsp" />
+    </definition>
+     <definition name="product" extends="userLayout">
+        <put-attribute name="title" value="Quan lí sản phẩm"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/product.jsp"/>
+    </definition>
+    <definition name="edit-product" extends="userLayout">
+        <put-attribute name="title" value="Chi tiết sản phẩm" />
+        <put-attribute name="content" value="/WEB-INF/jsp/edit-product.jsp" />
     </definition>
     <definition name="category" extends="baseLayout">
         <put-attribute name="index" value="SHOP" />

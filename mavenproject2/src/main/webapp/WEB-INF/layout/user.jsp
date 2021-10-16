@@ -20,19 +20,23 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
         <link href="<c:url value="/css/boostrap.min.css"/>" rel="stylesheet"/> 
         <link href="<c:url value="/css/user-style.css"/>" rel="stylesheet"/> 
+        <link href="<c:url value="/css/style.css"/>" rel="stylesheet"/> 
         <link rel="https://cdnjs.cloudflare.com/ajax/libs/SlickNav/1.0.10/slicknav.min.css" />      
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>   
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>  
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/SlickNav/1.0.10/jquery.slicknav.min.js"></script>
        
     </head>
-    <body style="height: 100%">
+    <body >
          <tiles:insertAttribute name="section"/>   
-         <div class="container" id="page-content" style="#page-content {flex: 1 0 auto;}" >
+         <div class="container" >
             <div class="row">
                 <div class="col-lg-3 col-xs-12 bg-light ">
                     <!-- LEFT -->
@@ -54,7 +58,7 @@
                     <tiles:insertAttribute name="content"/>   
                 
             </div>
-            <!-- FOOTER -->
+             <!-- FOOTER -->
             <tiles:insertAttribute name="footer"/>
         </div>
         <script src="<c:url value="/js/bootstrap.min.js"/>"></script>

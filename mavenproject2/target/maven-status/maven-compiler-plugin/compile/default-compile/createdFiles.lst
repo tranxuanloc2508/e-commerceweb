@@ -15,7 +15,6 @@ com\pojos\Category_.class
 com\validator\WebAppValidator.class
 com\service\CategoryService.class
 com\service\impl\CategoryServiceImpl.class
-com\repository\impl\StatsRepositoryImpl.class
 com\Controller\HomeController.class
 com\pojos\Category.class
 com\repository\impl\StatsReponsitoryImpl.class
@@ -28,7 +27,6 @@ com\pojos\Product.class
 com\pojos\Cart.class
 com\pojos\Product_.class
 com\configs\SpringSecurityConfig.class
-com\repository\StatsRepository.class
 com\validator\UserValidator.class
 com\service\impl\OrderServiceImpl.class
 com\Controller\AdminController.class

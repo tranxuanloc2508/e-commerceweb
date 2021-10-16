@@ -17,6 +17,9 @@ public interface StatsReponsitory {
     List<Object[]> cateStats();
      List<Object[]> User();
     List<Object[]> productStats(String kw, Date fromDate, Date toDate);
+    
+    //USER STATS
      List<Object[]> listProduct();
+     List<Object[]> listSaleUser();
 //    List<Object[]> productMonthStats(String kw, Date fromDate, Date toDate);
 }

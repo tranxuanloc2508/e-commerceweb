@@ -44,17 +44,16 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public boolean addOrUpdate(Product product) {
 
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userRepository.getUserByUsername(username);
+        product.setUser(user);
         try {
             Map r = this.cloudinary.uploader().upload(product.getFile().getBytes(),
                     ObjectUtils.asMap("resource_type", "auto"));
 
             String image = (String) r.get("secure_url");
-            product.setImage(image);
-             String username = SecurityContextHolder.getContext().getAuthentication().getName();
-            User user = userRepository.getUserByUsername(username);
-            product.setUser(user);
-//        productRepository.addOrUpdate(product);
-        productRepository.addOrUpdate(product);
+            product.setImage(image);            
+            productRepository.addOrUpdate(product);
             return this.productRepository.addOrUpdate(product);
 
         } catch (IOException ex) {
@@ -77,5 +76,10 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public User getUserByID(int userId) {
         return this.userRepository.getUserById(userId);
+    }
+
+    @Override
+    public boolean updateProduct(Product p) {
+        return this.productRepository.updateProduct(p); 
     }
 }

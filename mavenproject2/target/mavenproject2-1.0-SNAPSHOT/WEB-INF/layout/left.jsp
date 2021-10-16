@@ -7,23 +7,32 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
    <div class="sidenav " >
-  <button class="dropdown-btn">Quản lý đơn hàng
+  <button class="dropdown-btn"> <i class="fa fa-list"></i> Quản lý đơn hàng 
     <i class="fa fa-caret-down"></i>
   </button>
    <div class="dropdown-container">
-    <a href="<c:url value="/user/user-stats"/>">Tất cả đơn hàng</a>
+    <a href="<c:url value="/user/sale-stats"/>">Tất cả đơn hàng</a>
     <a href="#">Tìm kiếm</a>
-    <a href="#">Thống kê</a>
+    <a href="#">Tất cả đơn hàng</a>
   </div>
-    <button class="dropdown-btn">Quản lý sản phẩm
+    <button class="dropdown-btn"><i class="fa fa-briefcase"></i> Quản lý sản phẩm
     <i class="fa fa-caret-down"></i>
   </button>
   <div class="dropdown-container">
     <a href="<c:url value="/user/product-stats"/>">Tất cả sản phẩm</a>
-    <a href="#">Thêm sản phẩm</a>
+    <a href="<c:url value="/user/add-products"/>">Thêm sản phẩm</a>
     <a href="#">Thống kê</a>
   </div>
+    <button class="dropdown-btn"><i class="fa fa-line-chart"></i>
+        Dữ liệu
+    <i class="fa fa-caret-down"></i>
+  </button>
+  <div class="dropdown-container">
+    <a href="<c:url value="/user/product-stats"/>">Phân tích dữ liệu</a>
+   
+  </div>
   <a href="#contact">Search</a>
+  
 </div>
 <nav class="navbar bg-light">
 

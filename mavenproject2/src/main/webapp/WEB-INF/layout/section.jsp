@@ -30,7 +30,7 @@
                                 <img alt="" src="img/avatar1_small.jpg">
                             </span>
                             <span class="username">Login</span>
-                            <b class="caret"></b>
+                            
                         </a>
   </c:if>
                <c:if test="${pageContext.request.userPrincipal.name != null}">
@@ -40,21 +40,21 @@
                                 <img alt="" src="img/avatar1_small.jpg">
                             </span>
                             <span class="username">${pageContext.request.userPrincipal.name}</span>
-                            <b class="caret"></b>
+
                         </a>
                </c:if>
    
             <ul class="dropdown-menu extended logout">
-              <div class="log-arrow-up"></div>
-              <li class="eborder-top">
+              <div class="log-arrow-up "></div>
+              <li class="eborder-top navbar-right">
                 <a href="#"><i class="icon_profile"></i> My Profile</a>
               </li>
-              <li>
+              <li class="eborder-top navbar-right">
                 <a href="#"><i class="icon_mail_alt"></i> My Inbox</a>
               </li>
               <c:if test="${pageContext.request.userPrincipal.name != null}">
                                                
-                  <li><a href="<c:url value="/logout"/>"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>    
+                  <li class="eborder-top navbar-right"><a href="<c:url value="/logout"/>"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>    
               </c:if>
             </ul>
           </li>
