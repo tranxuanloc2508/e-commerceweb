@@ -99,4 +99,16 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
         <put-attribute name="title" value="Quan ly user" />
         <put-attribute name="content" value="/WEB-INF/jsp/listproduct.jsp" />
     </definition>
+    
+    <!--User-Profile-->
+    <definition name="userAdminLayout" template="/WEB-INF/layout/user-ed.jsp">
+        <put-attribute name="title" value="Thông tin " />
+        <put-attribute name="section" value="/WEB-INF/layout/section.jsp" />
+        <put-attribute name="content" value=""/>
+        <put-attribute name="footer" value="/WEB-INF/layout/footer-admin.jsp" />
+    </definition>
+    <definition name="edit-profile" extends="userAdminLayout">
+        <put-attribute name="title" value="Quan ly user" />
+        <put-attribute name="content" value="/WEB-INF/jsp/edit-profile.jsp" />
+    </definition>
 </tiles-definitions>

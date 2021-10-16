@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author NGUYEN_NGUYEN
  */
 @Entity
-@Table(name ="user")
+@Table(name ="`user`")
 public class User implements Serializable{
     public static final String ADMIN ="ROLE_ADMIN";
     public static final String USER ="ROLE_USER";

@@ -80,7 +80,7 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="header__top__right">
                         <div class="header__top__right__social">
-                                    <a  href="<c:url value="/user"/>"><i class="fa fa-user"></i>Saler</a> 
+                                   
                         
                            
                         </div>
@@ -97,7 +97,10 @@
                                     <a href="#"><i class="fa fa-cog"></i> My Inbox</a>
                                 </li>
                                 <c:if test="${pageContext.request.userPrincipal.name != null}">
-
+                                      <li><a  href="<c:url value="/user"/>"><i class="fa fa-user"></i>Saler</a>  </li>
+                                     <li>
+                                        <a href="<c:url value="/user/${pageContext.request.userPrincipal.name}"/>"><i class="fa fa-cog"></i> Setting</a>
+                                    </li>        
                                     <li><a href="<c:url value="/logout"/>"><span  class="fa fa-sign-out"></span> Logout</a></li>    
                                 </c:if>
                             </ul>

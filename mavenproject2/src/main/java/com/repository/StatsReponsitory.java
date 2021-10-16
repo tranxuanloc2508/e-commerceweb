@@ -22,4 +22,5 @@ public interface StatsReponsitory {
      List<Object[]> listProduct();
      List<Object[]> listSaleUser();
 //    List<Object[]> productMonthStats(String kw, Date fromDate, Date toDate);
+     
 }

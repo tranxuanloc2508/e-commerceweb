@@ -21,6 +21,7 @@ import javax.validation.Valid;
 import javax.xml.crypto.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -118,5 +119,27 @@ public class UserController {
         return "product-user-stats";
     }
     
+    
+    @GetMapping(value = "/user/{user_id}")
+    public ModelAndView editProfileView(Model model,@PathVariable(value = "user_id") int a) {
+      
+        ModelAndView view = new ModelAndView();
+        view.setViewName("edit-profile");
+//        User u = this.userDetailsService.getUserByUsername(userId);
+//        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+//            User user = userDetailsService.getUserByUsername(username);
+         model.addAttribute("user", this.userDetailsService.getUserById(a));
+//            model.addAttribute("user",u);
+//            view.addObject("user", userDetailsService.getUserByUsername(model.toString(userId)));
+       
+//         userDetailsService.updateUser(user);
+        return view;
+    }
+      @PostMapping("/user/{user_id}")
+    public String editProfile (Model model,@ModelAttribute(value = "user_id") @Valid User user){
+     
+       this.userDetailsService.updateUser(user);
+        return "redirect:/";
+    }
         
 }
