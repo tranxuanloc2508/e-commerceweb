@@ -165,8 +165,33 @@ public class StatsReponsitoryImpl implements StatsReponsitory{
         List<Predicate> predicates = new ArrayList<>();
         predicates.add(builder.equal(rootP.get("user"), rootU.get("id")));
         predicates.add(builder.equal(rootP.get("user"), user ));  
-         query.multiselect(rootP.get("id"),rootP.get("name"),rootP.get("description"),rootP.get("price"),rootP.get("category")); 
+         query.multiselect(rootP.get("id"),rootP.get("name"),rootP.get("description"),rootP.get("price"),rootP.get("image"),rootP.get("category")); 
          query.where(predicates.toArray(new Predicate[]{}));
+       
+        Query q = session.createQuery(query);
+
+        return q.getResultList();
+    }
+
+    @Override
+    public List<Object[]> listSaleUser() {
+        Session session = this.localSessionFactoryBean.getObject().getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Object[]> query = builder.createQuery(Object[].class);
+        
+        Root rootP = query.from(Product.class); 
+//        Root rootU = query.from(User.class); 
+        Root rootD = query.from(OrderDetail.class); 
+        
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();    
+         User user = userRepository.getUserByUsername(username);
+        List<Predicate> predicates = new ArrayList<>();
+        predicates.add(builder.equal(rootP.get("id"), rootD.get("product")));
+        predicates.add(builder.equal(rootP.get("user"),user.getId()));
+//        predicates.add(builder.equal(rootP.get("user"), user ));  
+        query.multiselect(rootP.get("id"),rootP.get("name"),rootP.get("description"),
+                rootP.get("price"),rootP.get("category"), builder.prod(rootD.get("unitPrice"),rootD.get("num"))); 
+        query.where(predicates.toArray(new Predicate[]{}));
        
         Query q = session.createQuery(query);
 

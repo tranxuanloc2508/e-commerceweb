@@ -86,15 +86,13 @@
                         </div>
                         <div class="header__top__right__language">   
                             <c:if test="${pageContext.request.userPrincipal.name == null}"> 
-                            <div ><i class="fa fa-user"></i>Login</div>
+                                <div ><a href="<c:url value="/login"/>">Login</a></div>
                              </c:if>
                               <c:if test="${pageContext.request.userPrincipal.name != null}">
                                   <div class="username">${pageContext.request.userPrincipal.name}</div>
                               </c:if>
                             <span class="dropdown-toggle"></span>
-                            <ul style="background: white">
-                                <li><a href="#">Spanis</a></li>
-                                <li><a href="#">English</a></li>
+                            <ul style="background: white">                             
                                 <li>
                                     <a href="#"><i class="fa fa-cog"></i> My Inbox</a>
                                 </li>

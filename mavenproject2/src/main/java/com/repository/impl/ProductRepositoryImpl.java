@@ -57,6 +57,7 @@ public class ProductRepositoryImpl implements ProductRepository {
     public boolean addOrUpdate(Product product) {
         Session session = this.sessionFactory.getObject().getCurrentSession();
         try {
+           
             session.save(product);
 
             return true;
@@ -67,6 +68,20 @@ public class ProductRepositoryImpl implements ProductRepository {
 
         return false;
 
+    }
+      @Override
+    public boolean updateProduct(Product p) {
+         Session session = this.sessionFactory.getObject().getCurrentSession();
+           try {            
+                session.update(p);
+           
+
+            return true;
+        } catch (Exception ex) {
+            System.err.println("=== ADD PRODUCT ERRER ===" + ex.getMessage());
+            ex.printStackTrace();
+        }
+         return false;
     }
 
     @Override
@@ -88,5 +103,7 @@ public class ProductRepositoryImpl implements ProductRepository {
         Session session = this.sessionFactory.getObject().getCurrentSession();
         return session.get(User.class, i);
     }
+
+  
 
 }

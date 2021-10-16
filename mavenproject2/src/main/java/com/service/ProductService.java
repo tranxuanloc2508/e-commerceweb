@@ -21,7 +21,7 @@ public interface ProductService {
     long countProduct();
 
     boolean addOrUpdate(Product product);
-
+    boolean updateProduct(Product p);
     Product getProductByID(int productId);
     User getUserByID(int userId);
 }

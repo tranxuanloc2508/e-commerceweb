@@ -23,7 +23,7 @@
     </div>
     <input type="submit" value="Bao cao" class="btn btn-success"/>
 </form>
-<div>
+<div class ="chart chartjs-render-monitor">
   <canvas id="myProductStatsChart"></canvas>
 </div>
 <table class="table">

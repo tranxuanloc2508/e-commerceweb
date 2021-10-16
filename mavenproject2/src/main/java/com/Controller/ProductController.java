@@ -42,15 +42,15 @@ public class ProductController {
         binder.setValidator(productValidator);
     }
 
-    @GetMapping("/admin/products")
+    @GetMapping("/user/add-products")
     public String list(Model model) {
         model.addAttribute("product", new Product());
         return "product";
     }
 
-    @PostMapping("/admin/products")
+    @PostMapping("/user/add-products")
     public String add(Model model, @ModelAttribute(value = "product")
-            @Valid Product product, @Valid User user, BindingResult result) {
+            @Valid Product product, BindingResult result) {
        if (!result.hasErrors()) {
            if (this.productService.addOrUpdate(product)==true) {
                
@@ -82,5 +82,19 @@ public class ProductController {
         
         return view;
     }
-
+    
+     @GetMapping(value = "/product/edit/{product_id}")
+    public String editProduct(Model model,@PathVariable( value ="product_id" ) int productId) {       
+           model.addAttribute("product", productService.getProductByID(productId));  
+        return "edit-product";
+    }
+     @PostMapping("/product/edit/{product_id}")
+    public String edit(Model model,
+            @ModelAttribute(value = "product")
+            @Valid Product product, BindingResult result) {
+       
+            this.productService.updateProduct(product); 
+         
+       return "/"; // sai vè product
+    }
 }

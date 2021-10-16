@@ -5,7 +5,10 @@
  */
 package com.Controller;
 
+import com.pojos.Product;
 import com.pojos.User;
+import com.repository.ProductRepository;
+import com.service.ProductService;
 import com.service.StatsService;
 import com.service.UserService;
 import com.validator.UserValidator;
@@ -21,6 +24,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,6 +34,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  *
@@ -43,7 +48,8 @@ public class UserController {
     private UserService userDetailsService;
     @Autowired
     private WebAppValidator userValidator;
-    
+    @Autowired 
+    private ProductService productService;
     @Autowired
     private StatsService statsService;
     @InitBinder
@@ -82,7 +88,7 @@ public class UserController {
         return "userLayout";
     }
     @GetMapping("/user/producttt-stats")
-    public String productState(Model model,@RequestParam(required = false)Map<String, String> param) throws ParseException{
+    public String producttState(Model model,@RequestParam(required = false)Map<String, String> param) throws ParseException{
         String kw = param.getOrDefault("kw", null);
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Date begin = null;
@@ -101,11 +107,16 @@ public class UserController {
         return "product-stats";
         
     }
+      @GetMapping("/user/sale-stats")
+    public String saleState(Model model){
+        model.addAttribute("saleStats", this.statsService.listSaleUser());
+        return "sale";
+    }
     @GetMapping("/user/product-stats")
-    public String listState(Model model,@PathVariable Map<String, String> path){   
+    public String productState(Model model){   
         model.addAttribute("listproductStats", this.statsService.listProduct());
         return "product-user-stats";
     }
     
-    
+        
 }

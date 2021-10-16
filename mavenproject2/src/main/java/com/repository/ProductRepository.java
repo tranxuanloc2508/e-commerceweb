@@ -22,6 +22,7 @@ public interface ProductRepository {
     long countProduct();
 
     boolean addOrUpdate(Product product);
+    boolean updateProduct(Product p);
 
     User getUserByID(int userId);
     

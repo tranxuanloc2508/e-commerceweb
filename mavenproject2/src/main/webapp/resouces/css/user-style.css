@@ -7,14 +7,26 @@ and open the template in the editor.
     Created on : Oct 7, 2021, 9:17:20 AM
     Author     : QUYENNGUYEN
 */
-/*Start Left*/
-body {
-  font-family: "Lato", sans-serif;
+
+.avatar {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
 }
-
-
-
+/*.sidenav {
+  height: 100%;
+ 
+}*/
 /* Style the sidenav links and the dropdown button */
+.my-custom-scrollbar {
+position: relative;
+height: 300px;
+overflow: auto;
+}
+.table-wrapper-scroll-y {
+display: block;
+}
 .sidenav a, .dropdown-btn {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
@@ -23,7 +35,9 @@ body {
   display: block;
   border: none;
   background: none;
+  margin-top: 20px;
   width: 100%;
+  height: 100%;
   text-align: left;
   cursor: pointer;
   outline: none;
@@ -31,7 +45,7 @@ body {
 
 /* On mouse-over */
 .sidenav a:hover, .dropdown-btn:hover {
-  color: #262626;
+  color: black;
 }
 
 /* Main content */
@@ -43,14 +57,14 @@ body {
 
 /* Add an active class to the active dropdown button */
 .active {
-  background-color: green;
-  color: lawngreen;
+  background-color: #4caf50;
+  color: white;
 }
 
 /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
 .dropdown-container {
   display: none;
-  background-color: #262626;
+  background-color:white;
   padding-left: 8px;
 }
 
@@ -66,4 +80,45 @@ body {
   .sidenav a {font-size: 18px;}
 }
 /*End Left*/
+
+body {
+  background-color:  #eee;
+}
+.title {
+ 
+    margin-bottom: 50px;
+    text-transform: uppercase;
+}
+
+.card-block {
+    font-size: 1em;
+    position: relative;
+    margin: 0;
+    padding: 1em;
+    border: none;
+    border-top: 1px solid rgba(34, 36, 38, .1);
+    box-shadow: none;
+    margin-left: 20px;
+     
+}
+.card {
+    font-size: 1em;
+    overflow: hidden;
+    padding: 5;
+    height: 350px;
+    border: none;
+    border-radius: .28571429rem;
+    box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+    margin-top:20px;
+    padding-top: 10px;
+    padding-left: 10px;
+    
+}
+
+.btn {
+  margin-top: auto;
+}
+#rowbody .row{
+    margin-top: 10px;
+}
 
