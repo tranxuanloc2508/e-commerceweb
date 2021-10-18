@@ -8,8 +8,15 @@
 <%@taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <nav class="navbar navbar-light bg-light ">
+                <div class="col-lg-3">
+                <div class="header__logo">
+                    <a href="<c:url value="/"/>"><img src="<c:url value="img/logo.png"/>" alt=""></a>
+                </div>
+            </div>
     <a class="navbar-brand">Người bán hàng</a>
+    
     <ul class="nav navbar-right">
+       
         <!--        <c:if test="${pageContext.request.userPrincipal.name == null}">     
               <a href="<c:url value="/login"/>"><span class="glyphicon glyphicon-user"></span> Login</a>
         </c:if>
@@ -37,7 +44,7 @@
 
                 <a data-toggle="dropdown" class="dropdown-toggle" href="<c:url value="/user/product-stats"/>">
                     <span class="profile-ava">
-                        <img alt="" src="img/avatar1_small.jpg">
+                        <img alt="" src="${getUser.image}">
                     </span>
                     <span class="username">${pageContext.request.userPrincipal.name}</span>
 
@@ -46,20 +53,22 @@
 
             <ul class="dropdown-menu extended logout">
                 <div class="log-arrow-up "></div>
-                <li class="eborder-top navbar-right">
-                    <a href="#"><i class="icon_profile"></i> My Profile</a>
-                </li>
-                <li class="eborder-top navbar-right">
-                    <a href="#"><i class="icon_mail_alt"></i> My Inbox</a>
-                </li>
-                <c:if test="${pageContext.request.userPrincipal.name != null}">
-                    <li>
-                        <a href="<c:url value="/user/${pageContext.request.userPrincipal.name}"/>"><i class="fa fa-cog"></i> Setting</a>
-                    </li>                             
-                    <li class="eborder-top navbar-right"><a href="<c:url value="/logout"/>"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>    
-                    </c:if>
+             
+                <c:if test="${pageContext.request.userPrincipal.name != null}" >
+                    
+                    <li class="eborder-top">       
+                        
+                        <a href="<c:url value="/user/${pageContext.request.userPrincipal.name }" />"><i class="icon_profile"></i> Setting</a>     
+                        
+                    </li>         
+                     <li><a  href="<c:url value="/user"/>"><i class="fa fa-user"></i>Saler</a>  </li>
+                                  
+                    <li><a href="<c:url value="/logout"/>"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>  
+
+                </c:if>
             </ul>
         </li>
+        
     </ul>
 
 

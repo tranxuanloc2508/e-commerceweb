@@ -39,8 +39,8 @@
   height: 100px;
   object-fit: cover;"></td>
                                         <td>${c[5].getName()}</td>
-                                        <td><div class="w3-xlarge"><a href="<c:url value="/product/edit/${c[0]}"/>"><i class="fa fa-pencil-square-o"></i></a></div>
-                                            <div class="w3-xlarge"><a href="#"><i class="fa fa-trash"></i></a></div>
+                                        <td><div class="w3-xlarge"><a href="<c:url value="/user/product-stats/${c[0]}"/>?edit=${c[0]}"><i class="fa fa-pencil-square-o"></i></a></div>
+                                            <div class="w3-xlarge"><a href="<c:url value="/user/remove/${c[0]}"/>"><i class="fa fa-trash"></i></a></div>
                                         </td>
                                     </tr>
                                 </c:forEach>                            

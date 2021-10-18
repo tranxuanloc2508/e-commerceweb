@@ -14,14 +14,18 @@ import java.util.List;
  * @author LocNe
  */
 public interface ProductService {
-    List<Product> getProducts(String kw,int page);
 
-//    public boolean addOrUpdate(Product product);
+    List<Product> getProducts(String kw, int page);
 
     long countProduct();
 
     boolean addOrUpdate(Product product);
+
     boolean updateProduct(Product p);
+
+    boolean deleteProduct(Product p);
+
     Product getProductByID(int productId);
+
     User getUserByID(int userId);
 }

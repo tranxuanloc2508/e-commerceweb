@@ -23,6 +23,7 @@ public interface ProductRepository {
 
     boolean addOrUpdate(Product product);
     boolean updateProduct(Product p);
+    boolean deleteProduct(Product p);
 
     User getUserByID(int userId);
     

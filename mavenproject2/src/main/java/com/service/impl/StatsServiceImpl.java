@@ -44,5 +44,10 @@ public class StatsServiceImpl implements StatsService{
     public List<Object[]> listSaleUser() {
         return this.statsReponsitory.listSaleUser();   
     }
+
+    @Override
+    public List<Object[]> OrderStats() {
+       return this.statsReponsitory.OrderStats();  
+    }
     
 }

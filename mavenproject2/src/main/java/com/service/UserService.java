@@ -13,10 +13,19 @@ import org.springframework.security.core.userdetails.UserDetailsService;
  *
  * @author NGUYEN_NGUYEN
  */
-public interface UserService extends UserDetailsService{
+public interface UserService extends UserDetailsService {
+
     boolean addUser(User user);
-      boolean updateUser(User user);
+
+    boolean updateUser(User user);
+
+    boolean deleteUser(User user);
+
     List<User> getUser(String username);
+
     User getUserById(int id);
+
     User getUserByUsername(String username);
+
+    User getUserByUsernamea(String username);
 }

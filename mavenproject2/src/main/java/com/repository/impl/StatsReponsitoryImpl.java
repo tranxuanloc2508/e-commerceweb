@@ -189,8 +189,37 @@ public class StatsReponsitoryImpl implements StatsReponsitory{
         predicates.add(builder.equal(rootP.get("id"), rootD.get("product")));
         predicates.add(builder.equal(rootP.get("user"),user.getId()));
 //        predicates.add(builder.equal(rootP.get("user"), user ));  
+       
         query.multiselect(rootP.get("id"),rootP.get("name"),rootP.get("description"),
                 rootP.get("price"),rootP.get("category"), builder.prod(rootD.get("unitPrice"),rootD.get("num"))); 
+        query.where(predicates.toArray(new Predicate[]{}));
+       
+        Query q = session.createQuery(query);
+
+        return q.getResultList();
+    }
+
+    @Override
+    public List<Object[]> OrderStats() {
+          Session session = this.localSessionFactoryBean.getObject().getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Object[]> query = builder.createQuery(Object[].class);
+        
+        Root rootP = query.from(Product.class); 
+        Root rootU = query.from(User.class); 
+        Root rootD = query.from(OrderDetail.class); 
+        Root rootO = query.from(Order.class); 
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();    
+         User user = userRepository.getUserByUsername(username);
+        List<Predicate> predicates = new ArrayList<>();
+//        predicates.add(builder.equal(rootP.get("id"), rootD.get("product")));
+        predicates.add(builder.equal(rootP.get("user"),rootU.get("id")));
+        predicates.add(builder.equal(rootO.get("user"),user.getId()));
+        predicates.add(builder.equal(rootD.get("product"), rootP.get("id")));
+        predicates.add(builder.equal(rootD.get("order"), rootO.get("id")));// diều kiện phép join
+//        predicates.add(builder.equal(rootP.get("user"), user ));  
+        query.multiselect(rootP.get("id"),rootP.get("image"),rootP.get("name"),rootP.get("description"),
+                rootO.get("amount"),rootO.get("createdDate"), builder.prod(rootD.get("unitPrice"),rootD.get("num"))); 
         query.where(predicates.toArray(new Predicate[]{}));
        
         Query q = session.createQuery(query);

@@ -20,14 +20,43 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlTransient;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
  * @author NGUYEN_NGUYEN
  */
 @Entity
-@Table(name ="`user`")
+@Table(name ="user")
 public class User implements Serializable{
+
+    /**
+     * @return the file
+     */
+    public MultipartFile getFile() {
+        return file;
+    }
+
+    /**
+     * @param file the file to set
+     */
+    public void setFile(MultipartFile file) {
+        this.file = file;
+    }
+
+    /**
+     * @return the image
+     */
+    public String getImage() {
+        return image;
+    }
+
+    /**
+     * @param image the image to set
+     */
+    public void setImage(String image) {
+        this.image = image;
+    }
     public static final String ADMIN ="ROLE_ADMIN";
     public static final String USER ="ROLE_USER";
     
@@ -49,7 +78,9 @@ public class User implements Serializable{
     private Collection<Product> productCollection;
     @OneToMany(mappedBy = "user")
     private Collection<Order> orderCollection;
-    
+      @Transient //xem như là 1 thuộc tính để xử lí ko lk với csld
+    private MultipartFile file;
+      private String image;
      @Transient
      private String confirmPassword;
     /**

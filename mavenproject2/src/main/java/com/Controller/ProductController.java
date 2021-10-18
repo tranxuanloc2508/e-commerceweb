@@ -51,50 +51,58 @@ public class ProductController {
     @PostMapping("/user/add-products")
     public String add(Model model, @ModelAttribute(value = "product")
             @Valid Product product, BindingResult result) {
-       if (!result.hasErrors()) {
-           if (this.productService.addOrUpdate(product)==true) {
-               
-               return "redirect:/"; // nếu đúng về trang chủ   
-           } else {
-               model.addAttribute("errMsg", "Someting wrong!!!");
-           }
-       }
-       return "product"; // sai vè product
-   }
-        
-//        if (result.hasErrors()) {
-//            return "product";
-//        }
-//
-//        if (!this.productService.addOrUpdate(product)) {
-//            model.addAttribute("errMsg", "Hệ thóng đang có lỗi! Vui lòng quay lại sau!");
-//            return "product";
-//        }
-//
-//        return "redirect:/";
-    
+        if (!result.hasErrors()) {
+            if (this.productService.addOrUpdate(product) == true) {
 
+                return "redirect:/"; // nếu đúng về trang chủ   
+            } else {
+                model.addAttribute("errMsg", "Someting wrong!!!");
+            }
+        }
+        return "product"; // sai vè product
+    }
+
+//    <-Detail product->
     @GetMapping(value = "/products/{product_id}")
     public ModelAndView detail(@PathVariable(value = "product_id") int productId) {
         ModelAndView view = new ModelAndView();
         view.setViewName("detail");
         view.addObject("product", productService.getProductByID(productId));
-        
+
         return view;
     }
-    
-     @GetMapping(value = "/product/edit/{product_id}")
-    public String editProduct(Model model,@PathVariable( value ="product_id" ) int productId) {       
-           model.addAttribute("product", productService.getProductByID(productId));  
-        return "edit-product";
+
+    @GetMapping(value = "/user/product-stats/{product_id}")
+    public String editProduct(Model model, @PathVariable(value = "product_id") int productId) {
+
+     
+            Product u = this.productService.getProductByID(productId);
+            model.addAttribute("product", u);
+
+            return "edit-product";
+        
+        
     }
-     @PostMapping("/product/edit/{product_id}")
-    public String edit(Model model,
-            @ModelAttribute(value = "product")
-            @Valid Product product, BindingResult result) {
+
+    @PostMapping("/user/product-stats/{product_id}")
+    public String edit(Model model, @ModelAttribute(value = "product_id") @Valid Product product, BindingResult result) {
+        if (!result.hasErrors()) {
+            this.productService.updateProduct(product);
+//        model.addAttribute("product",product);
+            return "redirect:/";
+        } else {
+            model.addAttribute("errMsg", "Có lỗi rồi!!!");
+        }
+        return "user";
+    }
+    @GetMapping("/user/remove/{product_id}")
+    public String delete(Model model, @PathVariable(value = "product_id") int a) {
        
-            this.productService.updateProduct(product); 
-         
-       return "/"; // sai vè product
+            Product u = this.productService.getProductByID(a);
+            this.productService.deleteProduct(u);
+//        model.addAttribute("product",product);
+            return "redirect:/";
+  
+ 
     }
 }

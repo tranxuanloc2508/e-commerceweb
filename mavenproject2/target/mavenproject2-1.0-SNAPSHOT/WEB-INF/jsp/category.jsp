@@ -13,18 +13,18 @@
                 <div class="sidebar">
                     <div class="sidebar__item">
                         <h4>Department</h4>
-                        <ul>
-                            <li><a href="#">Fresh Meat</a></li>
-                            <li><a href="#">Vegetables</a></li>
-                            <li><a href="#">Fruit &amp; Nut Gifts</a></li>
-                            <li><a href="#">Fresh Berries</a></li>
-                            <li><a href="#">Ocean Foods</a></li>
-                            <li><a href="#">Butter &amp; Eggs</a></li>
-                            <li><a href="#">Fastfood</a></li>
-                            <li><a href="#">Fresh Onion</a></li>
-                            <li><a href="#">Papayaya &amp; Crisps</a></li>
-                            <li><a href="#">Oatmeal</a></li>
-                        </ul>
+                       <ul>
+                        <c:forEach var="cat" items="${categories}">
+                            <li class="nav-item">
+                                <c:url value="/" var="catPath">
+                                    <c:param name="CateId" value="${cat.id}"></c:param>
+                                </c:url>
+                                <a class="nav-link" href="${catPath}"">${cat.name}</a>
+
+                            </li>
+                        </c:forEach>
+
+                    </ul>
                     </div>
                     <div class="sidebar__item">
                         <h4>Price</h4>
@@ -294,12 +294,6 @@
                     </div>
                     <div class="row">
                         <div class="product__discount__slider owl-carousel owl-loaded owl-drag">
-
-
-
-
-
-
                             <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-877px, 0px, 0px); transition: all 1.2s ease 0s; width: 3510px;"><div class="owl-item cloned" style="width: 292.5px;"><div class="col-lg-4">
                                             <div class="product__discount__item">
                                                 <div class="product__discount__item__pic set-bg" data-setbg="img/product/discount/pd-4.jpg" style="background-image: url(&quot;img/product/discount/pd-4.jpg&quot;);">
@@ -518,10 +512,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="container">
-                    <div class="row">
+                     <div class="row">
                         <c:forEach var="p" items="${products}">
                             <div class="col-lg-4 col-md-6 col-sm-6">
                                 <div class="product__item">                                         
@@ -547,9 +538,13 @@
                     </div>
                 </div>
 
+                <div class="container">
+                   
+                </div>
+
                 <ul class="pagination justify-content-center">
                     <c:forEach begin="1" end="${Math.ceil(counter/6)}" var="i">
-                        <li class="page-item"><a class="page-link" href="<c:url value="/"/>?page=${i}">${i}</a></li>
+                        <li class="page-item"><a class="page-link" href="<c:url value="/category"/>?page=${i}">${i}</a></li>
                         </c:forEach>
                 </ul>
             </div>

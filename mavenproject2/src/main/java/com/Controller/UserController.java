@@ -119,27 +119,21 @@ public class UserController {
         return "product-user-stats";
     }
     
-    
+    //<--Edit Profile User-->
     @GetMapping(value = "/user/{user_id}")
-    public ModelAndView editProfileView(Model model,@PathVariable(value = "user_id") int a) {
-      
-        ModelAndView view = new ModelAndView();
-        view.setViewName("edit-profile");
-//        User u = this.userDetailsService.getUserByUsername(userId);
-//        String username = SecurityContextHolder.getContext().getAuthentication().getName();
-//            User user = userDetailsService.getUserByUsername(username);
-         model.addAttribute("user", this.userDetailsService.getUserById(a));
-//            model.addAttribute("user",u);
-//            view.addObject("user", userDetailsService.getUserByUsername(model.toString(userId)));
-       
-//         userDetailsService.updateUser(user);
-        return view;
+    public String editProfileView(Model model,@PathVariable(value = "user_id") String a) {
+         model.addAttribute("user", this.userDetailsService.getUserByUsername(a));
+        return "edit-profile";
     }
       @PostMapping("/user/{user_id}")
-    public String editProfile (Model model,@ModelAttribute(value = "user_id") @Valid User user){
+    public String editProfile (Model model,@ModelAttribute(value = "user") @Valid User user){
      
        this.userDetailsService.updateUser(user);
         return "redirect:/";
     }
-        
+     @GetMapping("user/orderliststats")
+    public String listOrderStats(Model model) {
+        model.addAttribute("orderliststats", this.statsService.OrderStats());
+        return "orderliststats";
+    }    
 }

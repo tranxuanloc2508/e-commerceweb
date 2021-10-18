@@ -16,6 +16,8 @@ import com.service.UserService;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -42,6 +44,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    
     public boolean addOrUpdate(Product product) {
 
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
@@ -79,7 +82,32 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+  
     public boolean updateProduct(Product p) {
-        return this.productRepository.updateProduct(p); 
+          
+        try {
+            if (p.getId()> 0){
+                if (p.getFile().getBytes().length == 0) {
+                    Product a = this.productRepository.getProductByID(p.getId());
+                    p.setImage(a.getImage());
+                }else{
+                    Map m = this.cloudinary.uploader().upload(p.getFile().getBytes(),
+                            ObjectUtils.asMap("resource_type", "auto"));
+
+                p.setImage((String) m.get("secure_url"));
+                
+            } 
+            productRepository.updateProduct(p);
+            }
+        return this.productRepository.updateProduct(p);
+        } catch (IOException ex) {
+            System.err.println("Đã bị lỗi!!!");
+        }   
+        return false;
+}
+
+    @Override
+    public boolean deleteProduct(Product product) {
+        return this.productRepository.deleteProduct(product);
     }
 }

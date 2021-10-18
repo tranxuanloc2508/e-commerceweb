@@ -32,7 +32,7 @@
                                 All Categories
 
                                 <span class="angle-down">
-                                    <i class="fas fa-caret-down"></i>
+                                    <i class="fa fa-caret-down"></i>
                                 </span>
                             </div>
                             <input type="text" name="kw" placeholder="What do yo u need?">
@@ -145,18 +145,18 @@
                 <div class="section-title">
                     <h2>Featured Product</h2>
                 </div>
-                <div class="featured__controls">
+<!--                <div class="featured__controls">
                     <ul>
-                        <c:forEach var="cat" items="${categories}">
+                        <%--<c:forEach var="cat" items="${categories}">--%>
                             <li class="nav-item">
-                                <c:url value="/" var="catPath">
-                                    <c:param name="CateId" value="${cat.id}"></c:param>
-                                </c:url>
+                                <%--<c:url value="/" var="catPath">--%>
+                                    <%--<c:param name="CateId" value="${cat.id}"></c:param>--%>
+                                <%--</c:url>--%>
                                 <a class="nav-link" href="${catPath}"">${cat.name}</a>
                             </li>
-                        </c:forEach>
+                        <%--</c:forEach>--%>
                     </ul>
-                </div>
+                </div>-->
             </div>
         </div>
         <div class="row">

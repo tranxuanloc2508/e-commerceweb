@@ -22,7 +22,7 @@
                 <a href="<c:url value="/cart"/>"><i class="fa fa-shopping-bag"></i></i><span id="cart-counter">${cartCounter}</span></a>
             </li>
         </ul>
-       
+
     </div>
     <div class="humberger__menu__widget">
         <div class="header__top__right__language">
@@ -76,80 +76,89 @@
                         </ul>
                     </div>
                 </div>
-               
+
                 <div class="col-lg-6 col-md-6">
                     <div class="header__top__right">
                         <div class="header__top__right__social">
-                                   
-                        
-                           
+
+
+
                         </div>
                         <div class="header__top__right__language">   
+
                             <c:if test="${pageContext.request.userPrincipal.name == null}"> 
                                 <div ><a href="<c:url value="/login"/>">Login</a></div>
-                             </c:if>
-                              <c:if test="${pageContext.request.userPrincipal.name != null}">
-                                  <div class="username">${pageContext.request.userPrincipal.name}</div>
-                              </c:if>
-                            <span class="dropdown-toggle"></span>
+                            </c:if>
+                            <c:if test="${pageContext.request.userPrincipal.name != null}">
+                                <li class="nav-item">   
+                                    <c:if test="${getUser.image != null}">
+                                        <img style="width: 30px " src="${getUser.image}" class="rounded-circle"/>
+                                    </c:if>
+                                    <c:if test="${getUser.image == null}">                        
+                                            <i class="fa fa-user" aria-hidden="true"></i>
+                                    </c:if>
+                                           ${pageContext.request.userPrincipal.name}</li>
+                            </c:if>
+                            <span class=""></span>
                             <ul style="background: white">                             
-                                <li>
-                                    <a href="#"><i class="fa fa-cog"></i> My Inbox</a>
-                                </li>
+
                                 <c:if test="${pageContext.request.userPrincipal.name != null}">
-                                      <li><a  href="<c:url value="/user"/>"><i class="fa fa-user"></i>Saler</a>  </li>
-                                     <li>
+                                    <li><a  href="<c:url value="/user"/>"><i class="fa fa-user"></i>Saler</a>  </li>
+
+                                    <li>
                                         <a href="<c:url value="/user/${pageContext.request.userPrincipal.name}"/>"><i class="fa fa-cog"></i> Setting</a>
-                                    </li>        
-                                    <li><a href="<c:url value="/logout"/>"><span  class="fa fa-sign-out"></span> Logout</a></li>    
+                                    </li>       
+                                    <li><a href="<c:url value="user/orderliststats"/>"><span  class="fa fa-sign-out"></span>Hóa đơn</a></li>  
+                                    <li><a href="<c:url value="/logout"/>"><span  class="fa fa-sign-out"></span> Logout</a></li> 
+
                                 </c:if>
                             </ul>
                         </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3">
-                <div class="header__logo">
-                    <a href="./index.html"><img src="<c:url value="img/logo.png"/>" alt=""></a>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="header__logo">
+                        <a href="<c:url value="/"/>"><img src="<c:url value="img/logo.png"/>" alt=""></a>
+                    </div>
                 </div>
-            </div>
-            <div class="col-lg-6">
-                <nav class="header__menu">
-                    <ul>
-                        <li class="active"><a href="<c:url value="/"/>">Home</a></li>
-                        <li><a href="<c:url value="/category"/>">Shop</a></li>
-                        <li><a href="#">Pages</a>
-                            <ul class="header__menu__dropdown">
-                                <li><a href="./shop-details.html">Shop Details</a></li>
-                                <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                                <li><a href="./checkout.html">Check Out</a></li>
-                                <li><a href="./blog-details.html">Blog Details</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="./blog.html">Blog</a></li>
-                        <li><a href="./contact.html">Contact</a></li>
-                    </ul>
-                </nav>
-            </div>
-            <div class="col-lg-3">
-                <div class="header__cart">
-                    <ul>
-                        <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+                <div class="col-lg-6">
+                    <nav class="header__menu">
+                        <ul>
+                            <li class="active"><a href="<c:url value="/"/>">Home</a></li>
+                            <li><a href="<c:url value="/category"/>">Shop</a></li>
+                            <li><a href="#">Pages</a>
+                                <ul class="header__menu__dropdown">
+                                    <li><a href="./shop-details.html">Shop Details</a></li>
+                                    <li><a href="./shoping-cart.html">Shoping Cart</a></li>
+                                    <li><a href="./checkout.html">Check Out</a></li>
+                                    <li><a href="./blog-details.html">Blog Details</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="./blog.html">Blog</a></li>
+                            <li><a href="./contact.html">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-lg-3">
+                    <div class="header__cart">
+                        <ul>
+                            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
 
-                        <li>
-                            <a  href="<c:url value="/cart"/>"><i class="fa fa-shopping-bag"></i><span  id="cart-counter">${cartCounter}</span></a>
-                        </li>
-                    </ul>                   
+                            <li>
+                                <a  href="<c:url value="/cart"/>"><i class="fa fa-shopping-bag"></i><span  id="cart-counter">${cartCounter}</span></a>
+                            </li>
+                        </ul>                   
+                    </div>
                 </div>
             </div>
+            <div class="humberger__open">
+                <i class="fa fa-bars"></i>
+            </div>
         </div>
-        <div class="humberger__open">
-            <i class="fa fa-bars"></i>
-        </div>
-    </div>
 </header>
 <!-- Header Section End -->
 

@@ -74,4 +74,5 @@ public class AdminController {
         model.addAttribute("listproductStats", this.statsService.listProduct());
         return "listproduct";
     }
+    
 }
