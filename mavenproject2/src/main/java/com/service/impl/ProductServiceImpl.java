@@ -76,10 +76,6 @@ public class ProductServiceImpl implements ProductService {
 
     }
 
-    @Override
-    public User getUserByID(int userId) {
-        return this.userRepository.getUserById(userId);
-    }
 
     @Override
   

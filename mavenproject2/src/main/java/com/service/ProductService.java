@@ -27,5 +27,5 @@ public interface ProductService {
 
     Product getProductByID(int productId);
 
-    User getUserByID(int userId);
+    
 }

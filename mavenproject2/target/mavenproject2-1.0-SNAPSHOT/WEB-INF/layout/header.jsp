@@ -80,39 +80,42 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="header__top__right">
                         <div class="header__top__right__social">
-
-
-
                         </div>
+                        
                         <div class="header__top__right__language">   
 
                             <c:if test="${pageContext.request.userPrincipal.name == null}"> 
                                 <div ><a href="<c:url value="/login"/>">Login</a></div>
                             </c:if>
-                            <c:if test="${pageContext.request.userPrincipal.name != null}">
-                                <li class="nav-item">   
-                                    <c:if test="${getUser.image != null}">
-                                        <img style="width: 30px " src="${getUser.image}" class="rounded-circle"/>
-                                    </c:if>
-                                    <c:if test="${getUser.image == null}">                        
-                                            <i class="fa fa-user" aria-hidden="true"></i>
-                                    </c:if>
-                                           ${pageContext.request.userPrincipal.name}</li>
-                            </c:if>
-                            <span class=""></span>
-                            <ul style="background: white">                             
-
                                 <c:if test="${pageContext.request.userPrincipal.name != null}">
-                                    <li><a  href="<c:url value="/user"/>"><i class="fa fa-user"></i>Saler</a>  </li>
+                                    <div class="nav-item">   
+                                        <a href="<c:url value="/"/>" >
+                                            <c:if test="${currentUser.image != null}">
+                                                <img src="${currentUser.image}" class="avatar"/>
+                                            </c:if>
+                                            <c:if test="${currentUser.image == null}">                        
+                                                <i class="fa fa-user" aria-hidden="true"></i>
+                                            </c:if>
+                                                ${pageContext.request.userPrincipal.name}
+                                        </a>
+                                    </div>
+                                        
+                                            
 
-                                    <li>
-                                        <a href="<c:url value="/user/${pageContext.request.userPrincipal.name}"/>"><i class="fa fa-cog"></i> Setting</a>
-                                    </li>       
-                                    <li><a href="<c:url value="user/orderliststats"/>"><span  class="fa fa-sign-out"></span>Hóa đơn</a></li>  
-                                    <li><a href="<c:url value="/logout"/>"><span  class="fa fa-sign-out"></span> Logout</a></li> 
+                                    <span class=""></span>
+                                    <ul style="background: white">                             
 
+
+                                        <li><a  href="<c:url value="/user"/>"><i class="fa fa-user"></i>Saler</a>  </li>
+
+                                        <li>
+                                            <a href="<c:url value="/user/${pageContext.request.userPrincipal.name}"/>"><i class="fa fa-cog"></i> Setting</a>
+                                        </li>       
+                                        <li><a href="<c:url value="user/orderliststats"/>"><span  class="fa fa-sign-out"></span>Hóa đơn</a></li>  
+                                        <li><a href="<c:url value="/logout"/>"><span  class="fa fa-sign-out"></span> Logout</a></li> 
+
+                                    </ul>
                                 </c:if>
-                            </ul>
                         </div>
                     </div>
                 </div>

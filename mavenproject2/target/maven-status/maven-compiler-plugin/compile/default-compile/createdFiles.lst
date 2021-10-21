@@ -1,5 +1,6 @@
 com\configs\SecurityWebAppInitializer.class
 com\Controller\ApiCartController.class
+com\repository\impl\CommentRepositoryImpl.class
 com\repository\impl\UserRepositoryImpl.class
 com\service\OrderService.class
 com\service\impl\StatsServiceImpl.class
@@ -9,12 +10,15 @@ com\configs\TilesConfig.class
 com\repository\ProductRepository.class
 com\pojos\OrderDetail_.class
 com\service\UserService.class
+com\repository\CommentRepository.class
 com\repository\UserRepository.class
+com\configs\handlers\LogoutHandler.class
 com\pojos\Order.class
 com\pojos\Category_.class
 com\validator\WebAppValidator.class
 com\service\CategoryService.class
 com\service\impl\CategoryServiceImpl.class
+com\configs\handlers\MyAccessDeniedHandler.class
 com\Controller\HomeController.class
 com\pojos\Category.class
 com\repository\impl\StatsReponsitoryImpl.class
@@ -25,7 +29,9 @@ com\Controller\CartController.class
 com\formatter\CategoryFormatter.class
 com\pojos\Product.class
 com\pojos\Cart.class
+com\pojos\Comment.class
 com\pojos\Product_.class
+com\Controller\ApiCommentController.class
 com\configs\SpringSecurityConfig.class
 com\validator\UserValidator.class
 com\service\impl\OrderServiceImpl.class
@@ -36,9 +42,13 @@ com\service\StatsService.class
 com\Controller\UserController.class
 com\repository\impl\OrderRepositoryImpl.class
 com\pojos\Order_.class
+com\configs\handlers\LoginSuccessHandler.class
 com\configs\DispatcherServletInit.class
 com\pojos\User.class
 com\configs\WebApplicationContextConfigs.class
+com\service\impl\CommentServiceImpl.class
+com\service\CommentService.class
+com\pojos\Comment_.class
 com\pojos\OrderDetail.class
 com\formatter\UserFormatter.class
 com\service\ProductService.class

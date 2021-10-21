@@ -27,6 +27,13 @@
 /*----------------------------------------*/
 /* Template default CSS
 /*----------------------------------------*/
+/* avatar Login*/
+.avatar {
+  vertical-align: middle;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
 html,
 /*login page*/
 .login-page {
@@ -3530,5 +3537,7 @@ ol {
   .blog__details__hero__text h2 {
     font-size: 24px;
   }
+  
 }
+
 /*# sourceMappingURL=style.css.map */

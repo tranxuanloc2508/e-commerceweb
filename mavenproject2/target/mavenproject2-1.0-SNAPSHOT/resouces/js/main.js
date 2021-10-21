@@ -3,20 +3,20 @@
 'use strict';
 function addToCart(productId) {
 
-    fetch(`/mavenproject2/api/cart/${productId}`).then(res => res.json()).then(data => {
-        var d = document.getElementById("cart-counter");
-        if (d !== null)
-            d.innerText = data;
+    fetch(`/mavenproject2/api/cart/${productId}`).then(res => res.json()).then(function(data){
+       let counter = document.getElementById("cart-counter")
+      counter.innerText = data
+//   })
     })
 
 }
-function addCart(productId, productName) {
+function addCart(productId) {
     $.ajax({
         url: "/mavenproject2/api/cart",
         type: "POST",
         data: {
-            productId: productId,
-            num: 1
+            "productId": productId,
+            "num": 1
         },
         success: function (data) {
             var a = $(".product-count").text();
@@ -25,7 +25,9 @@ function addCart(productId, productName) {
         },
         error: function (jqXHR) {
             alert(jqXHR);
+            
         }
+        
     });
 }
 //function addToCart(id, name,price){
@@ -105,6 +107,44 @@ function pay(){
         })
     
     }
+}
+// add comment
+function addComment(productId,userId){
+     event.preventDefault();
+ 
+     fetch(`/mavenproject2/api/add-comment/${userId}`,{
+       method: "post",
+       body:JSON.stringify({
+           "content":document.getElementById("contentId").value,
+           "productId": productId
+       }),
+       headers:{
+           "Content-type":"application/json"
+       }
+   }).then(function(res){
+       console.info(res)
+       
+       return res.json();
+       
+   }).then(function(data){
+       console.info(data);
+       let area = document.getElementById("commentArea");
+        area.innerHTML = `
+                     <div class="commented-section mt-4"class="d-flex flex-row add-comment-section mt-4 mb-4"><img class="img-fluid img-responsive rounded-circle mr-2" src="https://i.imgur.com/qdiP4DB.jpg" width="38">
+                        <div class="d-flex flex-row align-items-center commented-user mt-3">
+                            <span class="dot mb-2">${data.user.username}</span>
+                            <i class=" mb-2 ml-4">${moment(data.createdDate).fromNow()}</i>
+                        </div>
+                        <div class="comment-text-sm"><span>${data.content}</span></div>                  
+                    </div>
+                    ` + area.innerHTML;
+     
+   })
+
+}
+/// Alert add comment
+function show_alert() {
+  alert("Bạn chưa đăng nhập!");
 }
 (function ($) {
 

@@ -38,6 +38,7 @@
         <link rel="icon" type="image/png" href="<c:url value="img/icon.png"/>"/>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     </head>
     <body>
         <div class="container-fluid">
