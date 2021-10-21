@@ -105,8 +105,8 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>Anh san pham</label>
-                            <form:input type="file" id="image" path="file" class="form-control"/>
+                            <label for="image">Anh san pham</label>
+                            <form:input type="file" id="image" path="file" value="${user.image}" class="form-control"/>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12">

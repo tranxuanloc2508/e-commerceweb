@@ -6,6 +6,7 @@
 package com.pojos;
 
 //import com.fasterxml.jackson.annotation.JsonRootName;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.CascadeType;
@@ -29,34 +30,6 @@ import org.springframework.web.multipart.MultipartFile;
 @Entity
 @Table(name ="user")
 public class User implements Serializable{
-
-    /**
-     * @return the file
-     */
-    public MultipartFile getFile() {
-        return file;
-    }
-
-    /**
-     * @param file the file to set
-     */
-    public void setFile(MultipartFile file) {
-        this.file = file;
-    }
-
-    /**
-     * @return the image
-     */
-    public String getImage() {
-        return image;
-    }
-
-    /**
-     * @param image the image to set
-     */
-    public void setImage(String image) {
-        this.image = image;
-    }
     public static final String ADMIN ="ROLE_ADMIN";
     public static final String USER ="ROLE_USER";
     
@@ -74,13 +47,18 @@ public class User implements Serializable{
     private boolean active;
     @Column(name="`user_role`")
     private String userRole;
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private Collection<Product> productCollection;
+    @JsonIgnore
     @OneToMany(mappedBy = "user")
     private Collection<Order> orderCollection;
-      @Transient //xem như là 1 thuộc tính để xử lí ko lk với csld
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private Collection<Comment> commentCollection;
+     private String image;
+     @Transient //xem như là 1 thuộc tính để xử lí ko lk với csld
     private MultipartFile file;
-      private String image;
      @Transient
      private String confirmPassword;
     /**
@@ -226,6 +204,14 @@ public class User implements Serializable{
         return productCollection;
     }
 
+       @XmlTransient
+    public Collection<Comment> getCommentCollection() {
+        return commentCollection;
+    }
+
+    public void setCommentCollection(Collection<Comment> commentCollection) {
+        this.commentCollection = commentCollection;
+    }
     /**
      * @param productCollection the productCollection to set
      */
@@ -245,6 +231,34 @@ public class User implements Serializable{
      */
     public void setOrderCollection(Collection<Order> orderCollection) {
         this.orderCollection = orderCollection;
+    }
+
+    /**
+     * @return the image
+     */
+    public String getImage() {
+        return image;
+    }
+
+    /**
+     * @return the file
+     */
+    public MultipartFile getFile() {
+        return file;
+    }
+
+    /**
+     * @param file the file to set
+     */
+    public void setFile(MultipartFile file) {
+        this.file = file;
+    }
+
+    /**
+     * @param image the image to set
+     */
+    public void setImage(String image) {
+        this.image = image;
     }
 
    

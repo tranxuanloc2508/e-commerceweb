@@ -25,7 +25,7 @@ public interface ProductRepository {
     boolean updateProduct(Product p);
     boolean deleteProduct(Product p);
 
-    User getUserByID(int userId);
+    
     
 
 }

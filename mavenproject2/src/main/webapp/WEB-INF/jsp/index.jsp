@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <section class="hero">
     <div class="container">
@@ -165,7 +166,7 @@
                     <div class="card-body">                                         
                         <div class="featured__item">
                             <div class="featured__item__pic set-bg" >
-                                <img class="img-fluid"src="<c:url value="${p.image}"/>" alt="${p.name}"/>
+                                <a href="<c:url value="/products/${p.id}" />"><img class="img-thumbnail"src="<c:url value="${p.image}"/>" alt="${p.name}"/></a>
                                 <ul class="featured__item__pic__hover">
                                     <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                     <li><a href="<c:url value="/products/${p.id}" />"><i class="fa fa-retweet"></i></a></li>
@@ -174,7 +175,8 @@
                             </div>
                             <div class="featured__item__text">
                                 <h6><a href="#">${p.name}</a></h6>
-                                <h5>${p.price} VNĐ</h5>
+                                <h5><fmt:formatNumber type = "number" maxFractionDigits = "0" value = "${p.price}" /> đ</h5>
+                                
                             </div>
                         </div>
                     </div>

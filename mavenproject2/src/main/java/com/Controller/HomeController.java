@@ -7,6 +7,7 @@ package com.Controller;
 
 import com.pojos.Cart;
 import com.pojos.Category;
+import com.pojos.User;
 import com.service.CategoryService;
 import com.service.ProductService;
 import com.service.UserService;
@@ -14,6 +15,7 @@ import com.utils.utils;
 import java.util.Map;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -42,7 +44,11 @@ public class HomeController {
         model.addAttribute("categories", this.categoryService.getCategories());
         model.addAttribute("cartCounter", utils.countCart((Map<Integer, Cart>) session.getAttribute("cart")));
         model.addAttribute("users", this.userService.getUser(kw));
-        model.addAttribute("getUser", session.getAttribute("getUser"));
+        
+         model.addAttribute("currentUser",session.getAttribute("currentUser"));
+         
+         
+       
     }
 
     @RequestMapping("/")/// HTTP GET
@@ -88,11 +94,4 @@ public class HomeController {
         //        model.addAttribute("users", this.userService.getUser(userID));
         return "category";// timf gía trị đầu tiên tên này
     }
-
-    @ModelAttribute // đính kèm all các trang trên web
-    public void addAttribute(Model model) {
-        model.addAttribute("categories", this.categoryService.getCategories());
-        model.addAttribute("users", this.userService.getUser(""));
-
-    }    
 }

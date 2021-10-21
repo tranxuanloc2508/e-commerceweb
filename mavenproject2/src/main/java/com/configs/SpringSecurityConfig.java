@@ -7,6 +7,9 @@ package com.configs;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
+import com.configs.handlers.LoginSuccessHandler;
+import com.configs.handlers.LogoutHandler;
+import com.configs.handlers.MyAccessDeniedHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -17,6 +20,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
@@ -35,6 +40,12 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
     
     @Autowired
     private UserDetailsService userDetailsService;
+    @Autowired
+    private AuthenticationSuccessHandler loginSuccessHandler;
+    @Autowired
+    private LogoutSuccessHandler logoutHandler;
+    @Autowired
+    private MyAccessDeniedHandler accessDenied;
     
     @Bean
     public BCryptPasswordEncoder passwordEncoder(){
@@ -51,6 +62,21 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
         return c;
     }
 
+      @Bean
+    public AuthenticationSuccessHandler loginSuccessHandler() {
+        return new LoginSuccessHandler();
+    }
+    
+    @Bean
+    public LogoutSuccessHandler logoutHandler() {
+        return new LogoutHandler();
+    }
+    
+    @Bean
+    public MyAccessDeniedHandler accessDenied() {
+        return new MyAccessDeniedHandler();
+    }
+    
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
        
@@ -74,14 +100,15 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
 //            .and()
 //            .exceptionHandling().accessDeniedPage("/403")
        http.formLogin().defaultSuccessUrl("/").failureUrl("/login?error");
+       http.formLogin().successHandler(this.loginSuccessHandler);
        
-       http.logout().logoutSuccessUrl("/login/");
+             http.logout().logoutSuccessHandler(this.logoutHandler);
        
        http.exceptionHandling().accessDeniedPage("/login?accessDenied");
        
        http.authorizeRequests().antMatchers("/").permitAll()
-               .antMatchers("/admin/products").access("hasRole('ROLE_ADMIN')");
-//               .antMatchers("/cart/**").access("hasRole('ROLE_USER')")
+               .antMatchers("/admin/products").access("hasRole('ROLE_ADMIN')")
+               .antMatchers("/cart/**").access("hasRole('ROLE_USER')");
 //               .antMatchers("/user/**").access("hasRole('ROLE_USER')");
        
        http.csrf().disable();

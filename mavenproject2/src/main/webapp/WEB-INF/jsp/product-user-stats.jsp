@@ -35,7 +35,7 @@
                                         <td>${c[1]}</td>
 
                                         <td>${c[3]} VNĐ</td>
-                                        <td > <img src="${c[4]}" class="img-thumbnail"alt="Cinque Terre" style=" width: 100px;
+                                        <td > <img src="${c[4]}" class="img-thumbnail"alt="${c[4]}" style=" width: 100px;
   height: 100px;
   object-fit: cover;"></td>
                                         <td>${c[5].getName()}</td>

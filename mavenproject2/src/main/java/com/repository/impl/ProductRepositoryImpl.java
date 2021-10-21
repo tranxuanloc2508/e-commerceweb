@@ -98,11 +98,6 @@ public class ProductRepositoryImpl implements ProductRepository {
         return session.get(Product.class, id);
     }
 
-    @Override
-    public User getUserByID(int i) {
-        Session session = this.sessionFactory.getObject().getCurrentSession();
-        return session.get(User.class, i);
-    }
 
     @Override
     public boolean deleteProduct(Product p) {

@@ -7,6 +7,7 @@ package com.Controller;
 
 import com.pojos.Product;
 import com.pojos.User;
+import com.service.CommentService;
 import com.service.ProductService;
 import com.service.UserService;
 import com.validator.WebAppValidator;
@@ -36,6 +37,8 @@ public class ProductController {
     private WebAppValidator productValidator;
     @Autowired
     private UserService userService;
+    @Autowired
+    private CommentService commentService;
 
     @InitBinder
     public void initBinder(WebDataBinder binder) {
@@ -68,6 +71,7 @@ public class ProductController {
         ModelAndView view = new ModelAndView();
         view.setViewName("detail");
         view.addObject("product", productService.getProductByID(productId));
+         view.addObject("comments",commentService.getCommentByProductId(productId));
 
         return view;
     }

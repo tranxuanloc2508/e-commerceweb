@@ -14,6 +14,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -61,6 +62,8 @@ public class Product implements Serializable{
    @JoinColumn(name = "user_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private User user;
+   @OneToMany(cascade = CascadeType.ALL, mappedBy = "productId",fetch = FetchType.EAGER)
+    private Collection<Comment> commentCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
     private Collection<OrderDetail> orderDetailCollection;
 //    @ManyToMany
@@ -242,5 +245,13 @@ public class Product implements Serializable{
 
     public void setOrderDetailCollection(Collection<OrderDetail> orderDetailCollection) {
         this.orderDetailCollection = orderDetailCollection;
+    }
+       @XmlTransient
+    public Collection<Comment> getCommentCollection() {
+        return commentCollection;
+    }
+
+    public void setCommentCollection(Collection<Comment> commentCollection) {
+        this.commentCollection = commentCollection;
     }
 }
