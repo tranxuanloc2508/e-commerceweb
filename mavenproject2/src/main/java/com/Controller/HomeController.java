@@ -77,21 +77,13 @@ public class HomeController {
         return "cart";
     }
      @RequestMapping(path = "/category")
-    public String Category(Model model,
-            @RequestParam(required = false) Map<String, String> params) {
-        String kw = params.getOrDefault("kw", null);
-        int page = Integer.parseInt(params.getOrDefault("page", "1"));// getOrdefault neu co lay ko co de mac dinh
-        String cateId = params.get("CateId");
-        if (cateId == null) {
-            model.addAttribute("products", this.productService.getProducts(kw, page));
-            model.addAttribute("counter", this.productService.countProduct());
-
-        } else {
-            Category c =this.categoryService.getCategoryById(Integer.parseInt(cateId));
-            model.addAttribute("products", c.getProductCollection());
-        }
-
-        //        model.addAttribute("users", this.userService.getUser(userID));
-        return "category";// timf gía trị đầu tiên tên này
+   public String Category(Model model) {
+        return "category";
     }
+     @ModelAttribute // đính kèm all các trang trên web
+    public void addAttribute(Model model) {
+        model.addAttribute("categories", this.categoryService.getCategories());
+        model.addAttribute("users", this.userService.getUser(""));
+
+    }    
 }

@@ -21,6 +21,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.JoinTable;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -38,7 +39,7 @@ import org.springframework.web.multipart.MultipartFile;
  * @author LocNe
  */
 @Entity
-@Table(name = "product")
+@Table(name = "`product`")
 public class Product implements Serializable{
 
     @Id
@@ -46,20 +47,25 @@ public class Product implements Serializable{
     private int id;
 //    @NotNull(message = "{product.category.nullErr}")
     private String name;
+//    @Lob
+//    @Column(columnDefinition = "TEXT")
     private String description;
-    @Min(value = 10000, message = "{product.price.minErr}")
+    @Min(value = 1000, message = "{product.price.minErr}")
     @Max(value = 10000000, message = "{product.price.maxErr}")
     private Long price;
     private String image;
+    @Column(name = "Milliliter")
+    private String milliliter;
+    private String factory;
     @Column(name = "created_date")
     @Temporal(javax.persistence.TemporalType.DATE)// quy dinh ngay thang
     private Date createDate;
     @ManyToOne
-    @JoinColumn(name = "category_id")// khoa ngoai ket 2 bang
+    @JoinColumn(name = "`category_id`")// khoa ngoai ket 2 bang
     @NotNull(message = "{product.category.nullErr}")
 //    @JsonIgnore
     private Category category;
-   @JoinColumn(name = "user_id", referencedColumnName = "id")
+   @JoinColumn(name = "`user_id`", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private User user;
    @OneToMany(cascade = CascadeType.ALL, mappedBy = "productId",fetch = FetchType.EAGER)
@@ -253,5 +259,34 @@ public class Product implements Serializable{
 
     public void setCommentCollection(Collection<Comment> commentCollection) {
         this.commentCollection = commentCollection;
+    }
+
+    
+    /**
+     * @return the factory
+     */
+    public String getFactory() {
+        return factory;
+    }
+
+    /**
+     * @param factory the factory to set
+     */
+    public void setFactory(String factory) {
+        this.factory = factory;
+    }
+
+    /**
+     * @return the milliliter
+     */
+    public String getMilliliter() {
+        return milliliter;
+    }
+
+    /**
+     * @param milliliter the milliliter to set
+     */
+    public void setMilliliter(String milliliter) {
+        this.milliliter = milliliter;
     }
 }

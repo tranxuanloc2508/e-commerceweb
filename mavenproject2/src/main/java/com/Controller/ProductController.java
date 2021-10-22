@@ -66,16 +66,23 @@ public class ProductController {
     }
 
 //    <-Detail product->
-    @GetMapping(value = "/products/{product_id}")
-    public ModelAndView detail(@PathVariable(value = "product_id") int productId) {
-        ModelAndView view = new ModelAndView();
-        view.setViewName("detail");
-        view.addObject("product", productService.getProductByID(productId));
-         view.addObject("comments",commentService.getCommentByProductId(productId));
+//    @GetMapping(value = "/products/{product_id}")
+//    public ModelAndView detail(@PathVariable(value = "product_id") int productId) {
+//        ModelAndView view = new ModelAndView();
+//        view.setViewName("detail");
+//        view.addObject("product", productService.getProductByID(productId));
+//         view.addObject("comments",commentService.getCommentByProductId(productId));
+//
+//        return view;
+//    }
+      @GetMapping(value = "/products/{product_id}")
+    public String detail(Model model,@PathVariable(value = "product_id") int productId) {
+    
+        model.addAttribute("product", productService.getProductByID(productId));
+         model.addAttribute("comments",commentService.getCommentByProductId(productId));
 
-        return view;
+        return "detail";
     }
-
     @GetMapping(value = "/user/product-stats/{product_id}")
     public String editProduct(Model model, @PathVariable(value = "product_id") int productId) {
 

@@ -13,6 +13,7 @@
                     <a href="<c:url value="/"/>"><img src="<c:url value="img/logo.png"/>" alt=""></a>
                 </div>
             </div>
+                <a href="<c:url value="/"/>"><img src="<c:url value="img/logo.png"/>" alt=""></a>
     <a class="navbar-brand">Người bán hàng</a>
     
     <ul class="nav navbar-right">

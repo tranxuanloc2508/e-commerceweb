@@ -13,7 +13,7 @@
 <div class="humberger__menu__overlay"></div>
 <div class="humberger__menu__wrapper">
     <div class="humberger__menu__logo">
-        <a href="#"><img class="img-fluid" src="<c:url value="img/logo.png"/>" alt=""></a>
+        <a href="<c:url value="/"/>"><img class="img-fluid" src="<c:url value="img/logo.png"/>" alt=""></a>
     </div>
     <div class="humberger__menu__cart">
         <ul>

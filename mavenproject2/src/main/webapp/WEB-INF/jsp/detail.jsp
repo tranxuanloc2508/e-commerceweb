@@ -113,7 +113,8 @@
                         <li><b>Loại sản phẩm</b> <span> ${product.category.getName()}</span></li>
                         <li><b>Được bán bởi</b> <span> ${product.user.getUsername()}</span></li>
                         <li><b>Mô tả</b> <span> ${product.description}</span></li>
-
+                         <li><b>Xuất xứ</b> <span> ${product.factory}</span></li>
+                        <li><b>Dung tích</b> <span> ${product.milliliter}</span></li>
                     </ul>
                 </div>
             </div>

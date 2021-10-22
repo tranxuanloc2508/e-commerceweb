@@ -7,10 +7,14 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="hero__categories">
-                    <div class="hero__categories__all">
-                        <i class="fa fa-bars"></i>
-                        <span>All departments</span>
+                    
+                    <div onclick="hamDropdown()"  class="nut_dropdown">
+                        <i class="fa fa-bars" ></i>
+                        <span class="mr-5">All departments</span>
+                        <span class="mr-3"></span>
+                        <i class="fa fa-caret-down"></i>
                     </div>
+                    <div class="noidung_dropdown">
                     <ul>
                         <c:forEach var="cat" items="${categories}">
                             <li class="nav-item">
@@ -24,6 +28,22 @@
 
                     </ul>
                 </div>
+                </div>
+<!--                <div class="dropdown">
+   <button  onclick="hamDropdown()"  class="nut_dropdown">Dropdown</button>
+   <div class="noidung_dropdown">
+      <%--<c:forEach var="cat" items="${categories}">--%>
+                            <li class="nav-item">
+                                <%--<c:url value="/" var="catPath">--%>
+                                    <%--<c:param name="CateId" value="${cat.id}"></c:param>--%>
+                                <%--</c:url>--%>
+                                <a class="nav-link" href="${catPath}"">${cat.name}</a>
+
+                            </li>
+                        <%--</c:forEach>--%>
+   </div>
+ </div>-->
+ 
             </div>
             <div class="col-lg-9">
                 <div class="hero__search">
@@ -31,7 +51,6 @@
                         <form action="#">
                             <div class="hero__search__categories" >
                                 All Categories
-
                                 <span class="angle-down">
                                     <i class="fa fa-caret-down"></i>
                                 </span>
@@ -144,7 +163,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title">
-                    <h2>Featured Product</h2>
+                    <h2>Tất cả sản phẩm</h2>
                 </div>
 <!--                <div class="featured__controls">
                     <ul>

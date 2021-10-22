@@ -30,6 +30,43 @@ function addCart(productId) {
         
     });
 }
+ function hamDropdown() {
+     document.querySelector(".noidung_dropdown").classList.toggle("hienThi");
+ }
+  window.onclick = function(e) {
+   if (!e.target.matches('.nut_dropdown')) {
+   var noiDungDropdown = document.querySelector(".noidung_dropdown");
+     if (noiDungDropdown.classList.contains('hienThi')) {
+       noiDungDropdown.classList.remove('hienThi');
+     }
+   }
+ }
+ $(function() {
+  var Accordion = function(el, multiple) {
+    this.el = el || {};
+    this.multiple = multiple || false;
+
+    // Variables privadas
+    var links = this.el.find('.link');
+    // Evento
+    links.on('click', {el: this.el, multiple: this.multiple}, this.dropdown)
+  }
+
+  Accordion.prototype.dropdown = function(e) {
+    var $el = e.data.el;
+      $this = $(this),
+      $next = $this.next();
+
+    $next.slideToggle();
+    $this.parent().toggleClass('open');
+
+    if (!e.data.multiple) {
+      $el.find('.submenu').not($next).slideUp().parent().removeClass('open');
+    };
+  } 
+
+  var accordion = new Accordion($('#accordion'), false);
+});
 //function addToCart(id, name,price){
 //    event.preventDefault()
 //    

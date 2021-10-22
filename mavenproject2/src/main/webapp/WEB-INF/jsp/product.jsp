@@ -8,7 +8,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<h1 class="text-center text-danger">QUAN LI SAN PHAM</h1>
+<h1 class="text-center text-danger">THÊM SẢN PHẨM</h1>
 <c:url value="/user/add-products" var="action"/>
 
 <c:if test="${errMsg!=null}">
@@ -43,6 +43,14 @@
     <div class="form-group">
         <label for="description">Mo ta</label>
         <form:textarea type="description" id="description" path="description" class="form-control"></form:textarea>
+        </div>
+         <div class="form-group">
+        <label for="factory">Xuất xứ</label>
+         <form:input type="text" id="factory" path="factory" class="form-control"/>
+        </div>
+         <div class="form-group">
+        <label for="milliliter">Khối lượng/ dung tích</label>
+         <form:input type="text" id="milliliter" path="milliliter" class="form-control"/>
         </div>
     <div class="form-group">
         <label>Anh san pham</label>
