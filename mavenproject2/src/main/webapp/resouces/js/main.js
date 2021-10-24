@@ -1,6 +1,7 @@
 
 
 'use strict';
+
 function addToCart(productId) {
 
     fetch(`/mavenproject2/api/cart/${productId}`).then(res => res.json()).then(data => {
@@ -105,6 +106,11 @@ function pay(){
             location.reload();
        
         });
+ Swal.fire(
+            'Thành công!',
+            'Đặt hàng thành công!',
+            'success'
+        )
     }
 }
 // add comment

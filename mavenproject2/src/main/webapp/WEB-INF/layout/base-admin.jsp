@@ -32,6 +32,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/SlickNav/1.0.10/jquery.slicknav.min.js"></script>
         <link rel="icon" type="image/png" href="<c:url value="img/icon.png"/>"/>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                <link rel="icon" type="image/png" href="<c:url value="img/icon.png"/>"/>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
     </head>
     <body>

@@ -7,7 +7,48 @@ and open the template in the editor.
     Created on : Oct 7, 2021, 9:17:20 AM
     Author     : QUYENNGUYEN
 */
+a
+html, body {
+  height: 100%;
+  background: url("https://dnudecor.vn/wp-content/themes/thuythu/images/bg_img_top.jpg");
+  background-repeat:repeat;
+  
+}
+navbar{
+    background-image: url("../img/he.png");
+  background-repeat:repeat;
+}
+.wrapp {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.buttonn {
+  width: 140px;
+  height: 45px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  }
+
+.buttonn:hover {
+  background-color: #2EE59D;
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
 .avatar {
   vertical-align: middle;
   width: 50px;
@@ -57,8 +98,10 @@ display: block;
 
 /* Add an active class to the active dropdown button */
 .active {
-  background-color: #4caf50;
-  color: white;
+  background-color: #ffffff;
+  color:black;
+  background: url("https://dnudecor.vn/wp-content/themes/thuythu/images/bg_img_top.jpg");
+  background-repeat:repeat;
 }
 
 /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
@@ -83,6 +126,7 @@ display: block;
 
 body {
   background-color:  #eee;
+ 
 }
 .title {
  

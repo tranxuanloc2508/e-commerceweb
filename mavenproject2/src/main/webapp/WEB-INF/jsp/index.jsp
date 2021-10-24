@@ -4,11 +4,15 @@
 <section class="hero">
     <div class="container">
         <div class="row">
+            <div class="col-lg-12">
+                   <a href="<c:url value="/"/>"><img src="<c:url value="img/z.png"/>" alt=""></a>
+                </div>
+                <br>
             <div class="col-lg-3">
                 <div class="hero__categories">
                     <div class="hero__categories__all">
                         <i class="fa fa-bars"></i>
-                        <span>All departments</span>
+                        <span>Tất cả loại sản phẩm</span>
                     </div>
                     <ul>
                         <c:forEach var="cat" items="${categories}">
@@ -29,32 +33,34 @@
                     <div class="hero__search__form">
                         <form action="#">
                             <div class="hero__search__categories" >
-                                All Categories
+                                Tất cả loại sản phẩm
 
-                                <span class="angle-down">
-                                    <i class="fas fa-caret-down"></i>
-                                </span>
                             </div>
-                            <input type="text" name="kw" placeholder="What do yo u need?">
-                            <button type="submit" class="site-btn">SEARCH</button>
+                            <input type="text" name="kw" placeholder="Tìm kiếm sản phẩm?">
+                            <button type="submit" class="site-btn">TÌM KIẾM</button>
                         </form>
                     </div>
-                    <div class="hero__search__phone">
-                        <div class="hero__search__phone__icon">
-                            <i class="fa fa-phone"></i>
-                        </div>
-                        <div class="hero__search__phone__text">
-                            <h5>+65 11.188.888</h5>
-                            <span>support 24/7 time</span>
-                        </div>
+                  
+                  <div class="header__cart">
+                        <ul>
+                            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+
+                            <li>
+                                <a  href="<c:url value="/cart"/>"><i class="fa fa-shopping-bag"></i><span  id="cart-counter">${cartCounter}</span></a>
+                            </li>
+                        </ul>                   
                     </div>
+                          
+                   
                 </div>
+                
                 <div class="hero__item set-bg" data-setbg="img/hero/banner.jpg" style="background-image: url(&quot;img/hero/banner.jpg&quot;);">
                     <div class="hero__text">
-                        <span>FRUIT FRESH</span>
-                        <h2>Vegetable <br>100% Organic</h2>
-                        <p>Free Pickup and Delivery Available</p>
-                        <a href="<c:url value="/category"/>" class="primary-btn">SHOP NOW</a>
+                        <span>Trái cây tươi</span>
+                      
+                        <h2>Rau quả <br>100% hữu cơ</h2>
+                        <p>Nhận và giao hàng miễn phí </p>
+                        <a href="<c:url value="/"/>" class="primary-btn">MUA NGAY</a>
                     </div>
                 </div>
             </div>
@@ -69,25 +75,25 @@
                 <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-2340px, 0px, 0px); transition: all 1.2s ease 0s; width: 3803px;">
                         <div class="owl-item cloned" style="width: 292.5px;"><div class="col-lg-3">
                                 <div class="categories__item set-bg" data-setbg="img/categories/cat-2.jpg" style="background-image: url(&quot;img/categories/cat-2.jpg&quot;);">
-                                    <h5><a href="#">Dried Fruit</a></h5>
+                                    <h5><a href="#">Hoa quả sấy khô</a></h5>
                                 </div>
                             </div>
                         </div>
                         <div class="owl-item cloned" style="width: 292.5px;">
                             <div class="col-lg-3">
                                 <div class="categories__item set-bg" data-setbg="img/categories/cat-3.jpg" style="background-image: url(&quot;img/categories/cat-3.jpg&quot;);">
-                                    <h5><a href="#">Vegetables</a></h5>
+                                    <h5><a href="#">Rau</a></h5>
                                 </div>
                             </div>
                         </div>
                         <div class="owl-item cloned" style="width: 292.5px;">
                             <div class="col-lg-3">
                                 <div class="categories__item set-bg" data-setbg="img/categories/cat-4.jpg" style="background-image: url(&quot;img/categories/cat-4.jpg&quot;);">
-                                    <h5><a href="#">drink fruits</a></h5>
+                                    <h5><a href="#">Nước uống trái cây</a></h5>
                                 </div>
                             </div></div><div class="owl-item cloned" style="width: 292.5px;"><div class="col-lg-3">
                                 <div class="categories__item set-bg" data-setbg="img/categories/cat-5.jpg" style="background-image: url(&quot;img/categories/cat-5.jpg&quot;);">
-                                    <h5><a href="#">drink fruits</a></h5>
+                                    <h5><a href="#">Nước uống trái cây</a></h5>
                                 </div>
                             </div></div><div class="owl-item" style="width: 292.5px;"><div class="col-lg-3">
                                 <div class="categories__item set-bg" data-setbg="img/categories/cat-1.jpg" style="background-image: url(&quot;img/categories/cat-1.jpg&quot;);">
@@ -143,20 +149,9 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title">
-                    <h2>Featured Product</h2>
+                    <h2>Tất cả sản phẩm</h2>
                 </div>
-                <div class="featured__controls">
-                    <ul>
-                        <c:forEach var="cat" items="${categories}">
-                            <li class="nav-item">
-                                <c:url value="/" var="catPath">
-                                    <c:param name="CateId" value="${cat.id}"></c:param>
-                                </c:url>
-                                <a class="nav-link" href="${catPath}"">${cat.name}</a>
-                            </li>
-                        </c:forEach>
-                    </ul>
-                </div>
+               
             </div>
         </div>
         <div class="row">
