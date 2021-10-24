@@ -126,7 +126,7 @@
             <div class="d-flex flex-column col-md-11">
 
                 <div class="coment-bottom bg-white p-2 px-4 mt-3">
-                    <div class="d-flex flex-row add-comment-section mt-4 mb-4"><img class="img-fluid img-responsive rounded-circle mr-2" src="https://i.imgur.com/qdiP4DB.jpg" width="38">
+                    <div class="d-flex flex-row add-comment-section mt-4 mb-4"><img class="img-fluid img-responsive rounded-circle mr-2" src="" width="38">
                         <input type="text" class="form-control mr-3" id ="contentId" placeholder="Thêm bình luận">
                         <c:if test="${pageContext.request.userPrincipal.name == null}">
                             <div ><a href="<c:url value="/login"/>"></a></div>
@@ -145,10 +145,10 @@
                     <div id ="commentArea">
                         <c:forEach items="${comments}" var="c">
 
-                            <div class="commented-section mt-4"class="d-flex flex-row add-comment-section mt-4 mb-4"><img class="img-fluid img-responsive rounded-circle mr-2" src="https://i.imgur.com/qdiP4DB.jpg" width="38">
+                            <div class="commented-section mt-4"class="d-flex flex-row add-comment-section mt-4 mb-4"><img class=" avatar img-fluid img-responsive rounded-circle mr-2" src="${currentUser.image}" width="45">
                                 <div class="d-flex flex-row align-items-center commented-user mt-3">
-                                    <span class="dot mb-2">${c.user.username}</span>
-                                    <i class=" mb-2 ml-4">${c.createdDate}</i>
+                                    <span class="dot mb-3">${c.user.username}</span>
+                                    <i class=" mb-3 ml-4">${c.createdDate}</i>
                                 </div>
                                 <div class="comment-text-sm"><span>${c.content}</span></div>                  
                             </div>

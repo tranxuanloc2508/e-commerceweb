@@ -20,6 +20,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlTransient;
@@ -44,13 +45,15 @@ public class User implements Serializable{
     @Column(name="`last_name`")
     @Size(min = 1, max = 50,message = "{user.lastname.nullErr}")
     private String lastname;
-    @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="user.email.nullErr")
+    
+    @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Chưa đúng định dạng")
     private String email;
-//    @Pattern(regexp="^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$", message="user.email.nullErr")
+    @Pattern(regexp="^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$", message="Chưa đúng định dạng")
     private String phone;
-//    @Size(min = 1, max = 50,message = "{user.username.nullErr}")
+    @Size(min = 1, max = 50,message = "Bạn cần thêm thông tin username")
     private String username;
-//    @Size(min = 1, max = 50,message = "{user.password.nullErr}")
+    @NotNull
+    @Size(min = 1, max = 100 ,message = "Bạn cần nhập thông tin")
     private String password;
     private boolean active;
     @Column(name="`user_role`")

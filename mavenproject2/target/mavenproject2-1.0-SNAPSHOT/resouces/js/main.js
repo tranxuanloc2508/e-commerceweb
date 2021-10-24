@@ -6,7 +6,8 @@ function addToCart(productId) {
     fetch(`/mavenproject2/api/cart/${productId}`).then(res => res.json()).then(data => {
         var d = document.getElementById("cart-counter");
         if (d !== null)
-            d.innerText = data;
+            d.innerText = data;         
+
     })
 
 }
@@ -102,8 +103,8 @@ function pay(){
         }).then(function(code){
             console.info(code);
             location.reload();
-        })
-    
+       
+        });
     }
 }
 // add comment
