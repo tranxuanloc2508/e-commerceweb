@@ -75,16 +75,12 @@
             <a href="#"><i class="fa fa-linkedin"></i></a>
             <a href="#"><i class="fa fa-pinterest-p"></i></a>
         </div>
-<<<<<<< HEAD
-        
-=======
         <div class="humberger__menu__contact">
             <ul>
                 <li><i class="fa fa-envelope"></i> fcs@ou.edu.vn</li>
                 <li>Free Shipping cho tất cả Đơn hàng 200.000 VNĐ</li>
             </ul>
         </div>
->>>>>>> 64177c5000df950b1a54ae08e79f1215b350cf59
     </div>
     <!-- Humberger End -->
 
@@ -131,15 +127,8 @@
                                              <li><a  href="<c:url value="/user/orderliststats"/>"><i class="fa fa-user mr-2"></i>Đơn hàng</a>  </li>
                                              <li> <a href="<c:url value="/user/${pageContext.request.userPrincipal.name}"/>"><i class="fa fa-cog mr-2"></i>Thiết lập</a>
                                              </li>
-                                        <c:if test="${pageContext.request.userPrincipal.name != null}">
-                                             <li><a  href="<c:url value="/user"/>"><i class="fa fa-user mr-2"></i>Bán hàng</a>  </li>
-                                             <li><a  href="<c:url value="user/orderliststats"/>"><i class="fa fa-cog mr-2"></i>Đơn hàng</a>  </li>
-                                             
-                                             <li> <a href="<c:url value="/user/${pageContext.request.userPrincipal.name}"/>"><i class="fa fa-cog mr-2"></i> Cài đặt</a>
-                                             </li>        
-                                             <li><a href="<c:url value="/logout"/>"><span  class="fa fa-sign-out mr-2"></span> Thoát</a></li>    
-
                                          </c:if>
+                                        
                                          <c:if test="${currentUser.userRole == 'ROLE_ADMIN'}">
                                              <li><a  href="<c:url value="/admin/category-stats"/>"><i class="fa fa-user mr-2"></i>Quản trị</a>  </li>
                                              </c:if>                                   
@@ -192,5 +181,3 @@
         </div>
 </header>
 <!-- Header Section End -->
-
-

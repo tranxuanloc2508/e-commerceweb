@@ -8,8 +8,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <c:url value="/register" var="action"/>
-<<<<<<< HEAD
-=======
 <section class="breadcrumb-section set-bg" data-setbg="<c:url value="/img/breadcrumb.jpg"/>" style="background-image: url(&quot;img/breadcrumb.jpg&quot;);">
     <div class="container">
         <div class="row">
@@ -25,7 +23,7 @@
         </div>
     </div>
 </section>
->>>>>>> 64177c5000df950b1a54ae08e79f1215b350cf59
+
 <div class="login-page">
     <div class="form">
         <form:form method="post" action="${action}" modelAttribute="user">           

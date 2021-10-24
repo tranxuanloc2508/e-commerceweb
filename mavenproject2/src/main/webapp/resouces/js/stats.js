@@ -19,7 +19,7 @@ function cateChart(id,cateLabels=[], cateinfo =[]) {
     const data = {
         labels: cateLabels,
         datasets:[{
-                label: 'Thong ke san pham theo danh muc',
+                label: 'Thống kê theo loại sản phẩm',
                 data: cateinfo,
                 backgroundColor: colors,
                 hoverOffset: 4
@@ -28,7 +28,7 @@ function cateChart(id,cateLabels=[], cateinfo =[]) {
       
 
     const config = {
-        type: 'doughnut',
+        type: 'pie',
         data: data,
     };
     let c = document.getElementById(id).getContext("2d")
@@ -44,7 +44,7 @@ function productChart(id,productLabels=[], productinfo =[]){
     const data = {
         labels: productLabels,
         datasets:[{
-                label: 'Thong ke doanh thu theo san pham',
+                label: 'Thống kê theo sản phẩm',
                 data: productinfo,
                 backgroundColor: colors,
                     borderColor: 'rgb(75, 192, 192)',
