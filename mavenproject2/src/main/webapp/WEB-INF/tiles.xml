@@ -23,15 +23,15 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
         <put-attribute name="content" value="/WEB-INF/jsp/product.jsp"/>
     </definition>
     <definition name="login" extends="baseLayout">
-        <put-attribute name="title" value="Dang nhap"/>
+        <put-attribute name="title" value="Đăng nhập"/>
         <put-attribute name="content" value="/WEB-INF/jsp/login.jsp"/>
     </definition>
     <definition name="register" extends="baseLayout">
-        <put-attribute name="title" value="dang ki"/>
+        <put-attribute name="title" value="Đăng ký"/>
         <put-attribute name="content" value="/WEB-INF/jsp/register.jsp"/>
     </definition>
     <definition name="cart" extends="baseLayout">
-        <put-attribute name="title" value="Gio hang"/>
+        <put-attribute name="title" value="Giỏ hàng"/>
         <put-attribute name="content" value="/WEB-INF/jsp/cart.jsp"/>
     </definition>
     <definition name="detail" extends="baseLayout">
@@ -61,7 +61,7 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
         <put-attribute name="content" value="/WEB-INF/jsp/product-user-stats.jsp" />
     </definition>
      <definition name="product" extends="userLayout">
-        <put-attribute name="title" value="Quan lí sản phẩm"/>
+        <put-attribute name="title" value="Thêm sản phẩm"/>
         <put-attribute name="content" value="/WEB-INF/jsp/product.jsp"/>
     </definition>
     <definition name="edit-product" extends="userLayout">
@@ -73,7 +73,7 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
         <put-attribute name="content" value="/WEB-INF/jsp/category.jsp" />
     </definition>
      <definition name="orderliststats" extends="baseLayout">
-        <put-attribute name="title" value="Quan ly user" />
+        <put-attribute name="title" value="Đơn hàng đã mua" />
         <put-attribute name="content" value="/WEB-INF/jsp/orderliststats.jsp" />
     </definition>
    
@@ -86,7 +86,7 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
         <put-attribute name="footer" value="/WEB-INF/layout/footer-admin.jsp" />
     </definition>
     <definition name="category-state" extends="baseAdminLayout">
-        <put-attribute name="title" value="Thong ke san pham theo danh muc" />
+        <put-attribute name="title" value="Thống kê sản phẩm theo danh mục" />
         <put-attribute name="content" value="/WEB-INF/jsp/category-stats.jsp" />
     </definition>
 <!--     <definition name="admin" extends="userLayout">
@@ -94,7 +94,7 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
         <put-attribute name="content" value="/WEB-INF/jsp/stats.jsp" />
     </definition>-->
     <definition name="product-stats" extends="baseAdminLayout">
-        <put-attribute name="title" value="Thong ke doanh thu theo danh muc" />
+        <put-attribute name="title" value="Thống kê doanh thu theo danh mục" />
         <put-attribute name="content" value="/WEB-INF/jsp/product-stats.jsp" />
     </definition>
      <definition name="user-stats" extends="baseAdminLayout">
@@ -114,7 +114,7 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
         <put-attribute name="footer" value="/WEB-INF/layout/footer-admin.jsp" />
     </definition>
     <definition name="edit-profile" extends="userAdminLayout">
-        <put-attribute name="title" value="Quan ly user" />
+        <put-attribute name="title" value="Thông tin người dùng" />
         <put-attribute name="content" value="/WEB-INF/jsp/edit-profile.jsp" />
     </definition>
 </tiles-definitions>

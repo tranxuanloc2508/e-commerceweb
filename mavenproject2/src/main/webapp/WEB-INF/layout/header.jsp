@@ -13,7 +13,7 @@
     <div class="humberger__menu__overlay"></div>
     <div class="humberger__menu__wrapper">
         <div class="humberger__menu__logo">
-            <a href="#"><img src="img/logo.png" alt=""></a>
+            <a href="#"><img src="img/logo3.png" alt=""></a>
         </div>
         <div class="humberger__menu__cart">
             <ul>
@@ -60,20 +60,9 @@
             </c:if>
         </div>
         <nav class="humberger__menu__nav mobile-menu">
-            <ul>
-                <li class="active"><a href="./index.html">Home</a></li>
-                <li><a href="./shop-grid.html">Shop</a></li>
-                <li><a href="#">Pages</a>
-                    <ul class="header__menu__dropdown">
-                        <li><a href="./shop-details.html">Shop Details</a></li>
-                        <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                        <li><a href="./checkout.html">Check Out</a></li>
-                        <li><a href="./blog-details.html">Blog Details</a></li>
-                    </ul>
-                </li>
-                <li><a href="./blog.html">Blog</a></li>
-                <li><a href="./contact.html">Contact</a></li>
-            </ul>
+            <div id="mask">
+    
+</div>
         </nav>
         <div id="mobile-menu-wrap"></div>
         <div class="header__top__right__social">
@@ -84,8 +73,8 @@
         </div>
         <div class="humberger__menu__contact">
             <ul>
-                <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
-                <li>Free Shipping for all Order of $99</li>
+                <li><i class="fa fa-envelope"></i> fcs@ou.edu.vn</li>
+                <li>Free Shipping cho tất cả Đơn hàng 200.000 VNĐ</li>
             </ul>
         </div>
     </div>
@@ -99,8 +88,15 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6">
                     <div class="header__top__left">
+                       
                         <ul>
-                            <li><i class="fa fa-envelope"></i> shopFreshABC@gmail.com</li>                          
+                             <div class="header__top__right__social">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-linkedin"></i></a>
+                                <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                            </div>
+                            <li><i class="fa fa-envelope"></i> fcs@ou.edu.vn</li>                          
                         </ul>
                     </div>
                 </div>
@@ -123,12 +119,12 @@
                                      </a>
                                      <ul style="background: white">                                                         
                                          <c:if test="${pageContext.request.userPrincipal.name != null}">
-                                             <li><a  href="<c:url value="/user"/>"><i class="fa fa-user mr-2"></i>Saler</a>  </li>
+                                             <li><a  href="<c:url value="/user"/>"><i class="fa fa-user mr-2"></i>Bán hàng</a>  </li>
                                              <li><a  href="<c:url value="user/orderliststats"/>"><i class="fa fa-cog mr-2"></i>Đơn hàng</a>  </li>
                                              
                                              <li> <a href="<c:url value="/user/${pageContext.request.userPrincipal.name}"/>"><i class="fa fa-cog mr-2"></i> Cài đặt</a>
                                              </li>        
-                                             <li><a href="<c:url value="/logout"/>"><span  class="fa fa-sign-out mr-2"></span> Logout</a></li>    
+                                             <li><a href="<c:url value="/logout"/>"><span  class="fa fa-sign-out mr-2"></span> Thoát</a></li>    
                                          </c:if>
                                      </ul>
 
@@ -151,30 +147,15 @@
     </div>
         <div class="container">
             <div class="row">
-                <div class="col-lg-3">
+<!--                <div class="col-lg-2">
                     <div class="header__logo">
-                        <a href="<c:url value="/"/>"><img src="<c:url value="img/logo.png"/>" alt=""></a>
+                        <a href="<c:url value="/"/>"><img src="<c:url value="img/logo3.png"/>" alt=""></a>
                     </div>
-                </div>
-                <div class="col-lg-6">
-                    <nav class="header__menu">
-                        <ul>
-                            <li class="active"><a href="<c:url value="/"/>">Home</a></li>
-                            <li><a href="<c:url value="/category"/>">Shop</a></li>
-                            <li><a href="#">Pages</a>
-                                <ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.html">Shop Details</a></li>
-                                    <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                                    <li><a href="./checkout.html">Check Out</a></li>
-                                    <li><a href="./blog-details.html">Blog Details</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="./blog.html">Blog</a></li>
-                            <li><a href="./contact.html">Contact</a></li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="col-lg-3">
+                </div>-->
+<!--                <div class="col-lg-12">
+                   <a href="<c:url value="/"/>"><img src="<c:url value="img/2.png"/>" alt=""></a>
+                </div>-->
+<!--                <div class="col-lg-1">
                     <div class="header__cart">
                         <ul>
                             <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
@@ -184,7 +165,7 @@
                             </li>
                         </ul>                   
                     </div>
-                </div>
+                </div>-->
             </div>
             <div class="humberger__open">
                 <i class="fa fa-bars"></i>

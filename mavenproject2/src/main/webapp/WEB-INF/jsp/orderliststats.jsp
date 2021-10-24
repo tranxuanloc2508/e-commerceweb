@@ -10,9 +10,9 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <div class="breadcrumb__text">
-                    <h2>View Purchase History </h2>
+                    <h2>Lịch sử mua hàng</h2>
                     <div class="breadcrumb__option">
-                        <a href="<c:url value="/"/>">Home</a>
+                        <a href="<c:url value="/"/>">Trang chủ </a>
                         <span>Shopping Cart</span>
                     </div>
                 </div>
@@ -25,9 +25,7 @@
         <div class="col-md-12 px-3">
             <div >
                 <section class="panel">
-                    <header class="panel-heading no-border">
-                        Lịch sử mua hàng
-                    </header>
+                  
                     <div class="table-wrapper-scroll-y my-custom-scrollbar">
                         <table class="table table-bordered table-striped mb-0">
                             <thead>
@@ -37,7 +35,7 @@
                                     <th>Tên sản phẩm</th>
                                     <th>Mô tả</th>
                                     <th>Giá bán</th>
-                                    <th>Loại sản phẩm</th>
+                                    <th>Ngày/Giờ mua</th>
                                     <th>Thành tiền</th>
                                 </tr>
                             </thead>
@@ -54,7 +52,7 @@
                                         <td>${c[3]}</td>
                                         <td>${c[6]} VNĐ</td>
                                         <td>${c[5]}</td>
-                                        <td>${c[6]}</td>
+                                        <td>${c[6]} VNĐ</td>
                                     </tr>
                                 </c:forEach>                            
                             </tbody>

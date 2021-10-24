@@ -9,11 +9,9 @@
 
 <nav class="navbar navbar-light bg-light ">
                 <div class="col-lg-3">
-                <div class="header__logo">
-                    <a href="<c:url value="/"/>"><img src="<c:url value="img/logo.png"/>" alt=""></a>
-                </div>
+                <a href="<c:url value="/"/>"><img src="<c:url value="img/z.png"/>" alt=""></a>
             </div>
-                <a href="<c:url value="/"/>"><img src="<c:url value="img/logo.png"/>" alt=""></a>
+               
     <a class="navbar-brand">Người bán hàng</a>
     
     <ul class="nav navbar-right">
