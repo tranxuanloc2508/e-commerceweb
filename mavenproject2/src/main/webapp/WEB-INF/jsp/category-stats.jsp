@@ -7,25 +7,49 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<h1>Thong ke </h1>
-<div>
-  <canvas id="myCateStatsChart"></canvas>
+<h1>Số lượng sản phẩm theo loại sản phẩm </h1>   
+<br>
+            <div >
+                <canvas id="myCateStatsChart"></canvas>
+            </div>       
+<div class="card panel">
+    <div class="row ">
+        <div class="col-md-12 px-2">
+            <div >
+                <section class="panel">
+                    <header class="panel-heading no-border"><h4>
+                        Tất cả loại sản phẩm dựa theo sản phẩm hiện có</h4>
+                    </header>
+                    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                        <table class="table table-bordered table-striped mb-0">
+                            <thead>
+                                <tr>                  
+                                    <th>STT</th>
+                                    <th>Tên loại sản phẩm</th>
+                                    <th>Số lượng </th>                                   
+                                </tr>
+                            </thead>
+                            <tbody>
+                                  <c:set var="count" value="0"/>
+                                <c:forEach items="${cateStats}" var="c">
+                                    <tr>         
+                                        <td>                                         
+                                            <c:set var="count" value="${count +1}"/>${count}                                         
+                                        </td>
+                                        <td>${c[1]}</td>
+                                        <td>${c[2]}</td>                                    
+                                    </tr>
+                                </c:forEach>                            
+                            </tbody>
+                        </table>
+                    </div> 
+                </section>
+            </div>          
+        </div>
+        <!-- End of carousel -->
+    </div>
 </div>
- 
-<table class="table">
-    <tr>
-        <th>Ma danh muc</th>
-        <th>Ten danh muc</th>
-        <th>So luong san pham</th>
-    </tr> 
-    <c:forEach items="${cateStats}" var="c">
-        <tr>
-            <th>${c[0]}</th>
-            <th>${c[1]}</th>
-            <th>${c[2]}</th>
-        </tr> 
-    </c:forEach>
-</table>
+
 
 <script>
     let cateLables =[],cateInfo=[];

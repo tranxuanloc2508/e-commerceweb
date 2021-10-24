@@ -36,11 +36,18 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/SlickNav/1.0.10/jquery.slicknav.min.js"></script>
         <link rel="icon" type="image/png" href="<c:url value="img/icon.png"/>"/>
-
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script>
+$(document).ready(function(){
+  $(".hero__categories__all").click(function(){
+    $(".hero__categories ul").slideToggle();
+  });
+});
+</script>
     </head>
     <body>
         <div class="container-fluid">

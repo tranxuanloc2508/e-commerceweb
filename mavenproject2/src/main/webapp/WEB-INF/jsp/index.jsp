@@ -1,20 +1,15 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <section class="hero">
     <div class="container">
         <div class="row">
             <div class="col-lg-3">
                 <div class="hero__categories">
-                    
-                    <div onclick="hamDropdown()"  class="nut_dropdown">
-                        <i class="fa fa-bars" ></i>
-                        <span class="mr-5">All departments</span>
-                        <span class="mr-3"></span>
-                        <i class="fa fa-caret-down"></i>
+                    <div class="hero__categories__all">
+                        <i class="fa fa-bars"></i>
+                        <span>All departments</span>
                     </div>
-                    <div class="noidung_dropdown">
                     <ul>
                         <c:forEach var="cat" items="${categories}">
                             <li class="nav-item">
@@ -28,22 +23,6 @@
 
                     </ul>
                 </div>
-                </div>
-<!--                <div class="dropdown">
-   <button  onclick="hamDropdown()"  class="nut_dropdown">Dropdown</button>
-   <div class="noidung_dropdown">
-      <%--<c:forEach var="cat" items="${categories}">--%>
-                            <li class="nav-item">
-                                <%--<c:url value="/" var="catPath">--%>
-                                    <%--<c:param name="CateId" value="${cat.id}"></c:param>--%>
-                                <%--</c:url>--%>
-                                <a class="nav-link" href="${catPath}"">${cat.name}</a>
-
-                            </li>
-                        <%--</c:forEach>--%>
-   </div>
- </div>-->
- 
             </div>
             <div class="col-lg-9">
                 <div class="hero__search">
@@ -51,8 +30,9 @@
                         <form action="#">
                             <div class="hero__search__categories" >
                                 All Categories
+
                                 <span class="angle-down">
-                                    <i class="fa fa-caret-down"></i>
+                                    <i class="fas fa-caret-down"></i>
                                 </span>
                             </div>
                             <input type="text" name="kw" placeholder="What do yo u need?">
@@ -163,20 +143,20 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title">
-                    <h2>Tất cả sản phẩm</h2>
+                    <h2>Featured Product</h2>
                 </div>
-<!--                <div class="featured__controls">
+                <div class="featured__controls">
                     <ul>
-                        <%--<c:forEach var="cat" items="${categories}">--%>
+                        <c:forEach var="cat" items="${categories}">
                             <li class="nav-item">
-                                <%--<c:url value="/" var="catPath">--%>
-                                    <%--<c:param name="CateId" value="${cat.id}"></c:param>--%>
-                                <%--</c:url>--%>
+                                <c:url value="/" var="catPath">
+                                    <c:param name="CateId" value="${cat.id}"></c:param>
+                                </c:url>
                                 <a class="nav-link" href="${catPath}"">${cat.name}</a>
                             </li>
-                        <%--</c:forEach>--%>
+                        </c:forEach>
                     </ul>
-                </div>-->
+                </div>
             </div>
         </div>
         <div class="row">
@@ -185,7 +165,7 @@
                     <div class="card-body">                                         
                         <div class="featured__item">
                             <div class="featured__item__pic set-bg" >
-                                <a href="<c:url value="/products/${p.id}" />"><img class="img-thumbnail"src="<c:url value="${p.image}"/>" alt="${p.name}"/></a>
+                                <img class="img-fluid"src="<c:url value="${p.image}"/>" alt="${p.name}"/>
                                 <ul class="featured__item__pic__hover">
                                     <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                     <li><a href="<c:url value="/products/${p.id}" />"><i class="fa fa-retweet"></i></a></li>
@@ -194,8 +174,7 @@
                             </div>
                             <div class="featured__item__text">
                                 <h6><a href="#">${p.name}</a></h6>
-                                <h5><fmt:formatNumber type = "number" maxFractionDigits = "0" value = "${p.price}" /> đ</h5>
-                                
+                                <h5>${p.price} VNĐ</h5>
                             </div>
                         </div>
                     </div>

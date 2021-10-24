@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
@@ -34,6 +35,10 @@ public class WebAppValidator implements Validator {
     @Override
     public void validate(Object o, Errors errors) {
         
+//        Product p = (Product) o;
+//        MultipartFile multiFile = p.getFile();
+//        if(multiFile.getSize() == 0)
+//            errors.rejectValue("image", "product.image.nullErr");
         Set<ConstraintViolation<Object>> beans=  this.beaValidator.validate(o);
         for(ConstraintViolation<Object> obj: beans)
             errors.rejectValue(obj.getPropertyPath().toString(), obj.getMessageTemplate(), obj.getMessage());

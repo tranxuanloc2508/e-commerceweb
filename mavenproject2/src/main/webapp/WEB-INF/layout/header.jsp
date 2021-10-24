@@ -124,7 +124,7 @@
                                      <ul style="background: white">                                                         
                                          <c:if test="${pageContext.request.userPrincipal.name != null}">
                                              <li><a  href="<c:url value="/user"/>"><i class="fa fa-user mr-2"></i>Saler</a>  </li>
-                                             <li><a  href="<c:url value="/user"/>"><i class="fa fa-cog mr-2"></i>Đơn hàng</a>  </li>
+                                             <li><a  href="<c:url value="user/orderliststats"/>"><i class="fa fa-cog mr-2"></i>Đơn hàng</a>  </li>
                                              
                                              <li> <a href="<c:url value="/user/${pageContext.request.userPrincipal.name}"/>"><i class="fa fa-cog mr-2"></i> Cài đặt</a>
                                              </li>        
@@ -192,4 +192,5 @@
         </div>
 </header>
 <!-- Header Section End -->
+
 

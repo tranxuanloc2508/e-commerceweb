@@ -65,7 +65,8 @@ public class AdminController {
         }
         
         
-        model.addAttribute("productStats", this.statsService.productStats(kw, fromDate, toDate));
+//        model.addAttribute("productStats", this.statsService.productStats(kw, fromDate, toDate));
+        model.addAttribute("listBestProduct",this.statsService.listBestProduct( fromDate, toDate));
    
         return "product-stats";
     }

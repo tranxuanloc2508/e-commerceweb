@@ -5,6 +5,7 @@
  */
 package com.repository;
 
+import com.pojos.Product;
 import java.util.Date;
 import java.util.List;
 
@@ -15,9 +16,11 @@ import java.util.List;
 public interface StatsReponsitory {
 
     List<Object[]> cateStats();
-     List<Object[]> User();
+    List<Object[]> User();
     List<Object[]> productStats(String kw, Date fromDate, Date toDate);
-     List<Object[]> OrderStats();
+    List<Object[]> OrderStats();
+    List<Product> listBestProduct( Date fromDate, Date toDate);
+    
     //USER STATS
      List<Object[]> listProduct();
      List<Object[]> listSaleUser();

@@ -47,11 +47,7 @@ public class Order implements Serializable {
     private User user;  
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "order")
     private Collection<OrderDetail> orderDetailCollection;
-    {
-        createdDate = new Date();
-    }
-
-   
+    
     public Order(){
         createdDate = new Date();
     }
