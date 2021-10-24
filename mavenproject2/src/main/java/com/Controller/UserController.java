@@ -69,19 +69,24 @@ public class UserController {
         
     }
     @PostMapping("/register")
-    public String register (Model model,@ModelAttribute(value = "user") @Valid User user){
+    public String register (Model model,@ModelAttribute(value = "user")
+    @Valid User user, BindingResult result){
         String errMsg="";
-        if(user.getPassword().equals(user.getConfirmPassword())){
-            if(this.userDetailsService.addUser(user)== true){
-                return "redirect:/login";
+        if (!result.hasErrors()) {
+            if (user.getPassword().equals(user.getConfirmPassword())) {
+                if (this.userDetailsService.addUser(user) == true) {
+                    return "redirect:/login";
+                } else {
+                    errMsg = "Da xay ra loi!";
+                }
+            } else {
+                errMsg = "mat khau khong dung";
             }
-                
-            else errMsg="Da xay ra loi!";
-        }else
-            errMsg ="mat khau khong dung";
-        
-        model.addAttribute("errMsg",errMsg);
-        return "register";
+
+            model.addAttribute("errMsg", errMsg);           
+        }
+         return "register";
+       
     }
     @GetMapping("/user")
     public String loadState(Model model){

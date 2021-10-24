@@ -3,20 +3,20 @@
 'use strict';
 function addToCart(productId) {
 
-    fetch(`/mavenproject2/api/cart/${productId}`).then(res => res.json()).then(function(data){
-       let counter = document.getElementById("cart-counter")
-      counter.innerText = data
-//   })
+    fetch(`/mavenproject2/api/cart/${productId}`).then(res => res.json()).then(data => {
+        var d = document.getElementById("cart-counter");
+        if (d !== null)
+            d.innerText = data;
     })
 
 }
-function addCart(productId) {
+function addCart(productId, productName) {
     $.ajax({
         url: "/mavenproject2/api/cart",
         type: "POST",
         data: {
-            "productId": productId,
-            "num": 1
+            productId: productId,
+            num: 1
         },
         success: function (data) {
             var a = $(".product-count").text();
@@ -25,48 +25,9 @@ function addCart(productId) {
         },
         error: function (jqXHR) {
             alert(jqXHR);
-            
         }
-        
     });
 }
- function hamDropdown() {
-     document.querySelector(".noidung_dropdown").classList.toggle("hienThi");
- }
-  window.onclick = function(e) {
-   if (!e.target.matches('.nut_dropdown')) {
-   var noiDungDropdown = document.querySelector(".noidung_dropdown");
-     if (noiDungDropdown.classList.contains('hienThi')) {
-       noiDungDropdown.classList.remove('hienThi');
-     }
-   }
- }
- $(function() {
-  var Accordion = function(el, multiple) {
-    this.el = el || {};
-    this.multiple = multiple || false;
-
-    // Variables privadas
-    var links = this.el.find('.link');
-    // Evento
-    links.on('click', {el: this.el, multiple: this.multiple}, this.dropdown)
-  }
-
-  Accordion.prototype.dropdown = function(e) {
-    var $el = e.data.el;
-      $this = $(this),
-      $next = $this.next();
-
-    $next.slideToggle();
-    $this.parent().toggleClass('open');
-
-    if (!e.data.multiple) {
-      $el.find('.submenu').not($next).slideUp().parent().removeClass('open');
-    };
-  } 
-
-  var accordion = new Accordion($('#accordion'), false);
-});
 //function addToCart(id, name,price){
 //    event.preventDefault()
 //    
@@ -175,13 +136,9 @@ function addComment(productId,userId){
                         <div class="comment-text-sm"><span>${data.content}</span></div>                  
                     </div>
                     ` + area.innerHTML;
-     
+     location.reload()
    })
 
-}
-/// Alert add comment
-function show_alert() {
-  alert("Bạn chưa đăng nhập!");
 }
 (function ($) {
 
@@ -270,10 +227,11 @@ function show_alert() {
     });
 
 
-    $('.hero__categories__all').on('click', function () {
-        $('.hero__categories ul').slideToggle(400);
-    });
-
+  $(document).ready(function(){
+  $(".hero__categories__all").click(function(){
+    $(".hero__categories ul").slideToggle();
+  });
+});
     /*--------------------------
      Latest Product Slider
      ----------------------------*/

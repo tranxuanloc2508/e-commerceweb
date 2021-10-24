@@ -5,6 +5,7 @@
  */
 package com.service.impl;
 
+import com.pojos.Product;
 import com.repository.StatsReponsitory;
 import com.service.StatsService;
 import java.util.Date;
@@ -48,6 +49,11 @@ public class StatsServiceImpl implements StatsService{
     @Override
     public List<Object[]> OrderStats() {
        return this.statsReponsitory.OrderStats();  
+    }
+
+    @Override
+    public List<Product> listBestProduct(Date fromDate, Date toDate) {
+        return this.statsReponsitory.listBestProduct(fromDate,toDate);
     }
     
 }

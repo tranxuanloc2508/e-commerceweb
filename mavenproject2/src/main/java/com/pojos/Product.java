@@ -31,6 +31,7 @@ import javax.persistence.Transient;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlTransient;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -45,16 +46,18 @@ public class Product implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-//    @NotNull(message = "{product.category.nullErr}")
+    @NotNull
+    @Size(min = 1, max = 50,message = "{product.name.nullErr}")
     private String name;
-//    @Lob
-//    @Column(columnDefinition = "TEXT")
+    @Size( min =1, message = "{product.description.nullErr}")
     private String description;
-    @Min(value = 1000, message = "{product.price.minErr}")
+    @NotNull(message = "{product.price.nullErr}")
+    @Min(value = 0, message = "{product.price.minErr}")
     @Max(value = 10000000, message = "{product.price.maxErr}")
     private Long price;
     private String image;
     @Column(name = "Milliliter")
+    @Size( min =1,message = "{product.weight.nullErr}")
     private String milliliter;
     private String factory;
     @Column(name = "created_date")
@@ -62,8 +65,6 @@ public class Product implements Serializable{
     private Date createDate;
     @ManyToOne
     @JoinColumn(name = "`category_id`")// khoa ngoai ket 2 bang
-    @NotNull(message = "{product.category.nullErr}")
-//    @JsonIgnore
     private Category category;
    @JoinColumn(name = "`user_id`", referencedColumnName = "id")
     @ManyToOne(optional = false)
@@ -82,7 +83,8 @@ public class Product implements Serializable{
 
 //    @JsonIgnore
 //    private Set<Manufacturer> manufacturers;
-    @Transient //xem như là 1 thuộc tính để xử lí ko lk với csld
+    @Transient //xem như là 1 thuộc tính để xử lí ko lk với csld'
+   
     private MultipartFile file;
 
     public Product() {

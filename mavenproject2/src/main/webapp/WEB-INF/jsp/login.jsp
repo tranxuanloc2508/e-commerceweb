@@ -12,15 +12,17 @@
 
 <div class="login-page">
   <div class="form">
-      <form method="post" action="${action}" class="login-form">       
+      <form method="post" action="${action}" class="login-form">   
+          <div>
             <label for="username"></label>
             <input type="text" id="username" name="username"  placeholder="Username"/> 
-              
+            
+          </div>    
             <label for="password"></label>
-            <input type="text" id="password" name="password" placeholder="Password"/>
+            <input type="password" id="password" name="password" placeholder="Password"/>
             <c:if test="${param.error != null}">
                 <div class="alert alert-danger">
-                    Username or passwword incorrect!
+                    Tên hoặc mật khẩu đăng nhập chưa đúng!
                 </div>
             </c:if>
             <c:if test="${param.accessDenied != null}">
@@ -28,8 +30,8 @@
                    Bạn không có quyền truy cập!
                 </div>
             </c:if>
-            <button type="submit">login</button>
-       <p class="message">Not registered? <a href="<c:url value="/register"/>">Create an account</a></p>
+            <button type="submit">ĐĂNG NHẬP</button>
+       <p class="message">Chưa đăng ký? <a href="<c:url value="/register"/>">Tạo tài khoản</a></p>
       </form>
   </div>
 </div>

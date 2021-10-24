@@ -14,6 +14,7 @@ import com.repository.UserRepository;
 import com.service.ProductService;
 import com.service.UserService;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
@@ -55,7 +56,8 @@ public class ProductServiceImpl implements ProductService {
                     ObjectUtils.asMap("resource_type", "auto"));
 
             String image = (String) r.get("secure_url");
-            product.setImage(image);            
+            product.setImage(image); 
+            product.setCreateDate(new Date());
             productRepository.addOrUpdate(product);
             return this.productRepository.addOrUpdate(product);
 

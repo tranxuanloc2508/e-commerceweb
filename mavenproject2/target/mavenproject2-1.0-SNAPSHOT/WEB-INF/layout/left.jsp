@@ -13,6 +13,25 @@
    <div class="dropdown-container">
     <a href="<c:url value="/user/sale-stats"/>">Tất cả đơn hàng</a>
     <a href="#">Tìm kiếm</a>
+     <form class="form-group" action="">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search" name="search">
+            <div class="input-group-btn">
+                <button class="btn btn-default" type="submit">
+                    <i class="glyphicon glyphicon-search"></i>
+                </button>
+
+            </div>     
+        </div>
+        <div class="form-group">
+            <label>Từ </label>
+            <input type="date" name="begin" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label>Đến </label>
+            <input type="date" name="end" class="form-control"/>
+        </div>
+    </form>
     <a href="#">Tất cả đơn hàng</a>
   </div>
     <button class="dropdown-btn"><i class="fa fa-briefcase"></i> Quản lý sản phẩm
@@ -24,43 +43,14 @@
     <a href="#">Thống kê</a>
   </div>
     <button class="dropdown-btn"><i class="fa fa-line-chart"></i>
-        Dữ liệu
+        Phân tích dữ liệu
     <i class="fa fa-caret-down"></i>
   </button>
   <div class="dropdown-container">
     <a href="<c:url value="/user/product-stats"/>">Phân tích dữ liệu</a>
    
   </div>
-  <a href="#contact">Search</a>
   
 </div>
-<nav class="navbar bg-light">
 
-  <!-- Links -->
-  
-  <ul class="navbar-nav">
-    <li>
-        <form class="form-group" action="">
-      <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search" name="search">
-        <div class="input-group-btn">
-          <button class="btn btn-default" type="submit">
-            <i class="glyphicon glyphicon-search"></i>
-          </button>
-            
-        </div>     
-      </div>
-             <div class="form-group">
-            <label>Từ </label>
-            <input type="date" name="begin" class="form-control"/>
-        </div>
-         <div class="form-group">
-            <label>Đến </label>
-            <input type="date" name="end" class="form-control"/>
-        </div>
-    </form>
-    </li>
-  </ul>
-
-</nav>
  

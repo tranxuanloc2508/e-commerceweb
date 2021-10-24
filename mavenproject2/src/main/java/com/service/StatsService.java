@@ -20,6 +20,7 @@ public interface StatsService {
        List<Object[]> userStats();
        List<Object[]> productStats(String kw, Date fromDate, Date toDate);
        List<Object[]> OrderStats();
+       List<Product> listBestProduct(Date fromDate, Date toDate);
        /// USER STATS
        List<Object[]> listProduct();
        List<Object[]> listSaleUser();

@@ -177,10 +177,8 @@ public class StatsReponsitoryImpl implements StatsReponsitory{
     public List<Object[]> listSaleUser() {
         Session session = this.localSessionFactoryBean.getObject().getCurrentSession();
         CriteriaBuilder builder = session.getCriteriaBuilder();
-        CriteriaQuery<Object[]> query = builder.createQuery(Object[].class);
-        
+        CriteriaQuery<Object[]> query = builder.createQuery(Object[].class);       
         Root rootP = query.from(Product.class); 
-//        Root rootU = query.from(User.class); 
         Root rootD = query.from(OrderDetail.class); 
         
         String username = SecurityContextHolder.getContext().getAuthentication().getName();    
@@ -188,14 +186,12 @@ public class StatsReponsitoryImpl implements StatsReponsitory{
         List<Predicate> predicates = new ArrayList<>();
         predicates.add(builder.equal(rootP.get("id"), rootD.get("product")));
         predicates.add(builder.equal(rootP.get("user"),user.getId()));
-//        predicates.add(builder.equal(rootP.get("user"), user ));  
        
         query.multiselect(rootP.get("id"),rootP.get("name"),rootP.get("description"),
                 rootP.get("price"),rootP.get("category"), builder.prod(rootD.get("unitPrice"),rootD.get("num"))); 
         query.where(predicates.toArray(new Predicate[]{}));
        
         Query q = session.createQuery(query);
-
         return q.getResultList();
     }
 
@@ -225,6 +221,18 @@ public class StatsReponsitoryImpl implements StatsReponsitory{
         Query q = session.createQuery(query);
 
         return q.getResultList();
+    }
+
+    @Override
+    public List<Product> listBestProduct( Date fromDate, Date toDate) {
+        Session session = this.localSessionFactoryBean.getObject().getCurrentSession();
+        String query = " SELECT  OD.product.id, P.name, P.price,P.image,sum(OD.num) FROM  OrderDetail OD, Product P WHERE OD.id in \n" +
+"(Select OD.id  FROM Order O, OrderDetail OD WHERE O.createdDate between '" +fromDate+ "'and'"+toDate+"' and O.id = OD.order.id  ) and P.id = OD.product.id\n" +
+" GROUP BY OD.product.id" ;
+//" ORDER BY sum(OD.num) desc";
+        List<Product> products = session.createQuery(query).getResultList();
+        return products;
+        
     }
     
 }

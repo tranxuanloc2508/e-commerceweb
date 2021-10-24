@@ -21,7 +21,7 @@ and open the template in the editor.
 /* Style the sidenav links and the dropdown button */
 .my-custom-scrollbar {
 position: relative;
-height: 300px;
+height: 500px;
 overflow: auto;
 }
 .table-wrapper-scroll-y {
@@ -105,7 +105,7 @@ body {
     font-size: 1em;
     overflow: hidden;
     padding: 5;
-    height: 350px;
+    height: 450px;
     border: none;
     border-radius: .28571429rem;
     box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
@@ -121,4 +121,6 @@ body {
 #rowbody .row{
     margin-top: 10px;
 }
+
+
 
