@@ -230,6 +230,7 @@ public class StatsReponsitoryImpl implements StatsReponsitory{
 "(Select OD.id  FROM Order O, OrderDetail OD WHERE O.createdDate between '" +fromDate+ "'and'"+toDate+"' and O.id = OD.order.id  ) and P.id = OD.product.id\n" +
 " GROUP BY OD.product.id" ;
 //" ORDER BY sum(OD.num) desc";
+
         List<Product> products = session.createQuery(query).getResultList();
         return products;
         

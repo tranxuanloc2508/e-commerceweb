@@ -18,7 +18,9 @@
         <div class="humberger__menu__cart">
             <ul>
                 <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                <li>
+                    <a  href="<c:url value="/cart"/>"><i class="fa fa-shopping-bag"></i><span  id="cart-counter">${cartCounter}</span></a>
+                </li>
             </ul>          
         </div>
         <div class="humberger__menu__widget">
@@ -26,29 +28,31 @@
                 <c:if test="${pageContext.request.userPrincipal.name == null}"> 
                     <div ><a href="<c:url value="/login"/>">Đăng nhập</a></div>
                 </c:if>
-                <c:if test="${pageContext.request.userPrincipal.name != null}">
+                    <c:if test="${pageContext.request.userPrincipal.name != null}">
 
-                    <i >
-                        <c:if test="${currentUser.image != null}">
-                            <img src="${currentUser.image}" class="avatar"/>
-                        </c:if>
-                        <c:if test="${currentUser.image == null}">                        
-                            <i class="fa fa-user" aria-hidden="true"></i>
-                        </c:if>                                        
-                    </i>
-                        <span class="dropdown-toggle"></span>
-                    <ul style="background: white">                                                         
-                        <c:if test="${pageContext.request.userPrincipal.name != null}">
-                            <li><a  href="<c:url value="/user"/>"><i class="fa fa-user mr-2"></i>Bán hàng</a>  </li>
-                            <li><a  href="<c:url value="/user"/>"><i class="fa fa-cog mr-2"></i>Đơn hàng</a>  </li>
-
-                            <li> <a href="<c:url value="/user/${pageContext.request.userPrincipal.name}"/>"><i class="fa fa-cog mr-2"></i> Cài đặt</a>
-                            </li>        
-                            <li><a href="<c:url value="/logout"/>"><span  class="fa fa-sign-out mr-2"></span> Thoát</a></li>    
+                        <i >
+                            <c:if test="${currentUser.image != null}">
+                                <img src="${currentUser.image}" class="avatar"/>
                             </c:if>
-                    </ul>
+                            <c:if test="${currentUser.image == null}">                        
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                            </c:if>                                        
+                        </i>
+                        <span class="dropdown-toggle"></span>
+                        <ul style="background: white">                                                         
+                            <c:if test="${currentUser.userRole != 'ROLE_ADMIN'}">
+                                <li><a  href="<c:url value="/user/product-stats"/>"><i class="fa fa-user mr-2"></i>Bán hàng</a>  </li>
+                                <li><a  href="<c:url value="/user/orderliststats"/>"><i class="fa fa-user mr-2"></i>Đơn hàng</a>  </li>
+                                <li> <a href="<c:url value="/user/${pageContext.request.userPrincipal.name}"/>"><i class="fa fa-cog mr-2"></i>Thiết lập</a>
+                                </li> 
+                            </c:if>
+                            <c:if test="${currentUser.userRole == 'ROLE_ADMIN'}">
+                                <li><a  href="<c:url value="/admin/category-stats"/>"><i class="fa fa-user mr-2"></i>Quản trị</a>  </li>
+                                </c:if>                                   
+                            <li><a href="<c:url value="/logout"/>"><span  class="fa fa-sign-out mr-2"></span> Thoát</a></li>    
+                        </ul>
 
-                </c:if>                                                       
+                    </c:if>                                                       
                 <c:if test="${pageContext.request.userPrincipal.name != null}">
                     <div class="username">${pageContext.request.userPrincipal.name}</div>
                 </c:if>                    
@@ -118,14 +122,18 @@
                                          </c:if>                                        
                                      </a>
                                      <ul style="background: white">                                                         
-                                         <c:if test="${pageContext.request.userPrincipal.name != null}">
-                                             <li><a  href="<c:url value="/user"/>"><i class="fa fa-user mr-2"></i>Bán hàng</a>  </li>
-                                             <li><a  href="<c:url value="user/orderliststats"/>"><i class="fa fa-cog mr-2"></i>Đơn hàng</a>  </li>
-                                             
-                                             <li> <a href="<c:url value="/user/${pageContext.request.userPrincipal.name}"/>"><i class="fa fa-cog mr-2"></i> Cài đặt</a>
-                                             </li>        
-                                             <li><a href="<c:url value="/logout"/>"><span  class="fa fa-sign-out mr-2"></span> Thoát</a></li>    
+                                         <c:if test="${currentUser.userRole != 'ROLE_ADMIN'}">
+                                             <li><a  href="<c:url value="/user/product-stats"/>"><i class="fa fa-user mr-2"></i>Bán hàng</a>  </li>
+                                             <li><a  href="<c:url value="/user/orderliststats"/>"><i class="fa fa-user mr-2"></i>Đơn hàng</a>  </li>
+                                             <li> <a href="<c:url value="/user/${pageContext.request.userPrincipal.name}"/>"><i class="fa fa-cog mr-2"></i>Thiết lập</a>
+                                             </li>
                                          </c:if>
+                                        
+                                         <c:if test="${currentUser.userRole == 'ROLE_ADMIN'}">
+                                             <li><a  href="<c:url value="/admin/category-stats"/>"><i class="fa fa-user mr-2"></i>Quản trị</a>  </li>
+                                             </c:if>                                   
+                                         <li><a href="<c:url value="/logout"/>"><span  class="fa fa-sign-out mr-2"></span> Thoát</a></li>    
+
                                      </ul>
 
                                  </c:if>                                                       
@@ -173,5 +181,3 @@
         </div>
 </header>
 <!-- Header Section End -->
-
-

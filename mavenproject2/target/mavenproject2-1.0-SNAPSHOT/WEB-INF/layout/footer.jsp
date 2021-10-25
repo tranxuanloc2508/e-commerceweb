@@ -16,7 +16,7 @@
                         <ul>
                             <li>Địa chỉ: 371 Nguyễn Kiêm, Gò Vấp</li>
                             <li>Phone: 0123456789</li>
-                            <li>Email: shopFreshABC@gmail.com</li>
+                            <li>Email:fcs@ou.edu.vn</li>
                         </ul>
                     </div>
                 </div>

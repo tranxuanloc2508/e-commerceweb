@@ -125,7 +125,7 @@
     <!-- Shoping Cart Section End -->
 
 </c:if>
-<script>
+<!--<script>
     function pay() {
         if (confirm("Bạn muốn thanh toán?")) {
             $.ajax({
@@ -143,4 +143,4 @@
             });
         }
     }
-</script>
+</script>-->

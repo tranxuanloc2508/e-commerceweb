@@ -16,8 +16,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Ogani Template">
-        <meta name="keywords" content="Ogani, unica, creative, html">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="keywords" content="Ogani, unica, creative, html">       
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>
             <tiles:insertAttribute name="title"/>
@@ -32,15 +31,17 @@
         <link href="<c:url value="/css/owl.carousel.min.css"/>" rel="stylesheet"/> 
         <link href="<c:url value="/css/slicknav.min.css"/>" rel="stylesheet"/> 
         <link href="<c:url value="/css/style.css"/>" rel="stylesheet"/> 
+        
         <link rel="https://cdnjs.cloudflare.com/ajax/libs/SlickNav/1.0.10/slicknav.min.css" />      
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/SlickNav/1.0.10/jquery.slicknav.min.js"></script>
         <link rel="icon" type="image/png" href="<c:url value="img/icon.png"/>"/>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+         
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
         <script>
@@ -73,3 +74,5 @@ $(document).ready(function(){
 
     </body>
 </html>
+
+  

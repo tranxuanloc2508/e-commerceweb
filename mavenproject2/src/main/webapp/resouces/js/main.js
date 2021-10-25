@@ -7,7 +7,9 @@ function addToCart(productId) {
     fetch(`/mavenproject2/api/cart/${productId}`).then(res => res.json()).then(data => {
         var d = document.getElementById("cart-counter");
         if (d !== null)
-            d.innerText = data;
+            d.innerText = data;   
+        location.reload()
+
     })
 
 }
@@ -103,8 +105,9 @@ function pay(){
         }).then(function(code){
             console.info(code);
             location.reload();
-        })
-      Swal.fire(
+       
+        });
+ Swal.fire(
             'Thành công!',
             'Đặt hàng thành công!',
             'success'
@@ -144,6 +147,13 @@ function addComment(productId,userId){
      location.reload()
    })
 
+}
+function show_alert(){
+    Swal.fire({
+            icon: 'error',
+            title: 'Xảy ra lỗi',
+            text: 'Bạn chưa đăng nhập tài khoản!'
+        })
 }
 (function ($) {
 

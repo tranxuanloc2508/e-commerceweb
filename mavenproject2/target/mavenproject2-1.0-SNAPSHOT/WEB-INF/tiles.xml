@@ -9,7 +9,7 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
 "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
     <definition name="baseLayout" template="/WEB-INF/layout/base.jsp">
-        <put-attribute name="title" value="SHOPPE FAKE" />
+        <put-attribute name="title" value="FOOD SALE" />
         <put-attribute name="header" value="/WEB-INF/layout/header.jsp" />
         <put-attribute name="content" value="/WEB-INF/layout/content.jsp"/>
         <put-attribute name="footer" value="/WEB-INF/layout/footer.jsp" />
@@ -94,15 +94,15 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
         <put-attribute name="content" value="/WEB-INF/jsp/stats.jsp" />
     </definition>-->
     <definition name="product-stats" extends="baseAdminLayout">
-        <put-attribute name="title" value="Thống kê doanh thu theo danh mục" />
+        <put-attribute name="title" value="Thống kê" />
         <put-attribute name="content" value="/WEB-INF/jsp/product-stats.jsp" />
     </definition>
      <definition name="user-stats" extends="baseAdminLayout">
-        <put-attribute name="title" value="Quan ly user" />
+        <put-attribute name="title" value="NGƯỜI DÙNG" />
         <put-attribute name="content" value="/WEB-INF/jsp/user-stats.jsp" />
     </definition>
       <definition name="listproduct" extends="baseAdminLayout">
-        <put-attribute name="title" value="Quan ly user" />
+        <put-attribute name="title" value="" />
         <put-attribute name="content" value="/WEB-INF/jsp/listproduct.jsp" />
     </definition>
     

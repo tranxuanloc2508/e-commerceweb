@@ -9,10 +9,9 @@
 
 <nav class="navbar navbar-light bg-light ">
                 <div class="col-lg-3">
-                <a href="<c:url value="/"/>"><img src="<c:url value="img/z.png"/>" alt=""></a>
+<!--                <a href="<c:url value="/"/>"><img src="<c:url value="img/z.png"/>" alt="image"></a>-->
             </div>
                
-    <a class="navbar-brand">Người bán hàng</a>
     
     <ul class="nav navbar-right">
        
@@ -35,7 +34,7 @@
                     <span class="profile-ava">
                         <img alt="" src="img/avatar1_small.jpg">
                     </span>
-                    <span class="username">Login</span>
+                    <span class="username">Đăng nhập</span>
 
                 </a>
             </c:if>
@@ -53,18 +52,17 @@
             <ul class="dropdown-menu extended logout">
                 <div class="log-arrow-up "></div>
              
-                <c:if test="${pageContext.request.userPrincipal.name != null}" >
-                    
-                    <li class="eborder-top">       
-                        
-                        <a href="<c:url value="/user/${pageContext.request.userPrincipal.name }" />"><i class="icon_profile"></i> Setting</a>     
-                        
-                    </li>         
-                     <li><a  href="<c:url value="/user"/>"><i class="fa fa-user"></i>Saler</a>  </li>
+                <c:if test="${currentUser.userRole != 'ROLE_ADMIN'}" >
+       
                                   
-                    <li><a href="<c:url value="/logout"/>"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>  
+                    <li><a href="<c:url value="/"/>"><span class="glyphicon glyphicon-log-in"></span> Thoát</a></li>  
 
                 </c:if>
+                    <c:if test="${currentUser.userRole == 'ROLE_ADMIN'}" >                              
+                    <li><a href="<c:url value="/logout"/>"><span class="glyphicon glyphicon-log-in"></span> Thoát</a></li>  
+
+                </c:if>
+                    
             </ul>
         </li>
         
