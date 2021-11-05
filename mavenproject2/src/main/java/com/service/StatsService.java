@@ -19,9 +19,11 @@ public interface StatsService {
       List<Object[]> cateStats();
        List<Object[]> userStats();
        List<Object[]> productStats(String kw, Date fromDate, Date toDate);
+       List<Object[]> productMonthStats(String kw, Date fromDate, Date toDate);
        List<Object[]> OrderStats();
        List<Product> listBestProduct(Date fromDate, Date toDate);
        /// USER STATS
        List<Object[]> listProduct();
        List<Object[]> listSaleUser();
+       List<Product> listBestProductOfUser();
 }

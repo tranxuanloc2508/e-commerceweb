@@ -110,7 +110,14 @@
                     <div id ="commentArea">
                         <c:forEach items="${comments}" var="c">
 
-                            <div class="commented-section mt-4"class="d-flex flex-row add-comment-section mt-4 mb-4"><img class=" avatar img-fluid img-responsive rounded-circle mr-2" src="${c.user.image}" width="45">
+                            <div class="commented-section mt-4"class="d-flex flex-row add-comment-section mt-4 mb-4">
+                                <c:if test="${c.user.image != null}">
+                                    <img class=" avatar img-fluid img-responsive rounded-circle mr-2" src="${c.user.image}" width="45">
+                                </c:if>
+                                <c:if test="${c.user.image == null}">
+                                    <img class=" avatar img-fluid img-responsive rounded-circle mr-2" src="https://www.minervastrategies.com/wp-content/uploads/2016/03/default-avatar-150x150.jpg" width="45">
+                                </c:if>
+                                <!--<img class=" avatar img-fluid img-responsive rounded-circle mr-2" src="${c.user.image}" width="45">-->
                                 <div class="d-flex flex-row align-items-center commented-user mt-3">
                                     <span class="dot mb-3">${c.user.username}</span>
                                     <i class=" mb-3 ml-4">${c.createdDate}</i>

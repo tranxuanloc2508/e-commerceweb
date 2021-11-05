@@ -141,4 +141,9 @@ public class UserController {
         model.addAttribute("orderliststats", this.statsService.OrderStats());
         return "orderliststats";
     }    
+     @GetMapping("user/product-best-user")
+    public String listproductTopStats(Model model) {
+        model.addAttribute("listTopProduct", this.statsService.listBestProductOfUser());
+        return "product-best-user";
+    }   
 }

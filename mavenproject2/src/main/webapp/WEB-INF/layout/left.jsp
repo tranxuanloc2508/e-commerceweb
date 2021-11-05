@@ -11,28 +11,21 @@
     <i class="fa fa-caret-down"></i>
   </button>
    <div class="dropdown-container">
-    <a href="<c:url value="/user/sale-stats"/>">Tất cả đơn hàng</a>
-    <a href="#">Tìm kiếm</a>
-     <form class="form-group" action="">
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search" name="search">
-            <div class="input-group-btn">
-                <button class="btn btn-default" type="submit">
-                    <i class="glyphicon glyphicon-search"></i>
-                </button>
-
-            </div>     
-        </div>
-        <div class="form-group">
-            <label>Từ </label>
-            <input type="date" name="begin" class="form-control"/>
-        </div>
-        <div class="form-group">
-            <label>Đến </label>
-            <input type="date" name="end" class="form-control"/>
-        </div>
-    </form>
-    <a href="#">Tất cả đơn hàng</a>
+    <a href="<c:url value="/user/sale-stats"/>">Tất cả đơn hàng</a>   
+    <br>
+     <form action="">                    
+    <div class="form-group">
+        <label>Từ thời gian</label>
+        <input type="date" name="fromDate" class="form-control"/>
+    </div>
+         <br>
+    <div class="form-group">
+        <label>Đến thời gian</label>
+        <input type="date" name="toDate" class="form-control"/>
+    </div>
+    <input type="submit" value="THỐNG KÊ" class="btn btn-success"/>
+</form> 
+    
   </div>
     <button class="dropdown-btn"><i class="fa fa-briefcase"></i> Quản lý sản phẩm
     <i class="fa fa-caret-down"></i>
@@ -40,14 +33,13 @@
   <div class="dropdown-container">
     <a href="<c:url value="/user/product-stats"/>">Tất cả sản phẩm</a>
     <a href="<c:url value="/user/add-products"/>">Thêm sản phẩm</a>
-    <a href="#">Thống kê</a>
   </div>
     <button class="dropdown-btn"><i class="fa fa-line-chart"></i>
         Phân tích dữ liệu
     <i class="fa fa-caret-down"></i>
   </button>
   <div class="dropdown-container">
-    <a href="<c:url value="/user/product-stats"/>">Phân tích dữ liệu</a>
+    <a href="<c:url value="/user/product-best-user"/>">Top sản phẩm bán chạy</a>
    
   </div>
   

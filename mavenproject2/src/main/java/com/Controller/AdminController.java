@@ -65,10 +65,61 @@ public class AdminController {
         }
         
         
-//        model.addAttribute("productStats", this.statsService.productStats(kw, fromDate, toDate));
-        model.addAttribute("listBestProduct",this.statsService.listBestProduct( fromDate, toDate));
+        model.addAttribute("productStats", this.statsService.productStats(kw, fromDate, toDate));
+//        model.addAttribute("listBestProduct",this.statsService.listBestProduct( fromDate, toDate));
    
         return "product-stats";
+    }
+    
+    @GetMapping("/product-month-stats")
+    public String productMonthStats(Model model, @RequestParam(required = false) Map<String, String> params) {
+        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+        String kw = params.getOrDefault("kw", null);
+
+        Date fromDate = null, toDate = null;
+        try {
+            String from = params.getOrDefault("fromDate", null);
+
+            if (from != null) {
+                fromDate = f.parse(from);
+            }
+
+            String to = params.getOrDefault("toDate", null);
+
+            if (to != null) {
+                toDate = f.parse(to);
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        
+        model.addAttribute("productMonthStats",this.statsService.productMonthStats(kw, fromDate, toDate));
+        return "product-month-stats";
+    }
+    @GetMapping("/product-best-stats")
+    public String productBestStats(Model model, @RequestParam(required = false) Map<String, String> params) {
+        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");      
+
+        Date fromDate = null, toDate = null;
+        try {
+            String from = params.getOrDefault("fromDate", null);
+
+            if (from != null) {
+                fromDate = f.parse(from);
+            }
+
+            String to = params.getOrDefault("toDate", null);
+
+            if (to != null) {
+                toDate = f.parse(to);
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        
+        model.addAttribute("listBestProduct",this.statsService.listBestProduct( fromDate, toDate));
+   
+        return "product-best-sale";
     }
      @GetMapping("/listproduct")
     public String listproductStats(Model model) {

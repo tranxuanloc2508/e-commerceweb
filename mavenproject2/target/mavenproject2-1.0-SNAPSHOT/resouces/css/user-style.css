@@ -62,7 +62,7 @@ navbar{
 /* Style the sidenav links and the dropdown button */
 .my-custom-scrollbar {
 position: relative;
-height: 500px;
+height: 380px;
 overflow: auto;
 }
 .table-wrapper-scroll-y {
@@ -72,7 +72,7 @@ display: block;
   padding: 6px 8px 6px 16px;
   text-decoration: none;
   font-size: 18px;
-  color: #818181;
+  color: black;
   display: block;
   border: none;
   background: none;
@@ -107,7 +107,10 @@ display: block;
 /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
 .dropdown-container {
   display: none;
-  background-color:white;
+  background-color:black;
+  
+  color: black;
+  background-image: url("../img/he.png");
   padding-left: 8px;
 }
 
