@@ -15,7 +15,7 @@
             <div >
                 <section class="panel">
                     <header class="panel-heading no-border">
-                        Tất cả sản phẩm được thêm 
+                        Tất cả người dùng hiện có 
                     </header>
                     <div class="table-wrapper-scroll-y my-custom-scrollbar">
                         <table class="table table-bordered table-striped mb-0">

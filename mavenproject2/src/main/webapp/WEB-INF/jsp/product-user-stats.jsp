@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <div class="card">
     <div class="row ">
         <div class="col-md-12 px-3">
@@ -19,6 +20,7 @@
                             <thead>
                                 <tr>                  
                                     <th>STT</th>
+                                    <th>Mã SP</th>
                                     <th>Tên sản phẩm</th>
                                     <th>Giá bán</th>
                                     <th>Hình ảnh</th>
@@ -32,15 +34,16 @@
                                         <td>
                                             <c:set var="count" value="${count +1}"/>${count}                                         
                                         </td>
+                                        <td>TSP${c[0]}</td>
                                         <td>${c[1]}</td>
 
-                                        <td>${c[3]} VNĐ</td>
+                                        <td><fmt:formatNumber type = "number" maxFractionDigits = "0" value = "${c[3]}" /> đ</td>
                                         <td > <img src="${c[4]}" class="img-thumbnail"alt="${c[4]}" style=" width: 100px;
                                                    height: 100px;
                                                    object-fit: cover;"></td>
                                         <td>${c[5].getName()}</td>
                                         <td><div class="w3-xlarge"><a href="<c:url value="/user/product-stats/${c[0]}"/>?edit=${c[0]}"><i class="fa fa-pencil-square-o"></i></a></div>
-                                            <div class="w3-xlarge"><a href="<c:url value="/user/remove/${c[0]}"/>"><i class="fa fa-trash"></i></a></div>
+                                            <!--<div class="w3-xlarge"><a href="<c:url value="/user/remove/${c[0]}"/>"><i class="fa fa-trash"></i></a></div>-->
                                         </td>
                                     </tr>
                                 </c:forEach>                            
@@ -57,7 +60,7 @@
 
 <div class="card ">
     <header class="panel">
-        Thống kê sản phẩm
+        Thống kê  theo giá bán của sản phẩm
     </header>
     <div class="row ">
         <div class="col-md-8 ">
@@ -82,23 +85,17 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-12 text-center">
-                            <p class="small text-uppercase mb-0">Tổng doanh thu</p>
+                            <p class="small text-uppercase mb-0">Tổng giá trị</p>
                             <c:forEach items="${listproductStats}" var="c">  
-                                <c:set var="sum" value="0"/>                                                      
+                                <c:set var="sum" value="${sum +c[3]}"/>  
+                               
                             </c:forEach>   
-                            <p class="font-weight-bold ">${sum}</p>  
+                            <p class="font-weight-bold "><fmt:formatNumber type = "number" maxFractionDigits = "0" value = "${sum}" /> đ</p>  
 
                         </div>
 
                     </div>
-                    <div class="row">
-                        <div class="col-sm-12 text-center">
-                            <p class="small text-uppercase mb-0">Sản phẩm</p>
-                            <p class="font-weight-bold ">2400</p>
-
-                        </div>
-
-                    </div>
+                  
                 </div>
             </div>
         </div>
@@ -109,7 +106,7 @@
 
     let productLables = [], productInfo = [];
     <c:forEach items="${listproductStats}" var="c">
-    productLables.push('${c[1]}')
+    productLables.push('TSP${c[0]}')
     productInfo.push('${c[3]}')
     </c:forEach>
 

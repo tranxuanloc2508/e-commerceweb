@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <section class="hero">
     <div class="container">
@@ -169,7 +170,7 @@
                             </div>
                             <div class="featured__item__text">
                                 <h6><a href="#">${p.name}</a></h6>
-                                <h5>${p.price} VNĐ</h5>
+                                <h5><fmt:formatNumber type = "number" maxFractionDigits = "0" value = "${p.price}" />VNĐ</h5>
                             </div>
                         </div>
                     </div>

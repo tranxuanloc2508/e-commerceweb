@@ -93,7 +93,13 @@ function deleteCart(productId){
 //       let row = document.getElementById(`product${c.productId}`)
 //      row.style.display = "none"
     })
+    Swal.fire(
+            'Xóa thành công!',
+            'Xóa sản phẩm thành công!',
+            'success'
+        )
    }
+    
 }
 
 function pay(){

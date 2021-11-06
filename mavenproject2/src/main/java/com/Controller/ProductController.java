@@ -83,11 +83,13 @@ public class ProductController {
 
         return "detail";
     }
-    @GetMapping(value = "/user/product-stats/{product_id}")
-    public String editProduct(Model model, @PathVariable(value = "product_id") int productId) {  
+   @GetMapping(value = "/user/product-stats/{product_id}")
+    public String editProduct(Model model, @PathVariable(value = "product_id") int productId) {
             Product u = this.productService.getProductByID(productId);
             model.addAttribute("product", u);
-            return "edit-product";   
+            return "edit-product";
+        
+        
     }
 
     @PostMapping("/user/product-stats/{product_id}")

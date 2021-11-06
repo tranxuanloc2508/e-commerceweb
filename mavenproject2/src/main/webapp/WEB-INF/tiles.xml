@@ -60,12 +60,16 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
         <put-attribute name="title" value="Quản lý sản phẩm" />
         <put-attribute name="content" value="/WEB-INF/jsp/product-user-stats.jsp" />
     </definition>
+    <definition name="product-best-user" extends="userLayout">
+        <put-attribute name="title" value="Top sản phẩm" />
+        <put-attribute name="content" value="/WEB-INF/jsp/product-best-user.jsp" />
+    </definition>
      <definition name="product" extends="userLayout">
         <put-attribute name="title" value="Thêm sản phẩm"/>
         <put-attribute name="content" value="/WEB-INF/jsp/product.jsp"/>
     </definition>
     <definition name="edit-product" extends="userLayout">
-        <put-attribute name="title" value="Chi tiết sản phẩm" />
+        <put-attribute name="title" value="Cập nhật sản phẩm sản phẩm" />
         <put-attribute name="content" value="/WEB-INF/jsp/edit-product.jsp" />
     </definition>
     <definition name="category" extends="baseLayout">
@@ -96,6 +100,14 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
     <definition name="product-stats" extends="baseAdminLayout">
         <put-attribute name="title" value="Thống kê" />
         <put-attribute name="content" value="/WEB-INF/jsp/product-stats.jsp" />
+    </definition>
+    <definition name="product-month-stats" extends="baseAdminLayout">
+        <put-attribute name="title" value="Thống kê" />
+        <put-attribute name="content" value="/WEB-INF/jsp/product-month-stats.jsp" />
+    </definition>
+    <definition name="product-best-sale" extends="baseAdminLayout">
+        <put-attribute name="title" value="Quản lý sản phẩm" />
+        <put-attribute name="content" value="/WEB-INF/jsp/product-best-sale.jsp" />
     </definition>
      <definition name="user-stats" extends="baseAdminLayout">
         <put-attribute name="title" value="NGƯỜI DÙNG" />

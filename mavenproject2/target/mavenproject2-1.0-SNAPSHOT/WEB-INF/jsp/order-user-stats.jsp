@@ -25,6 +25,7 @@
                                     <th>Giá bán</th>
                                     <th>Loại sản phẩm</th>
                                     <th>Thành tiền</th>
+                                     <th>Mã ĐH</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -39,7 +40,8 @@
                                         <td>${c[2]}</td>
                                         <td>${c[3]} VNĐ</td>
                                         <td>${c[4].getName()}</td>
-                                        <td>${c[5]}</td>
+                                        <td>${c[6]}</td>
+                                         <th>${c[5].getId()}</th>
                                     </tr>
                                 </c:forEach>                            
                             </tbody>
@@ -68,34 +70,18 @@
        <div class="col-md-4 ">
           <div class="row panel-heading">
               <div class="card-body " id="rowbody">
-                  <div class="row " >
-                      <div class="col-sm-12 text-center">
-                          <p class="small text-uppercase mb-0">Tổng sản phẩm</p>                         
-                        
-                          <p class="font-weight-bold ">${count}</p>    
-
-
-                      </div>
-
-                  </div>
+                 
                   <div class="row">
                       <div class="col-sm-12 text-center">
-                          <p class="small text-uppercase mb-0">Tổng dơn hàng</p>
+                          <p class="small text-uppercase mb-0">Tổng đơn hàng</p>
                            <c:set var="sum" value="0"/>
                            
-                          <p class="font-weight-bold ">${sum}</p>  
+                          <p class="font-weight-bold ">${count}</p>  
 
                       </div>
 
                   </div>
-                  <div class="row">
-                      <div class="col-sm-12 text-center">
-                          <p class="small text-uppercase mb-0">Sản phẩm</p>
-                          <p class="font-weight-bold ">2400</p>
-
-                      </div>
-
-                  </div>
+                  
               </div>
               </div>
             </div>

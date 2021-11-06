@@ -55,5 +55,15 @@ public class StatsServiceImpl implements StatsService{
     public List<Product> listBestProduct(Date fromDate, Date toDate) {
         return this.statsReponsitory.listBestProduct(fromDate,toDate);
     }
+
+    @Override
+    public List<Object[]> productMonthStats(String kw, Date fromDate, Date toDate) {
+       return this.statsReponsitory.productMonthStats(kw, fromDate, toDate);
+    }
+
+    @Override
+    public List<Product> listBestProductOfUser() {
+       return this.statsReponsitory.listBestProductOfUser();
+    }
     
 }
